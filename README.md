@@ -34,7 +34,6 @@ class MyNetwork(torch.nn.Module):
         # Pass input through the Fourier head
         return self.classification_head(x)  # Maps (batch_size, input_dim) --> (batch_size, output_dim)
 
-
 device = "cuda" if torch.cuda.is_available() else "cpu"
 tensor_input = torch.randn(32, 16).to(device) # Batch size 32, input dimension 16
 model = MyNetwork(device=device).to(device)
