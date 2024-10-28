@@ -49,12 +49,13 @@ that you obtain from quantizing the learned continuous PDF. In other words: to o
 PMFs as in the paper, you need to apply `softmax` to the output of our `Fourier_Head`.
 - Some very old versions of PyTorch (e.g. the one used in the original Decision Transformer repo) 
 can't execute `torch.nn.functional.conv1d` on complex-valued tensors.
-We provide an implementation that works in this case inside [imitation-learning/mingpt/_fourier_head.py](imitation-learning/mingpt/_fourier_head.py).
+We provide an implementation that works for this case inside [imitation-learning/mingpt/_fourier_head.py](imitation-learning/mingpt/_fourier_head.py).
 
 ## Recreating results from paper
 
 Our paper contains four sets of experiments with the Fourier head.
 Look inside the corresponding subdirectory for the code to recreate the results and figures from that section of the paper.
+If you're looking for an example to cannibalize for your own experiments, we recommend you start with the [synthetic toy example](/toy-example-synthetic/README.md), as it is self-contained.
 
 1. [Toy example (synthetic data)](/toy-example-synthetic/README.md)
 
