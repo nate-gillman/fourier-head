@@ -31,7 +31,7 @@ source /gpfs/runtime/opt/anaconda/2020.02/etc/profile.d/conda.sh
 conda activate /gpfs/home/ngillman/.conda/envs/chronos-doover
 
 # Move to correct working directory
-HOME_DIR=/oscar/data/superlab/users/nates_stuff/fourier-head-cleanup/toy-example-synthetic
+HOME_DIR=/oscar/data/superlab/users/nates_stuff/fourier-head/toy-example-synthetic
 cd ${HOME_DIR}
 
 # linear head, running all datasets

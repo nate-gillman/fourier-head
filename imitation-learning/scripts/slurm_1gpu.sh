@@ -31,7 +31,7 @@ source /gpfs/runtime/opt/anaconda/2020.02/etc/profile.d/conda.sh
 conda activate /gpfs/home/ngillman/.conda/envs/dt-atari
 
 # Move to correct working directory
-HOME_DIR=/oscar/data/superlab/users/nates_stuff/fourier-head-cleanup/imitation-learning
+HOME_DIR=/oscar/data/superlab/users/nates_stuff/fourier-head/imitation-learning
 cd ${HOME_DIR}
 
 # put the script execution statement here
