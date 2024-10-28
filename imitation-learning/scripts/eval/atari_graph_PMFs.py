@@ -114,7 +114,7 @@ if __name__ == "__main__":
     # Example usage: Load from numpy files
     multinomial_fourier     = 'output/fourier_8/test-multinomials-seed-123-epoch-0.npy'
     multinomial_linear      = 'output/linear/test-multinomials-seed-123-epoch-3.npy'
-    target                  = 'output/linear/test-targets-seed-123-epoch-2.npy'
+    target                  = 'output/linear/test-targets-seed-123-epoch-3.npy'
 
     # some interesting ones for 14: 51, 75, 109, 110, 133, 158, 176, 184, 197, 199!!, 205, 207, 
     # some interesting ones for 8:  21, 65, 77, 78, 108, 126(*), 195(*)
