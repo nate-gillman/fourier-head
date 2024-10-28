@@ -13,7 +13,7 @@ Please visit our [**webpage**](https://nategillman.com/fourier-head) for more de
 
 <!-- ![teaser](misc/assets/toy_example_gmm.gif) -->
 
-<img src="misc/assets/toy_example_gmm.gif" alt="teaser" loop="infinite">
+<img src="misc/assets/toy_example_gmm.gif" alt="teaser" loop=-1>
 
 
 Our paper contains four sets of experiments with the Fourier head.
