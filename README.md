@@ -13,19 +13,6 @@ Please visit our [**webpage**](https://nategillman.com/fourier-head) for more de
 
 ![teaser](misc/assets/toy_example_gmm.gif)
 
-## Recreating results from paper
-
-Our paper contains four sets of experiments with the Fourier head.
-Look inside the corresponding subdirectory for the code to recreate the results and figures from that section of the paper.
-
-1. [Toy example (synthetic data)](/toy-example-synthetic/README.md)
-
-2. [Toy example (audio classification)](/toy_example_audio/README.md)
-
-3. [Large scale example (imitation learning)](/imitation-learning/README.md)
-
-4. [Large scale example (probabilistic time series forecasting)](/time-series-forecasting/README.md)
-
 ## Using the Fourier head in your own work
 
 In [fourier_head.py](fourier_head.py) we implement the Fourier head.
@@ -59,6 +46,19 @@ print(tensor_output.shape)  # Expected shape: (32, 18)
 Note: some very old versions of PyTorch (e.g. the one used in the original Decision Transformer repo) 
 can't execute `torch.nn.functional.conv1d` on complex-valued tensors.
 We provide an implementation that works in this case inside [imitation-learning/mingpt/_fourier_head.py](imitation-learning/mingpt/_fourier_head.py).
+
+## Recreating results from paper
+
+Our paper contains four sets of experiments with the Fourier head.
+Look inside the corresponding subdirectory for the code to recreate the results and figures from that section of the paper.
+
+1. [Toy example (synthetic data)](/toy-example-synthetic/README.md)
+
+2. [Toy example (audio classification)](/toy_example_audio/README.md)
+
+3. [Large scale example (imitation learning)](/imitation-learning/README.md)
+
+4. [Large scale example (probabilistic time series forecasting)](/time-series-forecasting/README.md)
 
 ## Acknowledgments
 
