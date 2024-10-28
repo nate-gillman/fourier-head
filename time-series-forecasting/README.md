@@ -27,12 +27,12 @@ Need to run the following script one time, on a machine that has at least 128 GB
 It takes a while to run; it has to download all the data, then convert it to the arrow format.
 
 ```bash
-python scripts/data_prepconvert_to_arrow.py
+python scripts/data_prep/convert_to_arrow.py
 ```
 
 ## Training
 
-We ran all of our experiments on an 8xA100 GPU cluster.
+We ran all of our training experiments on an 8xGPU cluster.
 
 ```bash
 # Linear baseline experiment
@@ -40,14 +40,20 @@ torchrun --nproc-per-node=8 scripts/train/train.py --config scripts/train/config
 
 # Fourier head experiments
 torchrun --nproc-per-node=8 scripts/train/train.py --config scripts/train/configs/fourier-64.yaml
+torchrun --nproc-per-node=8 scripts/train/train.py --config scripts/train/configs/fourier-128.yaml
+torchrun --nproc-per-node=8 scripts/train/train.py --config scripts/train/configs/fourier-256.yaml
+torchrun --nproc-per-node=8 scripts/train/train.py --config scripts/train/configs/fourier-550.yaml
+
+# Fourier head ablations
+torchrun --nproc-per-node=8 scripts/train/train.py --config scripts/train/configs/fourier-550_no-regularization.yaml
+torchrun --nproc-per-node=8 scripts/train/train.py --config scripts/train/configs/fourier-550_uniform_binning.yaml
 ```
 
-Each of these will output the checkpoints, logs, and other training artifacts into `time-series-forecasting/output/run-i`.
-Once the run finishes, you should rename the last directory from `run-i` to `fourier-64` or whatever run it corresponds to.
-This is because the remaining evaluation scripts assume those hard-coded paths.
+Each of these will output the checkpoints, logs, and other training artifacts into `output/run-i`.
+Once the run finishes, I like to rename the last directory from `run-i` to `fourier-64` or whatever run it corresponds to, to stay organized :)
 
 
-If you'd rather so a scaled-down run on a single GPU, you can run it as follows:
+Note: if you'd rather so a scaled-down run on a single GPU, you can run it as follows:
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/fourier-64.yaml
