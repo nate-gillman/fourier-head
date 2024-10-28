@@ -1,0 +1,13 @@
+program: train.py
+name: fourier_head_audio
+method: grid
+metric:
+  goal: minimize
+  name: eval/f1
+parameters:
+  fourier_num_frequencies: 
+    values: [0, 1, 2, 4, 8, 16]
+  dataset_split_style:
+    values: ["standard"]
+  dataset_bin_size:
+    values: [15, 7, 5]

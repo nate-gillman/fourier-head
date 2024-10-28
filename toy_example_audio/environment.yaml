@@ -1,0 +1,23 @@
+name: fourier_head_audio
+channels:
+  - pytorch
+  - nvidia
+  - defaults
+dependencies:
+  - pytorch
+  - torchaudio
+  - torchvision
+  - pip
+  - pip:
+    - transformers==4.42.3
+    - datasets==2.20.0
+    - evaluate==0.4.3
+    - scikit-learn==1.5.1
+    - scipy==1.14.0
+    - wandb==0.17.5
+    - soundfile==0.12.1
+    - librosa==0.10.2.post1
+    - matplotlib==3.9.1
+    - accelerate==0.32.1
+variables:
+  PYTHONPATH: .

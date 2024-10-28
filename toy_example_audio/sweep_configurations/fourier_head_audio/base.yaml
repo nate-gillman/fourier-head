@@ -1,0 +1,4 @@
+freeze_encoder: false
+fourier_num_frequencies: 1
+dataset_bin_size: 15
+num_train_epochs: 2
