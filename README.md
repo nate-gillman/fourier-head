@@ -1,4 +1,12 @@
-# fourier-head-cleanup
+<div align="center">
+
+## Fourier Head: Helping Large Language Models Learn Complex Probability Distributions
+
+[![arXiv](https://img.shields.io/badge/arXiv-2402.07087-<COLOR>.svg)](https://nategillman.com/fourier-head)
+[![Project Page](https://img.shields.io/badge/just%20the%20message-8A2BE2)](https://nategillman.com/fourier-head)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+</div>
 
 Our paper contains four sets of experiments with the Fourier head.
 You can look inside the corresponding subdirectory for the code to recreate the results from our paper.
