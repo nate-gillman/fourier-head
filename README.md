@@ -16,8 +16,8 @@ Please visit our [**webpage**](https://nategillman.com/fourier-head) for more de
 ## Using the Fourier head in your own work
 
 In [fourier_head.py](fourier_head.py) we implement the Fourier head.
-This is a self-contained file, so you can copy the file into your repo and use it like you would any neural network layer.
-For example:
+This is a self-contained file, so you can copy it into your codebase and import it like you would any neural network layer.
+Example usage:
 
 ```python
 import torch
