@@ -48,18 +48,16 @@ class MyNetwork(nn.Module):
         # Pass input through the Fourier head
         return self.classification_head(x)  # Maps (batch_size, input_dim) --> (batch_size, output_dim)
 
-# Example usage
-device = "cuda" if torch.cuda.is_available() else "cpu"
 
-# Batch size of 32, input dimension of 16
-tensor_input = torch.randn(32, 16).to(device)
+device = "cuda" if torch.cuda.is_available() else "cpu"
+tensor_input = torch.randn(32, 16).to(device) # Batch size 32, input dimension 16
 model = MyNetwork(device=device).to(device)
 tensor_output = model(tensor_input)
 print(tensor_output.shape)  # Expected shape: (32, 18)
 ```
 
 Note: some very old versions of PyTorch (e.g. the one used in the original Decision Transformer repo) 
-can't execute `torch.nn.functional.conv1d` on complex tensors.
+can't execute `torch.nn.functional.conv1d` on complex-valued tensors.
 We provide an implementation that works in this case inside [imitation-learning/mingpt/_fourier_head.py](imitation-learning/mingpt/_fourier_head.py).
 
 ## Acknowledgments
