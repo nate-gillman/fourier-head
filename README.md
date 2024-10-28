@@ -2,7 +2,7 @@
 
 ## <img src="https://github.com/nate-gillman/professional-site/blob/main/fourier-head-static/images/favicon.ico" alt="Fourier's head" width="30"/> Fourier Head:<br />Helping Large Language Models Learn Complex Probability Distributions
 
-[![arXiv](https://img.shields.io/badge/arXiv-2402.07087-<COLOR>.svg)](https://nategillman.com/fourier-head)
+[![arXiv](https://img.shields.io/badge/arXiv-2410.XXXXX-<COLOR>.svg)](https://nategillman.com/fourier-head)
 [![Project Page](https://img.shields.io/badge/Project%20page-8A2BE2)](https://nategillman.com/fourier-head)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
