@@ -45,7 +45,7 @@ max_grad_norm: 1.0
 log_in_wandb: True
 fourier_kwargs:
   fourier_num_frequences: 550
-  fourier_regularization_gamma: 0.000001
+  fourier_regularization_gamma: 0.0
   fourier_weight_denominator: 1000
   fourier_bias_denominator: 10
   fourier_inverse_softmax_constant: 0.00001
