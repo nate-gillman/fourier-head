@@ -21,10 +21,9 @@ Example usage:
 
 ```python
 import torch
-import torch.nn as nn
 from fourier_head import Fourier_Head
 
-class MyNetwork(nn.Module):
+class MyNetwork(torch.nn.Module):
     def __init__(self, input_dim=16, output_dim=18, num_frequencies=42, device="cpu"):
         super(MyNetwork, self).__init__()
         
