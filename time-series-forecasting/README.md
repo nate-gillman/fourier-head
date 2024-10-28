@@ -1,5 +1,5 @@
 
-# Fourier head experiments
+# Chronos experiments
 
 ## Environment setup
 
