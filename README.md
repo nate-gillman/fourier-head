@@ -11,9 +11,7 @@
 The official PyTorch implementation of the paper [**"Fourier Head: Helping Large Language Models Learn Complex Probability Distributions"**](https://nategillman.com/fourier-head).
 Please visit our [**webpage**](https://nategillman.com/fourier-head) for more details.
 
-<!-- ![teaser](misc/assets/toy_example_gmm.gif) -->
-
-<img src="misc/assets/toy_example_gmm.gif" alt="teaser" loop=-1>
+![teaser](misc/assets/toy_example_gmm.gif)
 
 
 Our paper contains four sets of experiments with the Fourier head.
