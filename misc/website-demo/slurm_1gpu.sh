@@ -31,7 +31,7 @@ source /gpfs/runtime/opt/anaconda/2020.02/etc/profile.d/conda.sh
 conda activate /gpfs/home/ngillman/.conda/envs/chronos-doover
 
 # Move to correct working directory
-HOME_DIR=/oscar/data/superlab/users/nates_stuff/fourier-head-cleanup/misc/website-demo
+HOME_DIR=/oscar/data/superlab/users/nates_stuff/fourier-head/misc/website-demo
 cd ${HOME_DIR}
 
 python run_exp.py

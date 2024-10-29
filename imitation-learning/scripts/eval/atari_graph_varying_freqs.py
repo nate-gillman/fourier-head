@@ -164,7 +164,7 @@ def build_graphs(vals, output_fname, title=""):
     # Adjust layout to keep spacing consistent
     plt.tight_layout()
     plt.subplots_adjust(top=0.85)
-    plt.savefig(output_fname)
+    plt.savefig(output_fname, dpi=300)
 
 def main():
 

@@ -2,7 +2,7 @@
 
 ## Environment
 
-These experiments work in the `chronos` conda env built in [time-series-forecasting](time-series-forecasting).
+These experiments work in the `chronos` conda env built in [time-series-forecasting](../time-series-forecasting/README.md).
 
 ## Running the experiments
 

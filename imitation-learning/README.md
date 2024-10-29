@@ -1,9 +1,9 @@
 
-# Fourier head experiments
+# Decision transformer experiments
 
 ## Setup
 
-### Step 1: set up conda evn
+### Step 1: set up conda environment
 
 ```bash
 conda create -n dt-atari python=3.7.9
@@ -74,7 +74,7 @@ python scripts/eval/atari_graph_varying_freqs.py
 ```
 
 Next, we can graph the learned PMFs side by side.
-Right now, the paths are hard-coded so that you can generate the same graphs in our paper, but you can redirect them to the multinomials from the test split that were generated.
+Right now, it'll generate a graph for every saved multinomial in the test split for Fourier-8 and Linear.
 
 ```bash
 python scripts/eval/atari_graph_PMFs.py
