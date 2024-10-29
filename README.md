@@ -47,8 +47,7 @@ print(tensor_output.shape)  # Expected shape: (32, 18)
 Accordingly, our implementation of the Fourier head outputs the <em>inverse softmax</em> of the categorical distribution 
 that you obtain from quantizing the learned continuous PDF. In other words: to obtain the continuous-looking Fourier head 
 PMFs as in the paper, you need to apply `softmax` to the output of our `Fourier_Head`.
-- Some very old versions of PyTorch (e.g. the one used in the original Decision Transformer repo) 
-can't execute `torch.nn.functional.conv1d` on complex-valued tensors.
+- Some older versions of PyTorch can't execute `torch.nn.functional.conv1d` on complex-valued tensors.
 We provide an implementation that works for this case inside [imitation-learning/mingpt/_fourier_head.py](imitation-learning/mingpt/_fourier_head.py).
 
 ## Recreating results from paper
