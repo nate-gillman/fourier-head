@@ -55,7 +55,7 @@ We provide an implementation that works for this case inside [imitation-learning
 
 Our paper contains four sets of experiments with the Fourier head.
 Look inside the corresponding subdirectory for the code to recreate the results and figures from that section of the paper.
-If you're looking for an example to cannibalize for your own experiments, we recommend you start with the [synthetic toy example](/toy-example-synthetic/README.md), as it is self-contained.
+If you're looking for an example to cannibalize for your own experiments, we recommend you start with the [synthetic toy example](/toy-example-synthetic/README.md), since it is the most self-contained.
 
 1. [Toy example (synthetic data)](/toy-example-synthetic/README.md)
 
