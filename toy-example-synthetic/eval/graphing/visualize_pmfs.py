@@ -78,7 +78,8 @@ if __name__ == "__main__":
     # Change output directory
     output_dir = 'eval/graphing/saved_pmfs/'
 
-    # Example usage: choose which model to load from for each of the datasets -- be sure to choose the same seed for all
+    # Example usage: choose which model to load from for each of the datasets
+    # For each dataset, be sure to specify the same seed for fourier, linear, and true
     fourier = ['gaussian/fourier/0.0/18/pmfs_1.npy', 'gmm/fourier/0.0/10/pmfs_1.npy', 'gmm2/fourier/0.0/10/pmfs_1.npy']
     linear = ['gaussian/linear/0.0/0/pmfs_1.npy', 'gmm/linear/0.0/0/pmfs_1.npy', 'gmm2/linear/0.0/0/pmfs_1.npy']
     true = ['gaussian/true_1.npy', 'gmm/true_1.npy','gmm2/true_1.npy']
