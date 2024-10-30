@@ -12,7 +12,7 @@ And activate the environment with:
 conda activate fourier_head_audio
 ```
 
-If any issues arise in the environment, we can recreate it from scratch by installing [PyTorch](https://pytorch.org/get-started/locally/) and then installing the below:
+If any issues arise when installing from the `yaml` file, one can recreate it from scratch by installing [PyTorch](https://pytorch.org/get-started/locally/) and then installing the below:
 ```bash
 pip install transformers==4.42.3
 pip install datasets==2.20.0
@@ -71,7 +71,7 @@ toy_example_audio/
                 info.json
 ```
 
-The script will download a [dataset](https://huggingface.co/datasets/meganwei/syntheory) from HuggingFace Hub, requiring about 1.2 GB of disk space.
+The script will download a [dataset](https://huggingface.co/datasets/meganwei/syntheory) from HuggingFace Hub, requiring about 1.2 GB of disk space. More information and the code that generates the SynTheory dataset is here: [SynTheory GitHub](https://github.com/brown-palm/syntheory)
 
 When all of the models finish training and evaluating, the graph we show in the paper will be written to disk as a `.png` file. Check the folder:
 ```bash
