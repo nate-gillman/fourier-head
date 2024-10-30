@@ -54,7 +54,7 @@ Once all the experiments have finished, to aggregate all the results from the ex
 python eval/aggregate.py --dir output --datasets 'gaussian' 'gmm' 'gmm2'
 ```
 
-This will also compute the L2-smoothness metrics for the saved pmfs and save them to disk. It will print a table for each dataset showing the aggregated metrics as well as the best model for each of the three metrics (KL divergence, MSE, smoothness). 
+This will also compute the L2-smoothness metrics for the saved pmfs and save them to `smoothness_dict.json` in the appropriate model directory. It will print a table for each dataset showing the aggregated metrics as well as the best model for each of the three metrics (KL divergence, MSE, smoothness). 
 
 Finally, we can graph the KL divergence and smoothness as number of Fourier frequencies vary via:
 
