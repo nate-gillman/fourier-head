@@ -71,7 +71,7 @@ toy_example_audio/
                 info.json
 ```
 
-The script will download a [dataset](https://huggingface.co/datasets/meganwei/syntheory) from HuggingFace Hub, requiring about 1.2 GB of disk space. More information and the code that generates the SynTheory is here: [SynTheory GitHub](https://github.com/brown-palm/syntheory)
+The script will download a [dataset](https://huggingface.co/datasets/meganwei/syntheory) from HuggingFace Hub, requiring about 1.2 GB of disk space. More information and the code that generates the SynTheory dataset is here: [SynTheory GitHub](https://github.com/brown-palm/syntheory)
 
 When all of the models finish training and evaluating, the graph we show in the paper will be written to disk as a `.png` file. Check the folder:
 ```bash
