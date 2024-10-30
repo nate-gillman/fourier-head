@@ -28,11 +28,13 @@ class MyNetwork(torch.nn.Module):
         super(MyNetwork, self).__init__()
         
         # Initialize Fourier head with specified input and output dimensions
-        self.classification_head = Fourier_Head(input_dim, output_dim, num_frequencies, device=device)
+        self.classification_head = Fourier_Head(
+          input_dim, output_dim, num_frequencies, device=device
+        )
         
     def forward(self, x):
-        # Pass input through the Fourier head
-        return self.classification_head(x)  # Maps (batch_size, input_dim) --> (batch_size, output_dim)
+        # Fourier head maps (batch_size, input_dim) --> (batch_size, output_dim)
+        return self.classification_head(x)
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 tensor_input = torch.randn(32, 16).to(device) # Batch size 32, input dimension 16
