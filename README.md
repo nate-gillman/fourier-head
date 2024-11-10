@@ -15,6 +15,9 @@ Please visit our [**webpage**](https://nategillman.com/fourier-head) for more de
 
 ## Using the Fourier head in your own work
 
+> [!TIP]
+> If you're looking for an example to cannibalize for your own experiments, we recommend you start with the [synthetic toy example](/toy-example-synthetic/README.md), since the implementation is minimalist and self-contained.
+
 In [fourier_head.py](fourier_head.py) we implement the Fourier head.
 This is a self-contained file, so you can copy it into your codebase and import it like you would any neural network layer.
 Example usage:
@@ -43,15 +46,10 @@ tensor_output = model(tensor_input)
 print(tensor_output.shape)  # Expected shape: (32, 18)
 ```
 
-If you're looking for an example to cannibalize for your own experiments, we recommend you start with the [synthetic toy example](/toy-example-synthetic/README.md), since the implementation is minimalist and self-contained.
-
-### Technical usage notes
-
 > [!NOTE]
-> First: in the paper, the main use case for the Fourier head is as a drop-in replacement for the linear classification head.
+> * In the paper, the main use case for the Fourier head is as a drop-in replacement for the linear classification head.
 Accordingly, our implementation of the Fourier head outputs the <em>inverse softmax</em> (i.e. the log) of the categorical distribution that you obtain from quantizing the learned continuous PDF. In other words: to obtain the continuous-looking Fourier head  PMFs as in the paper, you need to apply `softmax` to the output of our `Fourier_Head`.
-And second: some older versions of PyTorch can't execute `torch.nn.functional.conv1d` on complex-valued tensors.
-We provide an implementation that works for this case inside [imitation-learning/mingpt/_fourier_head.py](imitation-learning/mingpt/_fourier_head.py).
+> * Some older versions of PyTorch can't execute `torch.nn.functional.conv1d` on complex-valued tensors. We provide an implementation that works for this case inside [imitation-learning/mingpt/_fourier_head.py](imitation-learning/mingpt/_fourier_head.py).
 
 ## Recreating results from paper
 
