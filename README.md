@@ -18,7 +18,7 @@ Please visit our [**webpage**](https://nategillman.com/fourier-head) for more de
 The Fourier head is a neural network layer which learns a *continuous* probability density function using Fourier series, and returns a *discrete* approximation of it. 
 
 Large language models are often adapted to model non-linguistic tokens. 
-If these tokens have an underlying continuous structure, then replacing the linear classification head with the Fourier head can boost downstream performance.
+If these tokens have an underlying continuous structure (e.g. time series forecasting, or RL control tasks) then replacing the linear classification head with the Fourier head can boost downstream performance.
 
 ## Using the Fourier head in your own work
 
