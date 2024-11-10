@@ -54,9 +54,9 @@ print(tensor_output.shape)  # Expected shape: (32, 18)
 ```
 
 > [!NOTE]
-> - In the paper, the main use case for the Fourier head is as a drop-in replacement for the linear classification head.
+> 1. In the paper, the main use case for the Fourier head is as a drop-in replacement for the linear classification head.
 Accordingly, our implementation of the Fourier head outputs the <em>inverse softmax</em> (i.e. the log) of the categorical distribution that you obtain from quantizing the learned continuous PDF. In other words: to obtain the continuous-looking Fourier head  PMFs as in the paper, you need to apply `softmax` to the output of our `Fourier_Head`.
-> - Some older versions of PyTorch can't execute `torch.nn.functional.conv1d` on complex-valued tensors. We provide an implementation that works for this case inside [imitation-learning/mingpt/_fourier_head.py](imitation-learning/mingpt/_fourier_head.py).
+> 2. Some older versions of PyTorch can't execute `torch.nn.functional.conv1d` on complex-valued tensors. We provide an implementation that works for this case inside [imitation-learning/mingpt/_fourier_head.py](imitation-learning/mingpt/_fourier_head.py).
 
 ## Recreating results from paper
 
