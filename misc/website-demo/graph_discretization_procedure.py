@@ -41,16 +41,18 @@ def plot_single_distribution(data_dict, key, plot_type, y_limit):
     fig, ax = plt.subplots(figsize=(8, 6))
     
     if plot_type == "learned_pdf":
-        # Plot learned PDF in blue
+        # Plot learned PDF in blue with filled area
         x_pdf = torch.linspace(-1, 1, 1000)
         title = f"Learned density, {key} frequencies"
         ylabel = 'Probability Density'
-        ax.plot(x_pdf, 
-               data_dict[str(key)]["learned_pdf"], 
-               color='tab:blue', 
-               alpha=0.7,
-               linewidth=2, 
-               label=title)
+        # Plot filled area with matching edge color
+        ax.fill_between(x_pdf, 
+                       data_dict[str(key)]["learned_pdf"], 
+                       color='tab:blue', 
+                       alpha=0.7,
+                       label=title,
+                       edgecolor='tab:blue',  # Match the fill color
+                       linewidth=0)  # Remove the edge line completely
         
     elif plot_type == "true_pdf":
         # Plot true PDF in green using the provided x,y coordinates
