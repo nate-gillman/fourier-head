@@ -11,14 +11,14 @@
 The official PyTorch implementation of the paper [**"Fourier Head: Helping Large Language Models Learn Complex Probability Distributions"**](https://arxiv.org/abs/2410.22269).
 Please visit our [**webpage**](https://nategillman.com/fourier-head) for more details.
 
+![teaser](misc/assets/toy_example_gmm.gif)
+
 ## When to use the Fourier head?
 
 The Fourier head is a neural network layer which learns a *continuous* probability density function using Fourier series, and returns a *discrete* approximation of it. 
 
 Large language models are often adapted to model non-linguistic tokens. 
 If these tokens have an underlying continuous structure, then replacing the linear classification head with the Fourier head can boost downstream performance.
-
-![teaser](misc/assets/toy_example_gmm.gif)
 
 ## Using the Fourier head in your own work
 
