@@ -160,7 +160,7 @@ class Fourier_Head(nn.Module):
 
         return fourier_coeffs
 
-    def evaluate_pdf(self, fourier_coeffs):
+    def evaluate_pdf(self, fourier_coeffs, latent_vals=None):
         """
         Evaluate the probability density function (PDF) at the precomputed bin 
         centerpoints for given Fourier coefficients.
@@ -169,6 +169,10 @@ class Fourier_Head(nn.Module):
         -----------
         fourier_coeffs : torch.Tensor
             Normalized fourier coefficients for the input batch, shape (batch_size, num_frequencies)
+        latent_vals : torch.Tensor
+            Values to evaluate the PDF at. On the forward pass through the Fourier head, this will 
+            default to the bin centerpoints; we only include this as an optional parameter for cases
+            where you might want more fine-grained control (e.g. visualization purposes). Has shape (len)
         
         Returns:
         --------
@@ -176,10 +180,13 @@ class Fourier_Head(nn.Module):
             Evaluated PDF values at the centerpoints of each bin, shape (batch_size, dim_output)
         """
 
-        freqs = self.frequencies.expand((self.bin_centerpoints.shape[0], self.num_frequencies))
+        if latent_vals is None:
+            latent_vals = self.bin_centerpoints
+
+        freqs = self.frequencies.expand((latent_vals.shape[0], self.num_frequencies))
 
         # Evaluate the PDF at each bin centerpoint
-        scaled_likelihood = 0.5 + (fourier_coeffs.unsqueeze(1) * torch.exp(self.bin_centerpoints.unsqueeze(1) * freqs).unsqueeze(0)).sum(dim=-1)
+        scaled_likelihood = 0.5 + (fourier_coeffs.unsqueeze(1) * torch.exp(latent_vals.unsqueeze(1) * freqs).unsqueeze(0)).sum(dim=-1)
         scaled_likelihood = scaled_likelihood.real
         # NOTE: at this point, every number should be real valued and non-negative, 
         # as this is the output from the PDF
