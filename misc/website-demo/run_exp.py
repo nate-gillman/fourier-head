@@ -185,12 +185,14 @@ class FourierTrainer:
         dataset: DistributionDataset,
         dim_input: int,
         regularization_gamma: float,
-        device: str = "cuda:0"
+        device: str = "cuda:0",
+        save_learned_pdf: bool = False
     ):
         self.dataset = dataset
         self.dim_input = dim_input
         self.regularization_gamma = regularization_gamma
         self.device = device
+        self.save_learned_pdf = save_learned_pdf
         
     def train_model(
         self,
@@ -245,11 +247,29 @@ class FourierTrainer:
         with torch.no_grad():
             final_logits = model(torch.zeros(1, self.dim_input).to(self.device))
             softmax_logits = torch.softmax(final_logits, dim=-1)
+
+            learned_pdf = []
+            if self.save_learned_pdf: # Save continuous learned curve
+                # Compute Fourier coefficients
+                fourier_coeffs = model.compute_fourier_coefficients(torch.zeros(1, model.dim_input).to(self.device)) # (batch_size, num_frequencies + 1)
+                fourier_coeffs_normalized = fourier_coeffs[:, 1:] / fourier_coeffs[:, 0:1].real # (batch_size, num_frequencies)
+                # Evaluate PDF at latent values
+                num_latent_values = 1000
+                latent_vals = torch.linspace(-1, 1, num_latent_values).to(self.device)
+                scaled_likelihood = model.evaluate_pdf(fourier_coeffs_normalized, latent_vals=latent_vals)
+                # normalize scaled likelihoods so they're the same integral as the Riemann integral of the gt output
+                gt_curve = self.dataset.get_discretized_pdf_curve(num_dots=num_latent_values)
+                gt_curve_integral = ((2 / gt_curve.shape[0]) * gt_curve[:, -1]).sum()
+                scaled_likelihood_riemann_integral = ((2/num_latent_values) *  scaled_likelihood[0, :]).sum()
+                rescale = gt_curve_integral / scaled_likelihood_riemann_integral
+                rescaled_likelihood = rescale * scaled_likelihood
+                learned_pdf = rescaled_likelihood.cpu().numpy()[0].tolist()
             
             return {
                 "smoothness": get_smoothness_metric(softmax_logits.cpu().numpy())["L2"]["mean"],
                 "kl": self.dataset.get_kl_metric(softmax_logits),
-                "multinomial": softmax_logits.cpu().numpy()[0].tolist()
+                "multinomial": softmax_logits.cpu().numpy()[0].tolist(),
+                "learned_pdf" : learned_pdf
             }
 
 class ExperimentRunner:
@@ -260,15 +280,17 @@ class ExperimentRunner:
         dataset: DistributionDataset,
         dim_input: int = 10,
         regularization_gamma: float = 1e-6,
-        device: str = "cuda:0"
+        device: str = "cuda:0",
+        save_learned_pdf: bool = False
     ):
-        self.trainer = FourierTrainer(dataset, dim_input, regularization_gamma, device)
+        self.trainer = FourierTrainer(dataset, dim_input, regularization_gamma, device, save_learned_pdf)
         
     def run_frequency_sweep(
         self,
         max_frequencies: int,
         num_training_steps: int = 10000,
-        output_path: str = "categorical_distributions.json"
+        output_path: str = "categorical_distributions.json",
+        save_learned_pdf : bool = False
     ) -> None:
         """Run experiments with increasing number of frequencies."""
 
@@ -320,6 +342,8 @@ def run_exps_square_mixture_of_gaussians_v1():
 
 def run_exps_square_mixture_of_gaussians_v2():
 
+    SAVE_LEARNED_PDF = True # optional; need this to graph side-by-side
+
     means_and_stds = [
         (-0.98, 0.04), (-0.94, 0.07), (-0.92, 0.02),
         (-0.63, 0.05), (-0.6, 0.03), (-0.55, 0.06), (-0.53, 0.015), (-0.5, 0.08),
@@ -330,7 +354,7 @@ def run_exps_square_mixture_of_gaussians_v2():
         (0.82, 0.03), (0.85, 0.06), (0.9, 0.02), (0.92, 0.07), (0.95, 0.015)
     ]
     mog_dataset = MixtureOfGaussiansDataset(dim_output=128, means_and_stds=means_and_stds)
-    mog_runner = ExperimentRunner(mog_dataset)
+    mog_runner = ExperimentRunner(mog_dataset, save_learned_pdf=SAVE_LEARNED_PDF)
     mog_runner.run_frequency_sweep(
         num_training_steps=10000,
         max_frequencies=64, 
