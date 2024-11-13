@@ -45,8 +45,26 @@ torchrun --nproc-per-node=8 scripts/train/train.py --config scripts/train/config
 torchrun --nproc-per-node=8 scripts/train/train.py --config scripts/train/configs/fourier-550.yaml
 
 # Fourier head ablations
+# Ablation 1: no fourier regularization
 torchrun --nproc-per-node=8 scripts/train/train.py --config scripts/train/configs/fourier-550_no-regularization.yaml
+# Ablation 2: uniform binning
 torchrun --nproc-per-node=8 scripts/train/train.py --config scripts/train/configs/fourier-550_uniform_binning.yaml
+# Ablation 3: dataset size
+python scripts/data_prep/convert_to_arrow_subset.py 100 10
+python scripts/data_prep/convert_to_arrow_subset.py 1000 100
+python scripts/data_prep/convert_to_arrow_subset.py 10000 1000
+python scripts/data_prep/convert_to_arrow_subset.py 100000 10000
+python scripts/data_prep/convert_to_arrow_subset.py 1000000 100000
+CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/fourier-128-tsmixup-1000-kernelsynth-100.yaml
+CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/fourier-128-tsmixup-10000-kernelsynth-1000.yaml
+CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/fourier-128-tsmixup-100000-kernelsynth-10000.yaml
+CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/fourier-128-tsmixup-1000000-kernelsynth-100000.yaml
+CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/fourier-128-tsmixup-10000000-kernelsynth-1000000.yaml
+CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/linear-tsmixup-1000-kernelsynth-100.yaml
+CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/linear-tsmixup-10000-kernelsynth-1000.yaml
+CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/linear-tsmixup-100000-kernelsynth-10000.yaml
+CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/linear-tsmixup-1000000-kernelsynth-100000.yaml
+CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/linear-tsmixup-10000000-kernelsynth-1000000.yaml
 ```
 
 Each of these will output the checkpoints, logs, and other training artifacts into `output/run-i`.
