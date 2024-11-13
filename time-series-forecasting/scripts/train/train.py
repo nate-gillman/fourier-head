@@ -684,14 +684,7 @@ def update_evaluation_loop(
             .sort_values(by="dataset")
         )
 
-        if eval_config_path == "scripts/evaluation/configs/in-domain.yaml":
-            baseline_df = pd.read_csv(
-                "scripts/evaluation/results/seasonal-naive-in-domain.csv"
-            ).set_index("dataset")
-        elif eval_config_path == "scripts/evaluation/configs/zero-shot.yaml":
-            baseline_df = pd.read_csv(
-                "scripts/evaluation/results/seasonal-naive-zero-shot.csv"
-            ).set_index("dataset")
+        baseline_df = pd.read_csv("scripts/eval/seasonal-naive-zero-shot.csv").set_index("dataset")
 
         agg_score_df = agg_relative_score(results_df.set_index("dataset"), baseline_df)
 
@@ -1090,13 +1083,11 @@ def start_training(
 
     # copy the config file to the output_dir, for reproducibility
     dst_config = os.path.join(output_dir, src_config.split("/")[-1])
-
+    dummy_eval_dataset = {} # this ensures that eval doesn't happen during training loop
     if torch.cuda.device_count() == 1:
-        dummy_eval_dataset = shuffled_train_dataset  # this ensures that eval happens...
         os.makedirs(output_dir, exist_ok=True)
         shutil.copyfile(src_config, dst_config)
     elif torch.cuda.device_count() > 1:
-        dummy_eval_dataset = {}
         if torch.distributed.get_rank() == 0:
             os.makedirs(output_dir, exist_ok=True)
             shutil.copyfile(src_config, dst_config)
