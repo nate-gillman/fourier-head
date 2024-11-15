@@ -159,11 +159,9 @@ def quantize_dataset(dataset, b):
 
 # Define the MLP model with a hidden layer and a linear/fourier head
 class MLP(nn.Module):
-    def __init__(self, input_size, num_classes, head='linear', num_frequencies=9, regularizion_gamma=0):
+    def __init__(self, input_size, num_classes, head='linear_mse', num_frequencies=9, regularizion_gamma=0):
         super(MLP, self).__init__()
-        self.mlp_head = nn.Linear(32, num_classes)
-        if head == 'fourier':
-            self.mlp_head = Fourier_Head(32, num_classes, num_frequencies, regularizion_gamma)
+        self.mlp_head = nn.Linear(32, 1)
 
         self.layers = nn.Sequential(
             nn.Linear(input_size, 64),
@@ -195,7 +193,7 @@ def run_experiment(
     # Start a new wandb run to track this script
     if logging:
         wandb.init(
-            project="fourier_toy_synthetic",
+            project="fourier_toy_synthetic_mse",
             name=head+"_"+exper+"_"+str(freqs)+"_"+str(gamma)+"_"+str(seed),
             config={
                 "architecture": "MLP_" + head,
@@ -212,7 +210,7 @@ def run_experiment(
 
     # Split into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    print(y_test[30:40])
+
     undig_test = X_test # unquantized version of test data
 
     # Convert to PyTorch tensors
@@ -227,20 +225,20 @@ def run_experiment(
 
     # Instantiate the model, loss function, and optimizer
     model = MLP(input_size=2, num_classes=bins, head=head, num_frequencies=freqs, regularizion_gamma=gamma).cuda()
-    criterion = nn.CrossEntropyLoss()
+    criterion = nn.MSELoss() 
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
     bin_edges = np.linspace(-1, 1, bins + 1)
-    bin_centers = (bin_edges[:-1] + bin_edges[1:])/2
+    bin_centers = torch.tensor((bin_edges[:-1] + bin_edges[1:])/2, dtype=torch.float32).cuda()
 
     if exper == 'gaussian':
-        target_pdfs = torch.tensor(np.array([gaussian_pdf(bin_centers, x[1], var) for x in undig_test])).cuda()
+        target_pdfs = torch.tensor(np.array([gaussian_pdf(bin_centers.cpu(), x[1], var) for x in undig_test])).cuda()
 
     elif exper == 'gmm':
-        target_pdfs = torch.tensor(np.array([gmm1_pdf(bin_centers, x, var) for x in undig_test])).cuda()
+        target_pdfs = torch.tensor(np.array([gmm1_pdf(bin_centers.cpu(), x, var) for x in undig_test])).cuda()
     
     else:
-        target_pdfs = torch.tensor(np.array([gmm2_pdf(bin_centers, x, var) for x in undig_test])).cuda()
+        target_pdfs = torch.tensor(np.array([gmm2_pdf(bin_centers.cpu(), x, var) for x in undig_test])).cuda()
 
     saved_pdfs = None
     kl = None
@@ -255,10 +253,8 @@ def run_experiment(
 
             # Forward pass
             outputs = model(inputs)
-            if head == 'linear':
-                loss = criterion(outputs, labels)
-            else:
-                loss = criterion(outputs, labels) + model.mlp_head.loss_regularization
+            loss = criterion(outputs, bin_centers[labels].unsqueeze(-1))
+
 
             # Backward pass and optimization
             loss.backward()
@@ -273,36 +269,23 @@ def run_experiment(
             model.eval()
             # Evaluate the model
             with torch.no_grad():
-                outputs = model(X_test.cuda())
-                _, predicted = torch.max(outputs, 1)
-                predicted = predicted.cpu()
+                predicted = model(X_test.cuda())
                 y_test = y_test.cpu()
-
-                # Accuracy
-                accuracy = accuracy_score(y_test, predicted)
-
-                # KL divergence
-                pdfs = torch.softmax(outputs, 1)
-                if epoch == epochs-1:
-                  saved_pdfs = (pdfs, target_pdfs)
-                kl_loss = nn.KLDivLoss(reduction='batchmean')
-                kl = kl_loss((pdfs+1e-10).log(), target_pdfs.cuda())
-
+              
                 # MSE
-                #mse = np.mean((bin_centers[predicted]-bin_centers[y_test])**2)
-                expected_bins = torch.sum(torch.arange(bins) * pdfs.cpu(), dim=1)
-                expected_vals = bin_centers[torch.round(expected_bins).to(torch.int)]
-                mse = np.mean((expected_vals - bin_centers[y_test])**2)
-
-                tqdm.write(f'Epoch [{epoch + 1}/{epochs}], Loss: {avg_loss:.4f}, KL divergence: {kl:.4f}, MSE: {mse:.4f}')
+                #print((predicted - bin_centers[y_test].unsqueeze(-1)).reshape((-1)))
+                quantized_predicted = quantize_dataset(predicted.cpu(), bins)
+                mse = torch.mean((bin_centers[quantized_predicted] - bin_centers[y_test].unsqueeze(-1))**2)
+                
+                tqdm.write(f'Epoch [{epoch + 1}/{epochs}], Loss: {avg_loss:.4f}, MSE: {mse:.4f}')
 
                 if logging:
-                    wandb.log({"loss": avg_loss, "accuracy": accuracy, "KL divergence": kl, "MSE": mse})
+                    wandb.log({"loss": avg_loss, "MSE": mse})
             model.train()
 
     if logging:
         wandb.finish()
-    return saved_pdfs, {"KL divergence":kl.item(), "MSE": mse}
+    return saved_pdfs, {"MSE": mse}
 
 
 def parse_arguments():
