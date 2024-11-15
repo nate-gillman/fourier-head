@@ -212,7 +212,7 @@ def run_experiment(
 
     # Split into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
+    print(y_test[30:40])
     undig_test = X_test # unquantized version of test data
 
     # Convert to PyTorch tensors
@@ -289,8 +289,11 @@ def run_experiment(
                 kl = kl_loss((pdfs+1e-10).log(), target_pdfs.cuda())
 
                 # MSE
-                mse = np.mean((bin_centers[predicted]-bin_centers[y_test])**2)
-                
+                #mse = np.mean((bin_centers[predicted]-bin_centers[y_test])**2)
+                expected_bins = torch.sum(torch.arange(bins) * pdfs.cpu(), dim=1)
+                expected_vals = bin_centers[torch.round(expected_bins).to(torch.int)]
+                mse = np.mean((expected_vals - bin_centers[y_test])**2)
+
                 tqdm.write(f'Epoch [{epoch + 1}/{epochs}], Loss: {avg_loss:.4f}, KL divergence: {kl:.4f}, MSE: {mse:.4f}')
 
                 if logging:
