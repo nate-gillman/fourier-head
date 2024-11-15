@@ -35,6 +35,28 @@ import torch
 import json
 import os
 
+def correct_game_name(the_name):
+    """
+    import atari_py
+    print(atari_py.list_games())
+    """
+
+    name_map = {
+        "bankheist"         : "bank_heist",
+        "battlezone"        : "battle_zone",
+        "choppercommand"    : "chopper_command", 
+        "doubledunk"        : "double_dunk",
+        "fishingderby"      : "fishing_derby",
+        "icehockey"         : "ice_hockey",
+        "montezumarevenge"  : "montezuma_revenge",
+        "privateeye"        : "private_eye",
+        "roadrunner"        : "road_runner",
+        "stargunner"        : "star_gunner"
+    }
+
+    return name_map.get(the_name, the_name)
+
+
 class TrainerConfig:
     # optimization parameters
     max_epochs = 10
@@ -196,16 +218,42 @@ class Trainer:
             if self.config.model_type == 'naive':
                 eval_return = self.get_returns(0)
             elif self.config.model_type == 'reward_conditioned':
-                if self.config.game == 'Breakout':
-                    eval_return = self.get_returns(90)
-                elif self.config.game == 'Seaquest':
-                    eval_return = self.get_returns(1150)
-                elif self.config.game == 'Qbert':
-                    eval_return = self.get_returns(14000)
-                elif self.config.game == 'Pong':
-                    eval_return = self.get_returns(20)
-                else:
-                    raise NotImplementedError()
+
+                returns_map = {
+                    'BankHeist': 700,
+                    'BattleZone': 30000,
+                    'Bezerk': 650,
+                    'Boxing': 90,
+                    'Breakout': 90,
+                    'Centipede': 8000,
+                    'ChopperCommand': 7500,
+                    'DoubleDunk': -10,
+                    'FishingDerby': -1,
+                    'Frostbite': 250,
+                    'Gravitar': 250,
+                    'Hero': 20000,
+                    'IceHockey': 2,
+                    'Jamesbond': 500,
+                    'Kangaroo': 5000,
+                    'Krull': 3000,
+                    'MontezumaRevenge': 400,
+                    'Pong': 20,
+                    'PrivateEye': 1000,
+                    'Qbert': 14000,
+                    'Riverraid': 9000,
+                    'RoadRunner': 40000,
+                    'Robotank': 50,
+                    'Seaquest': 1150,
+                    'StarGunner': 50000,
+                    'Tennis': 0,
+                    'Venture': 800,
+                    'Zaxxon': 9000
+                }
+
+                if not self.config.game in returns_map:
+                    raise NotImplementedError
+
+                eval_return = self.get_returns(returns_map[self.config.game])
             else:
                 raise NotImplementedError()
 
@@ -218,7 +266,8 @@ class Trainer:
         self.model.module.is_currently_training = False
 
         self.model.train(False)
-        args=Args(self.config.game.lower(), self.config.seed)
+        game_name = correct_game_name(self.config.game.lower())
+        args=Args(game_name, self.config.seed)
         env = Env(args)
         env.eval()
 
