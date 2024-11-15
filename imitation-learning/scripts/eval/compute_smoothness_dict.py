@@ -1,6 +1,7 @@
 import json
 import os
 import numpy as np
+import argparse
 
 import sys
 for path in sys.path:
@@ -41,31 +42,43 @@ def compute_and_save_smoothness_dict_in_dir(dir):
 
     return None
 
-def main():
+def main(): 
+
+    parser = argparse.ArgumentParser(description='Compute smoothness metrics for multinomial data')
+    parser.add_argument(
+        'game', 
+        type=str, 
+        help='Game name (e.g., DoubleDunk or Seaquest)'
+    )
+    args = parser.parse_args()
 
     MULTINOMIAL_DIRS = [
-        "output/linear",
-        "output/fourier_2",
-        "output/fourier_4",
-        "output/fourier_6",
-        "output/fourier_8",
-        "output/fourier_10",
-        "output/fourier_12",
-        "output/fourier_14",
-        "output/fourier_16",
-        "output/fourier_18",
-        "output/fourier_20",
-        "output/fourier_22",
-        "output/fourier_24",
-        "output/fourier_26",
-        "output/fourier_28",
-        "output/fourier_30",
-        "output/fourier_32",
+        f"output/{args.game}/linear",
+        f"output/{args.game}/fourier_2",
+        f"output/{args.game}/fourier_4",
+        f"output/{args.game}/fourier_6",
+        f"output/{args.game}/fourier_8",
+        f"output/{args.game}/fourier_10",
+        f"output/{args.game}/fourier_12",
+        f"output/{args.game}/fourier_14",
+        f"output/{args.game}/fourier_16",
+        f"output/{args.game}/fourier_18",
+        f"output/{args.game}/fourier_20",
+        f"output/{args.game}/fourier_22",
+        f"output/{args.game}/fourier_24",
+        f"output/{args.game}/fourier_26",
+        f"output/{args.game}/fourier_28",
+        f"output/{args.game}/fourier_30",
+        f"output/{args.game}/fourier_32",
     ]
 
     for dir in MULTINOMIAL_DIRS:
-        compute_and_save_smoothness_dict_in_dir(dir)
+        try:
+            compute_and_save_smoothness_dict_in_dir(dir)
+            print(f"...compute_and_save_smoothness_dict_in_dir finished for dir: {dir}")
+        except:
+            print(f"...Skipped dir: {dir}")
+            pass
 
 if __name__ == "__main__":
-    # demo_get_smoothness_metrics()
     main()
