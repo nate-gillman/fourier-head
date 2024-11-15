@@ -87,8 +87,11 @@ logging.basicConfig(
 train_dataset = StateActionReturnDataset(obss, args.context_length*3, actions, done_idxs, rtgs, timesteps)
 
 
-_obss, _actions, _returns, _done_idxs, _rtgs, _timesteps = create_dataset(args.num_buffers, int(args.num_steps/10), args.game, args.data_dir_prefix, args.trajectories_per_buffer, split="test")
-test_dataset = StateActionReturnDataset(_obss, args.context_length*3, _actions, _done_idxs, _rtgs, _timesteps)
+if args.game == "Seaquest":
+    _obss, _actions, _returns, _done_idxs, _rtgs, _timesteps = create_dataset(args.num_buffers, int(args.num_steps/10), args.game, args.data_dir_prefix, args.trajectories_per_buffer, split="test")
+    test_dataset = StateActionReturnDataset(_obss, args.context_length*3, _actions, _done_idxs, _rtgs, _timesteps)
+else:
+    test_dataset = None
 
 mconf = GPTConfig(train_dataset.vocab_size, train_dataset.block_size,
                   n_layer=6, n_head=8, n_embd=128, model_type=args.model_type, max_timestep=max(timesteps), args=args)
