@@ -39,24 +39,22 @@ pip install gsutil
 # games with the same 18-dimensional action space
 games=(
     "BankHeist"       
-    "BattleZone"        # doesn't work
     "Boxing"            
     "Centipede" 
     "DoubleDunk"    
     "FishingDerby" 
     "Frostbite" 
-    "Gravitar" 
+    "Gravitar"          # doesn't work on seed 321 (shape error)
     "Hero" 
     "IceHockey"
     "Jamesbond" 
-    "Kangaroo" 
-    "Krull"             # doesn't work
+    "Kangaroo"          # doesn't work on seed 42 (index error)
     "MontezumaRevenge"
     "PrivateEye" 
     "Riverraid" 
     "RoadRunner"
     "Robotank"
-    "Seaquest"          # works
+    "Seaquest"          
     "StarGunner" 
     "Tennis" 
     "Venture" 
@@ -118,6 +116,32 @@ Fourier:
 for fourier_frequencies in 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32
 do
     sh scripts/train/exps_fourier.sh $GAME_NAME $fourier_frequencies
+done
+```
+
+### Training, ablation on model size
+
+Linear:
+
+```bash
+GAME_NAME=Seaquest
+
+for SCALE in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+do
+    sh scripts/train/exps_linear.sh $GAME_NAME $SCALE
+done
+```
+
+
+Fourier:
+
+```bash
+GAME_NAME=Seaquest
+fourier_frequencies=14
+
+for SCALE in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+do
+    sh scripts/train/exps_fourier.sh $GAME_NAME $fourier_frequencies $scale
 done
 ```
 
