@@ -1,5 +1,4 @@
 LICENSE
-NOTICE
 README.md
 pyproject.toml
 src/chronos/__init__.py
@@ -11,4 +10,3 @@ src/chronos.egg-info/SOURCES.txt
 src/chronos.egg-info/dependency_links.txt
 src/chronos.egg-info/requires.txt
 src/chronos.egg-info/top_level.txt
-test/test_chronos.py
