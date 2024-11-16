@@ -13,7 +13,7 @@ plt.rcParams['font.serif'] = 'Times New Roman'
 CHECKPOINT = [
     "20000", "40000", "60000", "80000", "100000", 
     "120000", "140000", "160000", "180000", "200000"
-][2]
+][9] # 2, 3, 7!
 
 def gather_metrics():
     linear_runs = [f"run-{i}" for i in range(15, 20)]
@@ -54,7 +54,7 @@ def build_graph(metric_name, linear_values, fourier_values, output_fname):
     ax.set_ylabel(metric_name, fontsize=16)
     ax.grid(True, linewidth=0.3)
     ax.set_xticks(x_positions)
-    ax.set_xlabel("Run Index", fontsize=16)
+    ax.set_xlabel("-2 + log_10(dataset size), i.e. sizes are 1000, 10000, ...", fontsize=16)
     ax.legend(loc="best")
     
     plt.tight_layout()
