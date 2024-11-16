@@ -10,7 +10,7 @@ context_length: 512
 prediction_length: 64
 min_past: 60
 max_steps: 200
-save_steps: 20
+save_steps: 200
 eval_steps: 200
 log_steps: 1
 per_device_train_batch_size: 32
