@@ -11,6 +11,7 @@ from torch.utils.data import Dataset
 from mingpt.model_atari import GPT, GPTConfig
 from mingpt.trainer_atari import Trainer, TrainerConfig
 from mingpt.utils import sample
+from mingpt.scale_configs import SCALE_CONFIGS
 from collections import deque
 import random
 import torch
@@ -37,6 +38,7 @@ parser.add_argument('--data_dir_prefix', type=str, default='./dqn_replay/')
 parser.add_argument('--fourier_frequencies', type=int, default=-1)
 
 parser.add_argument('--save_path', type=str, default='')
+parser.add_argument('--scale', type=int, default=10, help='GPT model size.')
 
 
 args = parser.parse_args()
@@ -93,9 +95,22 @@ if args.game == "Seaquest":
 else:
     test_dataset = None
 
-mconf = GPTConfig(train_dataset.vocab_size, train_dataset.block_size,
-                  n_layer=6, n_head=8, n_embd=128, model_type=args.model_type, max_timestep=max(timesteps), args=args)
+# for scaling the model size, we choose n_layer, n_head, n_embd. note that we need n_embd % config.n_head == 0
+mconf = GPTConfig(
+    train_dataset.vocab_size,
+    train_dataset.block_size,
+    n_layer=SCALE_CONFIGS[args.scale]["n_layer"],   # default: 6
+    n_head=SCALE_CONFIGS[args.scale]["n_head"],     # default: 8
+    n_embd=SCALE_CONFIGS[args.scale]["n_embd"],     # default: 128
+    model_type=args.model_type, 
+    max_timestep=max(timesteps), 
+    args=args
+)
 model = GPT(mconf)
+
+model_parameters = filter(lambda p: p.requires_grad, model.parameters())
+params = sum([np.prod(p.size()) for p in model_parameters])
+print(f"scale = {args.scale}, num_params = {params/1e6:.4g}M")
 
 # initialize a trainer instance and kick off training
 epochs = args.epochs
