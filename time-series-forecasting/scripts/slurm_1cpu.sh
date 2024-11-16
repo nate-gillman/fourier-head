@@ -5,8 +5,8 @@
 
 #SBATCH -p batch
 #SBATCH -N 1 # gives one node, makes sure cpu cores are on same node
-#SBATCH -c 2 # num CPU cores
-#SBATCH --mem=128G
+#SBATCH -c 1 # num CPU cores
+#SBATCH --mem=25G
 #SBATCH -t 12:00:00
 #SBATCH -e output/slurm_logs/%j.err
 #SBATCH -o output/slurm_logs/%j.out
@@ -29,5 +29,5 @@ HOME_DIR=/oscar/data/superlab/users/nates_stuff/fourier-head/time-series-forecas
 cd ${HOME_DIR}
 
 # put python script here
-python scripts/data_prep/convert_to_arrow_subset.py 1000000 100000
+python scripts/data_prep/convert_to_arrow_subset.py 1000000 100000 42
 

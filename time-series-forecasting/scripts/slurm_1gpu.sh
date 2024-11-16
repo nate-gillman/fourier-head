@@ -35,7 +35,7 @@ HOME_DIR=/oscar/data/superlab/users/nates_stuff/fourier-head/time-series-forecas
 cd ${HOME_DIR}
 
 # put the script execution statement here
-CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-24/fourier-128-tsmixup-10000000-kernelsynth-1000000.yaml
+CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/11-15-dataset-size-ablations-v2/run-23/fourier-128-tsmixup-1000000-kernelsynth-100000.yaml
 
 # OUTPUT_CONFIG=output/linear/linear.yaml
 # CUDA_VISIBLE_DEVICES=0 python scripts/eval/save_multinomials_from_checkpoint.py --config $OUTPUT_CONFIG
@@ -43,15 +43,15 @@ CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config outp
 # OUTPUT_CONFIG=output/fourier-550/fourier-550.yaml
 # python scripts/eval/compute_smoothness.py $OUTPUT_CONFIG
 
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/fourier-128-tsmixup-1000-kernelsynth-100.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/fourier-128-tsmixup-10000-kernelsynth-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/fourier-128-tsmixup-100000-kernelsynth-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/fourier-128-tsmixup-1000000-kernelsynth-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/fourier-128-tsmixup-10000000-kernelsynth-1000000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/fourier-128-tsmixup-1000-kernelsynth-100.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/fourier-128-tsmixup-10000-kernelsynth-1000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/fourier-128-tsmixup-100000-kernelsynth-10000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/fourier-128-tsmixup-1000000-kernelsynth-100000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/fourier-128-tsmixup-10000000-kernelsynth-1000000.yaml
 
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/linear-tsmixup-1000-kernelsynth-100.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/linear-tsmixup-10000-kernelsynth-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/linear-tsmixup-100000-kernelsynth-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/linear-tsmixup-1000000-kernelsynth-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/ablations/linear-tsmixup-10000000-kernelsynth-1000000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/linear-tsmixup-1000-kernelsynth-100.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/linear-tsmixup-10000-kernelsynth-1000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/linear-tsmixup-100000-kernelsynth-10000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/linear-tsmixup-1000000-kernelsynth-100000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/linear-tsmixup-10000000-kernelsynth-1000000.yaml
 
