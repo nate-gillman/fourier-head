@@ -77,6 +77,36 @@ Note: if you'd rather so a scaled-down run on a single GPU, you can run it as fo
 CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/fourier-64.yaml
 ```
 
+## Training, dataset size ablation
+
+Generate the datasets:
+
+```bash
+for seed in 123 231 312 42
+do
+    python scripts/data_prep/convert_to_arrow_subset.py 1000 100 $seed
+    python scripts/data_prep/convert_to_arrow_subset.py 10000 1000 $seed
+    python scripts/data_prep/convert_to_arrow_subset.py 100000 10000 $seed
+    python scripts/data_prep/convert_to_arrow_subset.py 1000000 100000 $seed
+done
+```
+
+Train on each of the datasets:
+
+```bash
+for size in 1000 10000 100000 1000000
+do
+    for seed in 123 231 312 42
+    do
+        CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-16-ablation-dataset-size/seed-$seed/fourier-256-size-$size.yaml
+        CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-16-ablation-dataset-size/seed-$seed/linear-size-$size.yaml
+    done
+done
+```
+
+
+
+
 ## Evaluation
 
 Compute MASE and WQL, save json to disk:
