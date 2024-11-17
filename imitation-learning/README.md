@@ -105,7 +105,7 @@ done
 Linear:
 
 ```bash
-GAME_NAME=BattleZone
+GAME_NAME=Seaquest # alternatively: BankHeist, DoubleDunk
 sh scripts/train/exps_linear.sh $GAME_NAME
 ```
 
@@ -124,11 +124,9 @@ done
 Linear:
 
 ```bash
-GAME_NAME=Seaquest
-
-for SCALE in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+for SCALE in 0 1 2 3 4 5 6 7 8 9 10
 do
-    sh scripts/train/exps_linear.sh $GAME_NAME $SCALE
+    sh scripts/train/exps_linear_scale.sh $GAME_NAME $SCALE
 done
 ```
 
@@ -136,13 +134,20 @@ done
 Fourier:
 
 ```bash
-GAME_NAME=Seaquest
 fourier_frequencies=14
 
-for SCALE in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+for SCALE in 0 1 2 3 4 5 6 7 8 9 10
 do
-    sh scripts/train/exps_fourier.sh $GAME_NAME $fourier_frequencies $scale
+    sh scripts/train/exps_fourier_scale.sh $GAME_NAME $fourier_frequencies $scale
 done
+```
+
+#### Eval, ablation on model size
+
+This will graph the results on this model size ablation.
+
+```bash
+python scripts/eval/atari_graph_varying_model_size.py
 ```
 
 ### Evaluation

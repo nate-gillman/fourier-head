@@ -3,6 +3,7 @@ echo "exps_fourier"
 num_steps=500000
 game_name=$1
 fourier_frequencies=$2
+scale=$3
 
 for seed in 123 231 312 42
 do
@@ -10,6 +11,7 @@ do
     echo "num_steps = $num_steps"
     echo "seed=$seed"
     echo "fourier_frequencies = $fourier_frequencies"
+    echo "scale=$scale"
 
     python run_dt_atari.py \
         --seed $seed \
@@ -22,5 +24,6 @@ do
         --batch_size 128 \
         --data_dir_prefix ./dataset/ \
         --fourier_frequencies $fourier_frequencies \
-        --save_path ./output/$game_name/fourier_$fourier_frequencies
+        --save_path ./output/$game_name-$scale/fourier_$fourier_frequencies \
+        --scale $scale
 done

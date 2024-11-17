@@ -1,8 +1,8 @@
 echo "exps_linear"
 
-num_steps=500
+num_steps=500000
 game_name=$1
-scale=18
+scale=$2
 
 for seed in 123 231 312 42
 do
@@ -11,7 +11,7 @@ do
     echo "seed=$seed"
     echo "scale=$scale"
 
-    python run_dt_atari_copy.py \
+    python run_dt_atari.py \
         --seed $seed \
         --context_length 30 \
         --epochs 5 \

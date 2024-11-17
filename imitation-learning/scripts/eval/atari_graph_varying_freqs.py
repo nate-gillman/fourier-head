@@ -15,8 +15,12 @@ plt.rcParams['font.serif'] = 'Times New Roman'
 def get_frequencies_for_game(game_name):
     if game_name == 'Seaquest':
         return list(range(2, 34, 2))  # [2,4,6,8,...,32]
-    else:
+    elif game_name in ["BankHeist", "Centipede", "DoubleDunk"]:
         return list(range(4, 36, 4))  # [4,8,12,...,32]
+    elif game_name == "Boxing" : 
+        return [4, 8, 12, 16]
+    else:
+        return [8, 16]
 
 def get_returns_metrics(game_name, returns_local):
 
@@ -27,7 +31,7 @@ def get_returns_metrics(game_name, returns_local):
     returns_best = np.asarray(returns_best)
 
     # normalize
-    # returns_best = 100*get_human_normalized_score(game_name.lower(), returns_best)
+    returns_best = 100*get_human_normalized_score(game_name.lower(), returns_best)
 
     returns_mean = returns_best.mean()
     returns_std = returns_best.std()
@@ -143,7 +147,7 @@ def build_graphs(vals, freqs, output_fname, title=""):
     ax1.set_xlabel("Fourier Frequencies", fontsize=16)
     ax1.set_ylabel("Normalized Returns", fontsize=16)
     ax1.grid(True, linewidth=0.3)
-    ax1.set_xlim(2, 32)  # Set the x-axis limits to match the new tick values
+    ax1.set_xlim(freqs[0], freqs[-1])  # Set the x-axis limits to match the new tick values
     ax1.xaxis.set_major_locator(MultipleLocator(2))  # Set x-ticks to 2, 4, 6, ..., 32
     ax1.legend(loc="lower right")
 
@@ -164,7 +168,7 @@ def build_graphs(vals, freqs, output_fname, title=""):
     ax2.set_xlabel("Fourier Frequencies", fontsize=16)
     ax2.set_ylabel("Smoothness", fontsize=16)
     ax2.grid(True, linewidth=0.3)
-    ax2.set_xlim(2, 32)  # Set the x-axis limits to match the new tick values
+    ax2.set_xlim(freqs[0], freqs[-1])  # Set the x-axis limits to match the new tick values
     ax2.xaxis.set_major_locator(MultipleLocator(2))  # Set x-ticks to 2, 4, 6, ..., 32
     ax2.legend(loc="lower right")
 
