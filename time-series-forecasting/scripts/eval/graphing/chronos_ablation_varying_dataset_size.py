@@ -211,7 +211,7 @@ def build_graph(metric_name, linear_values, fourier_values, linear_std, fourier_
     
     # Set custom x-axis ticks and labels
     ax.set_xticks(x_positions)
-    x_labels = [r'1.1$\times$10$^4$', r'1.1$\times$10$^5$', r'1.1$\times$10$^6$', r'1.1$\times$10$^7$']
+    x_labels = [r'1.1$\times$10$^5$', r'1.1$\times$10$^6$', r'1.1$\times$10$^7$', r'1.1$\times$10$^8$']
     ax.set_xticklabels(x_labels)
     ax.set_xlabel("Dataset size", fontsize=16)
     ax.legend(loc="best")
