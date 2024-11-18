@@ -110,7 +110,7 @@ def create_graph(x_values, linear_returns, fourier_returns, linear_returns_std, 
     
     # Set labels and title
     ax.set_xlabel("Model Parameters (Millions)", fontsize=16)
-    ax.set_ylabel("Average Maximum Returns", fontsize=16)
+    ax.set_ylabel("Average Normalized Returns", fontsize=16)
     fig.suptitle("Impact of Model Size on Decision Transformer Returns: Seaquest", fontsize=16, y=0.95)
     
     # Configure grid and axis
