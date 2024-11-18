@@ -13,9 +13,9 @@ plt.rcParams['font.family'] = 'serif'
 plt.rcParams['font.serif'] = 'Times New Roman'
 
 def get_frequencies_for_game(game_name):
-    if game_name == 'Seaquest':
+    if game_name in ['Seaquest', "Gravitar", "BankHeist", "DoubleDunk"]:
         return list(range(2, 34, 2))  # [2,4,6,8,...,32]
-    elif game_name in ["BankHeist", "Centipede", "DoubleDunk"]:
+    elif game_name in ["Centipede"]:
         return list(range(4, 36, 4))  # [4,8,12,...,32]
     elif game_name == "Boxing" : 
         return [4, 8, 12, 16]
@@ -199,8 +199,8 @@ def main():
 
     build_graphs(
         vals,
-        freqs,
-        output_fname=f"output/{args.game}/atari_graph_varying_freqs_{args.game}.png",
+        freqs, 
+        output_fname=f"scripts/eval/atari_graph_varying_freqs_{args.game}.png",
         title=f"Impact of Varying Fourier Frequencies on Decision Transformer: {args.game}"
     )
 
