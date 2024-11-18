@@ -9,7 +9,7 @@
 #SBATCH -N 1 # gives one node, makes sure cpu cores are on same node
 #SBATCH -c 1 # num CPU cores
 #SBATCH --mem=31G
-#SBATCH -t 24:00:00
+#SBATCH -t 6:00:00
 #SBATCH -e output/slurm_logs/%j.err
 #SBATCH -o output/slurm_logs/%j.out
 #SBATCH --mail-user=nate_gillman@brown.edu
@@ -36,9 +36,11 @@ cd ${HOME_DIR}
 
 # put the script execution statement here
 
-GAME_NAME=Seaquest
+GAME_NAME=Gravitar
 
-sh scripts/train/exps_linear.sh $GAME_NAME
+# sh scripts/train/exps_linear.sh $GAME_NAME
+# sh scripts/train/exps_linear_Gravitar.sh $GAME_NAME
 
 fourier_frequencies=32
-sh scripts/train/exps_fourier.sh $GAME_NAME $fourier_frequencies
+# sh scripts/train/exps_fourier.sh $GAME_NAME $fourier_frequencies
+sh scripts/train/exps_fourier_Gravitar.sh $GAME_NAME $fourier_frequencies

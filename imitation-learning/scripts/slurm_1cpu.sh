@@ -5,9 +5,9 @@
 
 #SBATCH -p batch
 #SBATCH -N 1 # gives one node, makes sure cpu cores are on same node
-#SBATCH -c 8 # num CPU cores
+#SBATCH -c 1 # num CPU cores
 #SBATCH --mem=16G
-#SBATCH -t 12:00:00
+#SBATCH -t 2:00:00
 #SBATCH -e output/slurm_logs/%j.err
 #SBATCH -o output/slurm_logs/%j.out
 #SBATCH --mail-user=nate_gillman@brown.edu
@@ -31,3 +31,5 @@ cd ${HOME_DIR}
 # python scripts/eval/compute_smoothness_dict.py BankHeist
 # python scripts/eval/compute_smoothness_dict.py DoubleDunk
 # python scripts/eval/compute_smoothness_dict.py Seaquest
+# python scripts/eval/compute_smoothness_dict.py Gravitar
+python scripts/eval/compute_smoothness_dict.py Centipede
