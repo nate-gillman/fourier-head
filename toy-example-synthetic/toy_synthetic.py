@@ -36,6 +36,7 @@ for path in sys.path:
 
 from fourier_head import Fourier_Head
 from gmm_head import GMM_Head
+from beta_head import Beta_Head
 from generate_datasets import *
 
 
@@ -57,6 +58,9 @@ class MLP(nn.Module):
             self.mlp_head = Fourier_Head(32, num_classes, num_frequencies, regularizion_gamma)
         elif head == "gmm":
             self.mlp_head = GMM_Head(32, num_classes, num_gaussians)
+
+        else:
+            return NotImplementedError
 
 
         self.layers = nn.Sequential(
