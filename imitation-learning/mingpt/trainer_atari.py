@@ -99,8 +99,7 @@ class Trainer:
 
     def save_eval_return(self, eval_return, epoch):
 
-        # import pdb; pdb.set_trace() # TO DO HERE: save returns...
-
+        os.makedirs(self.config.args.save_path, exist_ok=True)
         returns_dict_path = os.path.join(self.config.args.save_path, "returns_dict.json")
 
         try:
