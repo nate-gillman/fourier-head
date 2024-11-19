@@ -156,7 +156,11 @@ def aggregate(output_dir, dataset_list, verbose=True):
         linear = result_df[(result_df['head'] == 'linear')]
         baseline_values = {"KL Divergence" : float(linear['kl_mean'].iloc[0]), "MSE": float(linear['mse_mean'].iloc[0]), "Smoothness": float(linear['L2_mean'].iloc[0])}
         baseline_stds = {"KL Divergence" : float(linear['kl_std'].iloc[0]), "MSE": float(linear['mse_std'].iloc[0]), "Smoothness": float(linear['L2_std'].iloc[0])}
-        agg_data.append((data, baseline_values, baseline_stds))
+
+        gmm = result_df[(result_df['head'] == 'gmm')]
+        gmm_values = {"KL Divergence" : float(gmm['kl_mean'].iloc[0]), "MSE": float(gmm['mse_mean'].iloc[0]), "Smoothness": float(gmm['L2_mean'].iloc[0])}
+        gmm_stds = {"KL Divergence" : float(gmm['kl_std'].iloc[0]), "MSE": float(gmm['mse_std'].iloc[0]), "Smoothness": float(gmm['L2_std'].iloc[0])}
+        agg_data.append((data, baseline_values, baseline_stds, gmm_values, gmm_stds))
 
     return agg_data
     
