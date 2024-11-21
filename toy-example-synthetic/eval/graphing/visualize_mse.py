@@ -27,7 +27,7 @@ plt.rcParams.update({
 })
 
 b = 50
-def plot_histogram_with_line(data, data_true, ax, title, label, label_true, ylim=0.20):
+def plot_histogram_with_line(mse_val, data_true, ax, title, label, label_true, ylim=0.20):
     bin_edges = np.linspace(-1, 1, b + 1)
     bin_centers = (bin_edges[:-1] + bin_edges[1:]) / 2
     
@@ -38,9 +38,10 @@ def plot_histogram_with_line(data, data_true, ax, title, label, label_true, ylim
     else:
         color = 'tab:purple'
 
-    smoothness = get_smoothness_metric(np.expand_dims(data, axis=0))["L2"]["mean"]
+    
+     # Plot mse_val as an orange point on the x-axis if it's None
+    ax.scatter(mse_val[0], mse_val[1], color='tab:orange', s=20, label='Pointwise Regression') 
 
-    ax.bar(bin_centers, data, width=0.04, color=color, alpha=0.7, label=f"{label} Smoothness = {smoothness:.4f}")
     if label_true:
         ax.plot(bin_centers, data_true, color='tab:green', linewidth=2, label="True PDF")
     else:
@@ -54,26 +55,25 @@ def plot_histogram_with_line(data, data_true, ax, title, label, label_true, ylim
 
     ax.set_title(title, fontsize=12)
 
-def plot_combined_graphs(prefix, fourier, linear, gmm, true, idxs, output_fname):
-    fourier = [np.load(prefix + fourier[j])[idxs[j]] for j in range(3)]
-    linear = [np.load(prefix + linear[j])[idxs[j]] for j in range(3)]
-    gmm = [np.load(prefix + gmm[j])[idxs[j]] for j in range(3)]
-    true = [np.load(prefix + true[j])[idxs[j]] for j in range(3)]
+def plot_combined_graphs(prefix, true, idxs, output_fname):
+    true = [[np.load(prefix + true[j])[i] for i in idxs[j]] for j in range(3)]
     
     titles = ['Gaussian Dataset', 'GMM-2 Dataset', 'Beta Dataset']
-    y_lim = [0.2, 0.2, 0.25]
+    y_lim = [0.21, 0.2, 0.26]
+    mse = [[-0.6200, -0.3400, -0.1000], [0.10, -0.10, -0.46], [0.02,0.02,0.02]]
+    y_pos = [0.185, 0.08, 0.15]
     # Create a 3x2 grid of subplots
     fig, axes = plt.subplots(3, 3, figsize=(12, 5)) 
 
     # Set a suptitle for the figure, use padding to avoid overlap with plots
-    fig.suptitle('Toy Example: Learned Conditional Distribution vs True Conditional Distribution', fontsize=18, y=0.95)
+    #fig.suptitle('Toy Example: Learned Conditional Distribution vs True Conditional Distribution', fontsize=18, y=0.95)
 
     # Plot for each dataset (fourier, linear, true)
-    for i in range(len(fourier)):
+    for i in range(len(true)):
         flag = i==0
-        plot_histogram_with_line(linear[i], true[i], axes[i, 0], titles[i], label='Linear', label_true=flag, ylim= y_lim[i])
-        plot_histogram_with_line(gmm[i], true[i], axes[i, 1], titles[i], label='GMM', label_true=flag, ylim= y_lim[i])
-        plot_histogram_with_line(fourier[i], true[i], axes[i, 2], titles[i], label='Fourier', label_true=flag, ylim=y_lim[i])
+        plot_histogram_with_line((mse[i][0],y_pos[i]), true[i][0], axes[i, 0], titles[i], label='Linear', label_true=flag, ylim= y_lim[i])
+        plot_histogram_with_line((mse[i][1],y_pos[i]), true[i][1], axes[i, 1], titles[i], label='GMM', label_true=flag,  ylim= y_lim[i])
+        plot_histogram_with_line((mse[i][2],y_pos[i]), true[i][2], axes[i, 2], titles[i], label='Fourier', label_true=flag, ylim=y_lim[i])
 
     # Add a single shared y-axis label
     fig.text(0.04, 0.5, 'Probability Mass', va='center', rotation='vertical', fontsize=18)  # Single y-axis label
@@ -92,13 +92,11 @@ if __name__ == "__main__":
 
     # Example usage: choose which model to load from for each of the datasets
     # For each dataset, be sure to specify the same seed for fourier, linear, and true
-    fourier = ['gaussian/fourier/0.0/18/pmfs_1.npy', 'gmm2/fourier/0.0/10/pmfs_1.npy', 'beta/fourier/0.0/16/pmfs_42.npy']
-    linear = ['gaussian/linear/0.0/0/pmfs_1.npy', 'gmm2/linear/0.0/0/pmfs_1.npy', 'beta/linear/0.0/0/pmfs_42.npy']
-    gmm = ['gaussian/gmm/0.0/0/pmfs_1.npy', 'gmm2/gmm/0.0/0/pmfs_1.npy', 'beta/gmm/0.0/0/pmfs_42.npy']
     true = ['gaussian/true_1.npy', 'gmm2/true_1.npy','beta/true_42.npy']
 
     # Specify which pmf to be visualized for each of the datasets (there are a total 1000 test pmfs)
-    pmf_ixs = [488, 331, 180]  
+    pmf_ixs = [[488, 150, 400], [50,100,331], [90,80,180]]
    # 70 50 130
-    plot_combined_graphs(output_dir, fourier, linear, gmm, true, pmf_ixs, "toy_predicted_vs_true.png")
+   
+    plot_combined_graphs(output_dir, true, pmf_ixs, "toy_predicted_vs_true_mse.png")
     print(f"Saved graph to {output_dir}")

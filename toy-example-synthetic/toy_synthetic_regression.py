@@ -36,6 +36,7 @@ for path in sys.path:
         sys.path.append(path.replace("/toy-example-synthetic", "/"))
 
 from fourier_head import Fourier_Head
+from generate_datasets import *
 
 def generate_gaussian_dataset(n_samples, var=0.1, seed=42):
     """
@@ -218,7 +219,7 @@ def run_experiment(
     X_test = torch.tensor(quantize_dataset(X_test, bins), dtype=torch.float32)
     y_train = torch.tensor(quantize_dataset(y_train, bins), dtype=torch.long)
     y_test = torch.tensor(quantize_dataset(y_test, bins), dtype=torch.long)
-
+   
     # Create PyTorch DataLoader for batching
     train_dataset = TensorDataset(X_train, y_train)
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
@@ -230,15 +231,18 @@ def run_experiment(
 
     bin_edges = np.linspace(-1, 1, bins + 1)
     bin_centers = torch.tensor((bin_edges[:-1] + bin_edges[1:])/2, dtype=torch.float32).cuda()
-
+    print(torch.mean(bin_centers[y_test]**2))
     if exper == 'gaussian':
         target_pdfs = torch.tensor(np.array([gaussian_pdf(bin_centers.cpu(), x[1], var) for x in undig_test])).cuda()
 
     elif exper == 'gmm':
         target_pdfs = torch.tensor(np.array([gmm1_pdf(bin_centers.cpu(), x, var) for x in undig_test])).cuda()
     
-    else:
+    elif exper == 'gmm2':
         target_pdfs = torch.tensor(np.array([gmm2_pdf(bin_centers.cpu(), x, var) for x in undig_test])).cuda()
+
+    elif exper == 'beta':
+        target_pdfs = torch.tensor(np.array([beta_pdf(bin_centers.cpu(), x, var) for x in undig_test])).cuda()
 
     saved_pdfs = None
     kl = None
@@ -276,7 +280,7 @@ def run_experiment(
                 #print((predicted - bin_centers[y_test].unsqueeze(-1)).reshape((-1)))
                 quantized_predicted = quantize_dataset(predicted.cpu(), bins)
                 mse = torch.mean((bin_centers[quantized_predicted] - bin_centers[y_test].unsqueeze(-1))**2)
-                
+                print(bin_centers[quantized_predicted][[90,80,180]])
                 tqdm.write(f'Epoch [{epoch + 1}/{epochs}], Loss: {avg_loss:.4f}, MSE: {mse:.4f}')
 
                 if logging:
@@ -313,7 +317,8 @@ if __name__ == "__main__":
     num_samples = 5000
     var = 0.01
     bins = 50
-    dataset_dict = {"gaussian": generate_gaussian_dataset, 'gmm': generate_gmm_dataset, 'gmm2': generate_gmm_dataset2}
+    dataset_dict = {"gaussian": generate_gaussian_dataset, 'gmm': generate_gmm_dataset, 
+                    'gmm2': generate_gmm_dataset2, 'beta': generate_beta_dataset}
     dataset = dataset_dict[args.dataset](num_samples, var, seed=args.seed)
     pdfs, metrics = run_experiment(
         args.dataset, 
