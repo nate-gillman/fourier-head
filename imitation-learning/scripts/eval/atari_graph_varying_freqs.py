@@ -197,6 +197,13 @@ def main():
         use_originally_reported_baseline=use_originally_reported_baseline
     )
 
+    
+    print("linear:", vals["baseline"]["return"], vals["baseline"]['return_err'])
+    fourier_idx_best = vals["fourier"]["returns"].index(max(vals["fourier"]["returns"]))
+    # fourier_idx_best = 5
+    print("fourier:", freqs[fourier_idx_best], vals["fourier"]["returns"][fourier_idx_best], vals["fourier"]['returns_err'][fourier_idx_best])
+    
+
     build_graphs(
         vals,
         freqs, 
