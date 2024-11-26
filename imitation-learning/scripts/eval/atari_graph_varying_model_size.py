@@ -86,19 +86,8 @@ def create_graph(x_values, linear_returns, fourier_returns, linear_returns_std, 
 
     DIVIDE_STD_BY = (1/0.67)  # this gives 50% confidence interval
     
-    # Plot linear returns
-    ax.plot(x_values, linear_returns, c="tab:red", label="Linear")
-    # Plot standard deviation tunnel for linear returns
-    ax.fill_between(
-        x_values, 
-        np.array(linear_returns) - np.array(linear_returns_std)/DIVIDE_STD_BY, 
-        np.array(linear_returns) + np.array(linear_returns_std)/DIVIDE_STD_BY, 
-        color="tab:red", 
-        alpha=0.2
-    )
-
     # Plot fourier returns
-    ax.plot(x_values, fourier_returns, c="tab:blue", label="Fourier-14")
+    ax.plot(x_values, fourier_returns, c="tab:blue", label="Fourier head")
     # Plot standard deviation tunnel for fourier returns
     ax.fill_between(
         x_values, 
@@ -107,9 +96,20 @@ def create_graph(x_values, linear_returns, fourier_returns, linear_returns_std, 
         color="tab:blue", 
         alpha=0.2
     )
+
+    # Plot linear returns
+    ax.plot(x_values, linear_returns, c="tab:red", label="Linear head")
+    # Plot standard deviation tunnel for linear returns
+    ax.fill_between(
+        x_values, 
+        np.array(linear_returns) - np.array(linear_returns_std)/DIVIDE_STD_BY, 
+        np.array(linear_returns) + np.array(linear_returns_std)/DIVIDE_STD_BY, 
+        color="tab:red", 
+        alpha=0.2
+    )
     
     # Set labels and title
-    ax.set_xlabel("Model Parameters (Millions)", fontsize=16)
+    ax.set_xlabel("Quantity of Model Parameters (Millions)", fontsize=16)
     ax.set_ylabel("Average Normalized Returns", fontsize=16)
     fig.suptitle("Impact of Model Size on Decision Transformer Returns: Seaquest", fontsize=16, y=0.95)
     
