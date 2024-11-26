@@ -43,10 +43,15 @@ sh ./run_exps_fourier_no_reg.sh gaussian
 sh ./run_exps_fourier_no_reg.sh gmm
 sh ./run_exps_fourier_no_reg.sh gmm2
 
-# experiments with regularization
+# fourier head with regularization
 sh ./run_exps_fourier_reg.sh gaussian
 sh ./run_exps_fourier_reg.sh gmm
 sh ./run_exps_fourier_reg.sh gmm2
+
+# gaussian mixture model head
+python toy_synthetic.py --head "gmm" --n_gaussians 2 --dataset gaussian
+python toy_synthetic.py --head "gmm" --n_gaussians 2 --dataset gmm
+python toy_synthetic.py --head "gmm" --n_gaussians 2 --dataset gmm2
 ```
 
 Once all the experiments have finished, to aggregate all the results from the experiments, run:
