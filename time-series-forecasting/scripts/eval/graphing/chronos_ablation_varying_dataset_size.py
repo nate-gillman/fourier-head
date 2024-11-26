@@ -147,7 +147,7 @@ def gather_metrics():
             
             # Process each run for this dataset size
             for idx in run_indices:
-                file_path = f"output/run-{idx}/eval_dict-zero-shot.json"
+                file_path = f"output/11-17-dataset-size-ablations-v3/run-{idx}/eval_dict-zero-shot.json"
                 try:
                     with open(file_path, "r") as f:
                         data = json.load(f)
