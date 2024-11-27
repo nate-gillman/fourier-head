@@ -9,7 +9,7 @@
 #SBATCH -N 1 # gives one node, makes sure cpu cores are on same node
 #SBATCH -c 1 # num CPU cores
 #SBATCH --mem=31G
-#SBATCH -t 2:00:00
+#SBATCH -t 12:00:00
 #SBATCH -e output/slurm_logs/%j.err
 #SBATCH -o output/slurm_logs/%j.out
 #SBATCH --mail-user=nate_gillman@brown.edu
@@ -34,83 +34,48 @@ conda activate /gpfs/home/ngillman/.conda/envs/chronos-doover
 HOME_DIR=/oscar/data/superlab/users/nates_stuff/fourier-head/time-series-forecasting
 cd ${HOME_DIR}
 
+# EVAL SET 1: model size sweep
+
 # put the script execution statement here
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-0/fourier-256-size-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-1/linear-size-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-2/fourier-256-size-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-3/linear-size-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-4/fourier-256-size-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-5/linear-size-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-6/fourier-256-size-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-7/linear-size-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-8/fourier-256-size-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-9/linear-size-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-10/fourier-256-size-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-11/linear-size-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-12/fourier-256-size-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-13/linear-size-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-14/fourier-256-size-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-15/linear-size-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-16/fourier-256-size-100000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-0/00-tiny-linear-size-10000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-1/00-tiny-fourier-128-size-10000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-2/01-mini-linear-size-10000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-6/01-mini-fourier-128-size-10000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-3/02-small-linear-size-10000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-10/02-small-fourier-128-size-10000.yaml
 
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-17/linear-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-18/fourier-256-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-19/linear-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-20/fourier-256-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-21/linear-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-22/fourier-256-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-23/linear-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-24/fourier-256-size-1000000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-25/linear-size-1000000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-26/fourier-256-size-1000000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-27/linear-size-1000000.yaml
+# base models need 4ish hours? and an a6000
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-4/03-base-linear-size-10000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-5/03-base-fourier-128-size-10000.yaml
 
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-28/fourier-256-size-1000000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-29/linear-size-1000000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-30/fourier-256-size-1000000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-31/linear-size-1000000.yaml
 
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-34/fourier-256-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-35/linear-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-36/fourier-256-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-37/linear-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-38/fourier-256-size-100000.yaml
+# EVAL SET 2: dataset size sweep
+
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-20/fourier-256-size-20000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-30/fourier-256-size-40000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-40/fourier-256-size-60000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-21/fourier-256-size-80000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-32/fourier-256-size-100000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-26/fourier-256-size-120000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-38/fourier-256-size-140000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-44/fourier-256-size-160000.yaml
+
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config 
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config 
+
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-25/linear-size-20000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-35/linear-size-40000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-43/linear-size-60000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-27/linear-size-80000.yaml
 # CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-39/linear-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-40/fourier-256-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-41/linear-size-100000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-33/linear-size-120000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-42/linear-size-140000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-49/linear-size-160000.yaml
 
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-42/fourier-256-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-43/linear-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-44/fourier-256-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-45/linear-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-46/fourier-256-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-47/linear-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-48/fourier-256-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-49/linear-size-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-33/linear-size-10000000.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config 
+# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config 
 
 
-
-
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-50/fourier-256-size-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-51/linear-size-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-52/fourier-256-size-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-53/linear-size-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-54/fourier-256-size-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-55/linear-size-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-56/fourier-256-size-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-57/linear-size-10000.yaml
-
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-58/fourier-256-size-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-59/linear-size-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-60/fourier-256-size-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-61/linear-size-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-62/fourier-256-size-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-63/linear-size-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-64/fourier-256-size-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-65/linear-size-1000.yaml
-
-CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config output/run-32/fourier-256-size-10000000.yaml
 
 
 
@@ -122,22 +87,67 @@ CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config outp
 # python scripts/eval/compute_smoothness.py $OUTPUT_CONFIG
 
 # CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/fourier-128-tsmixup-1000-kernelsynth-100.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/fourier-128-tsmixup-10000-kernelsynth-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/fourier-128-tsmixup-100000-kernelsynth-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/fourier-128-tsmixup-1000000-kernelsynth-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/fourier-128-tsmixup-10000000-kernelsynth-1000000.yaml
 
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/linear-tsmixup-1000-kernelsynth-100.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/linear-tsmixup-10000-kernelsynth-1000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/linear-tsmixup-100000-kernelsynth-10000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/linear-tsmixup-1000000-kernelsynth-100000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-15-ablations-dataset-size-proportional/linear-tsmixup-10000000-kernelsynth-1000000.yaml
-
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-16-ablation-dataset-size/fourier-256-size-10000000.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-16-ablation-dataset-size/linear-size-10000000.yaml
-
-# size=1000
+# model_size=03-base # [00-tiny, 01-mini, 02-small, 03-base]
+# dataset_size=10000
 # seed=42
 
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-17-pt2-ablation-dataset-size/seed-$seed/fourier-256-size-$size.yaml
-# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-17-pt2-ablation-dataset-size/seed-$seed/linear-size-$size.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-26-pt1-ablation-model-size/seed-$seed/$model_size-linear-size-$dataset_size.yaml
+# CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config scripts/train/configs/11-26-pt1-ablation-model-size/seed-$seed/$model_size-fourier-128-size-$dataset_size.yaml
+
+
+
+# # SWEEP #1: MODEL SIZE
+
+# model_sizes=("00-tiny" "01-mini" "02-small" "03-base")
+# dataset_size=10000
+# seed=312 # [42, 123, 231, 312]
+
+# # Loop over model sizes
+# for model_size in "${model_sizes[@]}"; do
+#     echo "Running training for model: $model_size"
+#     echo "Running training for dataset_size: $dataset_size"
+#     echo "Running training for seed: $seed"
+    
+#     # Run linear version
+#     echo "Training linear architecture..."
+#     linear_config="scripts/train/configs/11-26-pt3-ablation-model-size/seed-$seed/$model_size-linear-size-$dataset_size.yaml"
+#     CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config "$linear_config"
+
+#     # add a small delay between runs
+#     sleep 10
+    
+#     # Run fourier version
+#     echo "Training fourier architecture..."
+#     fourier_config="scripts/train/configs/11-26-pt3-ablation-model-size/seed-$seed/$model_size-fourier-128-size-$dataset_size.yaml"
+#     CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config "$fourier_config"
+    
+#     # add a small delay between runs
+#     sleep 10
+# done
+
+
+# # SWEEP #2: DATASET SIZE
+
+seed=312 # [42, 123, 231, 312]
+
+# dataset_sizes=(20000 40000 60000 80000 100000 120000)
+dataset_sizes=(140000 160000 180000 200000)
+model_types=("fourier-256" "linear")
+
+# Outer loop over dataset sizes
+for dataset_size in "${dataset_sizes[@]}"; do
+    # Inner loop over model types
+    for model_type in "${model_types[@]}"; do
+
+        echo "Running training for model: $model_type"
+        echo "Running training for dataset_size: $dataset_size"
+        echo "Running training for seed: $seed"
+
+        config="scripts/train/configs/11-26-pt4-ablation-dataset-size-smaller/seed-$seed/$model_type-size-$dataset_size.yaml"
+        CUDA_VISIBLE_DEVICES=0 python scripts/train/train.py --config "$config"
+
+        # Add a small delay between runs
+        sleep 10
+    done
+done
