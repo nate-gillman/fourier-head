@@ -28,6 +28,18 @@ conda activate /gpfs/home/ngillman/.conda/envs/chronos-doover
 HOME_DIR=/oscar/data/superlab/users/nates_stuff/fourier-head/time-series-forecasting
 cd ${HOME_DIR}
 
+seed=312 # [42, 123, 231, 312]
+
 # put python script here
-python scripts/data_prep/convert_to_arrow_subset.py 1000000 100000 42
+# python scripts/data_prep/convert_to_arrow_subset.py 20000 2000 $seed
+# python scripts/data_prep/convert_to_arrow_subset.py 40000 4000 $seed
+# python scripts/data_prep/convert_to_arrow_subset.py 60000 6000 $seed
+# python scripts/data_prep/convert_to_arrow_subset.py 80000 8000 $seed
+# python scripts/data_prep/convert_to_arrow_subset.py 100000 10000 $seed
+
+python scripts/data_prep/convert_to_arrow_subset.py 120000 12000 $seed
+python scripts/data_prep/convert_to_arrow_subset.py 140000 14000 $seed
+python scripts/data_prep/convert_to_arrow_subset.py 160000 16000 $seed
+python scripts/data_prep/convert_to_arrow_subset.py 180000 18000 $seed
+python scripts/data_prep/convert_to_arrow_subset.py 200000 20000 $seed
 
