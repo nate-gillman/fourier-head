@@ -6,7 +6,7 @@ class MultipleYamlError(Exception):
     """Custom exception for when multiple YAML files are found in a directory"""
     pass
 
-def find_yaml_files(base_path):
+def find_yaml_files(base_path, filter_for_keyword):
     """
     Find YAML files in immediate subdirectories of the given path.
     Throws an error if multiple YAML files are found in any subdirectory.
@@ -40,14 +40,18 @@ def find_yaml_files(base_path):
                     f"Multiple YAML files found in directory '{item}': {yaml_paths}"
                 )
             elif len(yaml_files) == 1:
-                # if "base" in str(yaml_files[0]):
-                print(f"CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config {yaml_files[0]}")
+                if filter_for_keyword in str(yaml_files[0]):
+                    print(f"CUDA_VISIBLE_DEVICES=0 python scripts/eval/compute_MASE_and_WQL.py --config {yaml_files[0]}")
             else:
                 print(f"No YAML file found in directory: {item.name}")
 
 if __name__ == "__main__":
     try:
         path = sys.argv[1]
-        find_yaml_files(path)
+        try:
+            filter_for_keyword = sys.argv[2]
+        except:
+            filter_for_keyword = ""
+        find_yaml_files(path, filter_for_keyword)
     except MultipleYamlError as e:
         print(f"Error: {e}")
