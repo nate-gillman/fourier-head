@@ -106,24 +106,17 @@ def build_graph(metric_name, linear_values, fourier_values, linear_std, fourier_
     # Plot linear metric
     ax.plot(x_positions, linear_values, c="tab:red", label="Linear head")
     # Plot standard deviation tunnel for linear metric
-    ax.fill_between(
-        x_positions, 
-        np.array(linear_values) - np.array(linear_std)/DIVIDE_STD_BY, 
-        np.array(linear_values) + np.array(linear_std)/DIVIDE_STD_BY, 
-        color="tab:red", 
-        alpha=0.2
-    )
 
     # Plot fourier metric
     ax.plot(x_positions, fourier_values, c="tab:blue", label="Fourier head")
     # Plot standard deviation tunnel for linear metric
-    ax.fill_between(
-        x_positions, 
-        np.array(fourier_values) - np.array(fourier_std)/DIVIDE_STD_BY, 
-        np.array(fourier_values) + np.array(fourier_std)/DIVIDE_STD_BY, 
-        color="tab:blue", 
-        alpha=0.2
-    )
+
+    ax.set_yscale('log')
+
+    # Set custom y-axis ticks
+    yticks = [0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0]
+    ax.set_yticks(yticks)
+    ax.set_yticklabels([f'{y:.1f}' for y in yticks])
     
     ax.set_ylabel(metric_name, fontsize=16)
     ax.grid(True, linewidth=0.3)
