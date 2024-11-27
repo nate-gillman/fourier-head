@@ -10,9 +10,9 @@ font_manager.fontManager.addfont(font_path)
 plt.rcParams['font.family'] = 'serif'
 plt.rcParams['font.serif'] = 'Times New Roman'
 
-X_POSITIONS = [20000, 40000, 60000, 80000, 100000, 120000, 140000, 160000]
+X_POSITIONS = [20000, 40000, 60000, 80000, 100000, 120000, 140000, 160000, 180000, 200000]
 
-idxs = {
+idxs_v1 = {
     "linear" : {
         20000 : [25],
         40000 : [35],
@@ -35,12 +35,39 @@ idxs = {
     },
 }
 
+idxs = {
+    "linear" : {
+        20000 : [8, 9, 10, 11],
+        40000 : [20, 21, 22, 23],
+        60000 : [32, 33, 34, 35],
+        80000 : [44, 45, 46, 48],
+        100000 : [56, 57, 58, 59],
+        120000 : [72, 73, 74, 75],
+        140000 : [16, 17, 18, 19],
+        160000 : [38, 40, 42, 43],
+        180000 : [61, 63, 65, 67],
+        200000 : [76, 77, 78, 79],
+    },
+    "fourier" : {
+        20000 : [0, 2, 4, 6],
+        40000 : [12, 13, 14, 15],
+        60000 : [25, 27, 29, 31],
+        80000 : [36, 37, 39, 41],
+        100000 : [50, 52, 54, 55],
+        120000 : [60, 62, 64, 66],
+        140000 : [1, 3, 5, 7],
+        160000 : [24, 26, 28, 30],
+        180000 : [47, 49, 51, 53],
+        200000 : [69, 69, 70, 71],
+    },
+}
+
 def get_largest_checkpoint_idx(lst):
     lst_ints = [int(elt) for elt in lst]
     ckpt = str(max(lst_ints))
     return ckpt
 
-def gather_metrics():
+def gather_metrics(base_path):
     metrics = {
         "linear": {"MASE": [], "WQL": [], "MASE_std": [], "WQL_std": []},
         "fourier": {"MASE": [], "WQL": [], "MASE_std": [], "WQL_std": []}
@@ -58,7 +85,7 @@ def gather_metrics():
             
             # Process each run for this dataset size
             for idx in run_indices:
-                file_path = f"output/11-17-dataset-size-ablations-v3/run-{idx}/eval_dict-zero-shot.json"
+                file_path = f"{base_path}/run-{idx}/eval_dict-zero-shot.json"
                 try:
                     with open(file_path, "r") as f:
                         data = json.load(f)
@@ -118,7 +145,7 @@ def build_graph(metric_name, linear_values, fourier_values, linear_std, fourier_
     
     # Set custom x-axis ticks and labels
     ax.set_xticks(x_positions)
-    x_labels = [r'20k', r'40k', r'60k', r'80k', r'100k', r'120k', r'140k', r'160k']
+    x_labels = [r'20k', r'40k', r'60k', r'80k', r'100k', r'120k', r'140k', r'160k', r'180k', r'200k']
     ax.set_xticklabels(x_labels)
     ax.set_xlabel("Dataset size", fontsize=16)
     ax.legend(loc="best")
@@ -128,7 +155,8 @@ def build_graph(metric_name, linear_values, fourier_values, linear_std, fourier_
     plt.close()
 
 def main():
-    metrics = gather_metrics()
+    base_path = "output/11-26-pt4-ablation-dataset-size-smaller"
+    metrics = gather_metrics(base_path)
     
     # Create MASE graph
     build_graph(
