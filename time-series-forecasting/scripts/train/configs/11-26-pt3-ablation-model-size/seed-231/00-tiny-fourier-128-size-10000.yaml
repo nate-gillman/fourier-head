@@ -1,0 +1,51 @@
+training_data_paths:
+- "data/tsmixup-data-10000-seed-231.arrow"
+- "data/kernelsynth-data-1000-seed-231.arrow"
+eval_config_paths:
+- "scripts/eval/configs/zero-shot.yaml"
+probability:
+- 0.9
+- 0.1
+context_length: 512
+prediction_length: 64
+min_past: 60
+max_steps: 5000
+save_steps: 5000
+eval_steps: 5000
+log_steps: 10
+per_device_train_batch_size: 32
+per_device_eval_batch_size: 32
+learning_rate: 0.001
+optim: adamw_torch_fused
+num_samples: 20
+shuffle_buffer_length: 100_000
+gradient_accumulation_steps: 1
+model_id: google/t5-efficient-tiny
+model_type: seq2seq
+random_init: true
+tie_embeddings: true
+output_dir: ./output/11-26-pt3-ablation-model-size/
+tf32: true
+torch_compile: false
+tokenizer_class: "MeanScaleMixedUniformBins"
+tokenizer_kwargs:
+  low_limit: -15.0
+  mid_limit_1: -1.0
+  mid_limit_2: 10.0
+  high_limit: 15.0
+  sparse_bin_density: 0.2
+n_tokens: 4096
+lr_scheduler_type: linear
+warmup_ratio: 0.0
+dataloader_num_workers: 1
+max_missing_prop: 0.9
+use_eos_token: true
+lm_head_type: fourier # options: [linear, fourier]
+max_grad_norm: 1.0
+log_in_wandb: True
+fourier_kwargs:
+  fourier_num_frequences: 128
+  fourier_regularization_gamma: 0.000001
+  fourier_weight_denominator: 1000
+  fourier_bias_denominator: 10
+  fourier_inverse_softmax_constant: 0.00001
