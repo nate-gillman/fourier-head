@@ -10,40 +10,79 @@ font_manager.fontManager.addfont(font_path)
 plt.rcParams['font.family'] = 'serif'
 plt.rcParams['font.serif'] = 'Times New Roman'
 
-idxs = {
+idxs_v1 = {
     "linear" : {
-        0 : {
+        0 : { # tiny
             "run_idxs" : [0],
             "num_params" : 16
         },
-        1 : {
+        1 : { # mini
             "run_idxs" : [2],
             "num_params" : 20
         },
-        2 : {
+        2 : { # small
             "run_idxs" : [3],
             "num_params" : 46
         },
-        # 3 : {
+        # 3 : { # base
         #     "run_idxs" : [4],
         #     "num_params" : 200
         # },
     },
     "fourier" : {
-        0 : {
+        0 : { # tiny
             "run_idxs" : [1],
             "num_params" : 16
         },
-        1 : {
+        1 : { # mini
             "run_idxs" : [6],
             "num_params" : 20
         },
-        2 : {
+        2 : { # small
             "run_idxs" : [10],
             "num_params" : 46
         },
-        # 3 : {
+        # 3 : { # base
         #     "run_idxs" : [5],
+        #     "num_params" : 200
+        # },
+    },
+}
+
+idxs = {
+    "linear" : {
+        0 : { # tiny
+            "run_idxs" : [0, 1, 2, 6],
+            "num_params" : 16
+        },
+        1 : { # mini
+            "run_idxs" : [10, 11, 12, 13],
+            "num_params" : 20
+        },
+        2 : { # small
+            "run_idxs" : [18, 19, 20, 21],
+            "num_params" : 46
+        },
+        # 3 : { # base
+        #     "run_idxs" : [26, 27, 28, 29],
+        #     "num_params" : 200
+        # },
+    },
+    "fourier" : {
+        0 : { # tiny
+            "run_idxs" : [5, 7, 8, 9],
+            "num_params" : 16
+        },
+        1 : { # mini
+            "run_idxs" : [14, 15, 16, 17],
+            "num_params" : 20
+        },
+        2 : { # small
+            "run_idxs" : [22, 23, 24, 25],
+            "num_params" : 46
+        },
+        # 3 : { # base
+        #     "run_idxs" : [30, 31, 32, 33],
         #     "num_params" : 200
         # },
     },
@@ -54,7 +93,7 @@ def get_largest_checkpoint_idx(lst):
     ckpt = str(max(lst_ints))
     return ckpt
 
-def gather_metrics():
+def gather_metrics(base_path):
     metrics = {
         "linear": {"MASE": [], "WQL": [], "MASE_std": [], "WQL_std": [], "num_params" : []},
         "fourier": {"MASE": [], "WQL": [], "MASE_std": [], "WQL_std": [], "num_params" : []}
@@ -75,7 +114,7 @@ def gather_metrics():
             
             # Process each run for this dataset size
             for idx in run_indices:
-                file_path = f"output/run-{idx}/eval_dict-zero-shot.json"
+                file_path = f"{base_path}/run-{idx}/eval_dict-zero-shot.json"
                 try:
                     with open(file_path, "r") as f:
                         data = json.load(f)
@@ -147,7 +186,10 @@ def build_graph(metric_name, x_positions, linear_values, fourier_values, linear_
     plt.close()
 
 def main():
-    metrics = gather_metrics()
+
+    base_path = "output/11-26-pt3-ablation-model-size"
+
+    metrics = gather_metrics(base_path)
     
     # Create MASE graph
     build_graph(
@@ -157,7 +199,7 @@ def main():
         metrics["fourier"]["MASE"],
         metrics["linear"]["MASE_std"],
         metrics["fourier"]["MASE_std"],
-        "scripts/eval/graphing/chronos_ablation_varying_model_size_MASE.png"
+        "scripts/eval/graphing/chronos_ablation_varying_model_size_MASE.png",
     )
     
     # Create WQL graph
