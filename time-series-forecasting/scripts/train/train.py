@@ -59,6 +59,10 @@ for pth in sys.path:
     if pth.endswith("scripts/train"):
         sys.path.append(pth.replace("scripts/train", ""))
         break
+for pth in sys.path:
+    if pth.endswith("time-series-forecasting/src"):
+        sys.path.append(pth.replace("/src", "/scripts/train"))
+        break
 
 from gluonts.ev.metrics import MASE, MeanWeightedSumQuantileLoss
 from gluonts.model.evaluation import evaluate_forecasts
@@ -76,6 +80,8 @@ from scipy.stats import gmean
 
 from src.chronos.t5 import T5ForConditionalGeneration
 from src.chronos.trainer import Trainer
+
+from t5_scaling_configs import t5_scaling_configs
 
 
 def is_main_process() -> bool:
@@ -233,7 +239,22 @@ def load_model(
             # The default initializer_factor (1.0) in transformers is too large
             config.initializer_factor = 0.05
         config.tie_word_embeddings = tie_embeddings
+
+        if fourier_kwargs["base_model_size_idx"] >= 0:
+            # update them!!
+            config_updates = t5_scaling_configs[fourier_kwargs["base_model_size_idx"]]
+
+            config.d_ff                 = config_updates["d_ff"]
+            config.d_kv                 = config_updates["d_kv"]
+            config.d_model              = config_updates["d_model"]
+            config.num_heads            = config_updates["num_heads"]
+            config.num_decoder_layers   = config_updates["num_decoder_layers"]
+            config.num_layers           = config_updates["num_layers"]
+
         model = T5ForConditionalGeneration(config)
+        print(f"num_params = {sum(p.numel() for p in model.parameters())}")
+
+
     else:
         try:
             log_on_main(f"Using pretrained initialization from {model_id}", logger)
