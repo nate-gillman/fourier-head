@@ -81,7 +81,8 @@ from scipy.stats import gmean
 from src.chronos.t5 import T5ForConditionalGeneration
 from src.chronos.trainer import Trainer
 
-from t5_scaling_configs import t5_scaling_configs
+# from t5_scaling_configs import t5_scaling_configs
+from t5_scaling_configs_v2 import t5_scaling_configs
 
 
 def is_main_process() -> bool:
