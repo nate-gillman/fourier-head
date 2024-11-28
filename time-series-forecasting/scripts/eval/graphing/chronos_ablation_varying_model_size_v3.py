@@ -124,12 +124,14 @@ def build_graph(metric_name, x_positions, linear_values, fourier_values, linear_
     yticks = [0.8, 1.0, 1.2, 1.4]
     ax.set_yticks(yticks)
     ax.set_yticklabels([f'{y:.1f}' for y in yticks])
+
+    # Remove minor ticks
+    ax.minorticks_off()
     
     ax.set_ylabel(metric_name, fontsize=16)
     ax.grid(True, linewidth=0.3)
     
     # Set custom x-axis ticks and labels
-    # ax.xaxis.set_major_locator(MultipleLocator(10))
     ax.set_xticks(x_positions)
     x_labels = [r'1.25M', r'2.5M', r'5M', r'10M', r'20M'][:MAX_RUN_IDX+1]
     ax.set_xticklabels(x_labels)
