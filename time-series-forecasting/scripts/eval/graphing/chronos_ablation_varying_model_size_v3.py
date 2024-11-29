@@ -18,20 +18,20 @@ for pth in sys.path:
 
 from t5_scaling_configs_v2 import t5_scaling_configs
 
-MAX_RUN_IDX = 2
+MAX_RUN_IDX = 4
 
 run_idxs = {
     "fourier" : {
-        0 : [0],
-        1 : [1],
-        2 : [2],
-        3 : [3],
+        0 : [0, 11, 12, 13],
+        1 : [1, 31, 32, 33],
+        2 : [2, 23, 24, 25],
+        3 : [3, 8, 9, 10],
     },
     "linear" : {
-        0 : [4],
-        1 : [5],
-        2 : [6],
-        3 : [7],
+        0 : [4, 17, 18, 19],
+        1 : [5, 27, 34, 35],
+        2 : [6, 20, 21, 22],
+        3 : [7, 28, 29, 30],
     },
 
 }
@@ -121,7 +121,7 @@ def build_graph(metric_name, x_positions, linear_values, fourier_values, linear_
     ax.set_xscale('log')
 
     ax.set_yscale('log')
-    yticks = [0.8, 1.0, 1.2, 1.4]
+    yticks = [0.8, 1.0, 1.2]
     ax.set_yticks(yticks)
     ax.set_yticklabels([f'{y:.1f}' for y in yticks])
 
@@ -148,7 +148,7 @@ def main():
 
     metrics = gather_metrics(base_path)
 
-    x_positions = [1250000, 2500000, 5000000, 10000000, 20000000][:MAX_RUN_IDX+1]
+    x_positions = [1250000, 2500000, 5000000, 10000000, 20000000][:MAX_RUN_IDX+1] # these are close enoguh to the real vals that we graph them instead
     metrics["fourier"]["num_params"] = x_positions
     
     # Create MASE graph
