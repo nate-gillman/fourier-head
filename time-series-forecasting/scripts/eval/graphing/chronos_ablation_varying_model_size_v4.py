@@ -135,7 +135,7 @@ def build_graph(metric_name, x_positions, linear_values, fourier_values, linear_
     ax.set_xscale('log')
 
     ax.set_yscale('log')
-    yticks = [0.8, 1.0, 1.2]
+    yticks = [0.8, 0.9, 1.0, 1.1, 1.2]
     ax.set_yticks(yticks)
     ax.set_yticklabels([f'{y:.1f}' for y in yticks])
 
@@ -149,7 +149,7 @@ def build_graph(metric_name, x_positions, linear_values, fourier_values, linear_
     ax.set_xticks(x_positions)
     x_labels = [r'1.25M', r'2.5M', r'5M', r'10M', r'20M'][:MAX_RUN_IDX+1]
     ax.set_xticklabels(x_labels)
-    ax.set_xlabel("Quantity of Model Parameters (Millions)", fontsize=16)
+    ax.set_xlabel("Quantity of Model Parameters", fontsize=16)
     ax.legend(loc="best")
     
     plt.tight_layout()
