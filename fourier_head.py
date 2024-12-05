@@ -151,8 +151,8 @@ class Fourier_Head(nn.Module):
 
         # Combine the separate real and imaginary parts to obtain a single complex tensor
         autocorrelation_params = torch.complex(
-            autocorrelation_params_all[..., 0:self.num_frequencies+1],
-            autocorrelation_params_all[..., self.num_frequencies+1:2*(self.num_frequencies+1)]
+            (autocorrelation_params_all[..., 0:self.num_frequencies+1]).to(torch.float32),
+            (autocorrelation_params_all[..., self.num_frequencies+1:2*(self.num_frequencies+1)]).to(torch.float32)
         ) # (batch_size, num_frequencies+1)
 
         # Compute autocorrelation
