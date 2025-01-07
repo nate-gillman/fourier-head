@@ -2,7 +2,7 @@
 
 # Check if dataset argument is provided
 if [ -z "$1" ]; then
-  echo "Please provide a dataset as an argument. Options are: 'gaussian', 'gmm', 'gmm2', 'beta'."
+  echo "Please provide a dataset as an argument. Options are: 'gaussian', 'gmm2', 'beta'."
   exit 1
 fi
 

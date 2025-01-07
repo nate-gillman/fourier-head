@@ -128,7 +128,7 @@ def run_experiment(
     bin_edges = np.linspace(-1, 1, bins + 1)
     bin_centers = (bin_edges[:-1] + bin_edges[1:])/2
 
-    pdf_dict = {'gaussian': gaussian_pdf, 'gmm': gmm1_pdf, 'gmm2': gmm2_pdf, 'beta': beta_pdf}
+    pdf_dict = {'gaussian': gaussian_pdf, 'gmm2': gmm2_pdf, 'beta': beta_pdf}
     target_pdfs = torch.tensor(np.array([pdf_dict[exper](bin_centers, x, var) for x in undig_test])).cuda()
 
     saved_pdfs = None
@@ -221,8 +221,7 @@ if __name__ == "__main__":
     num_samples = 5000
     var = 0.01
     bins = 50
-    dataset_dict = {'gaussian': generate_gaussian_dataset, 'gmm': generate_gmm_dataset, 
-                    'gmm2': generate_gmm_dataset2, 'beta': generate_beta_dataset}
+    dataset_dict = {'gaussian': generate_gaussian_dataset, 'gmm2': generate_gmm_dataset2, 'beta': generate_beta_dataset}
     dataset = dataset_dict[args.dataset](num_samples, var, seed=args.seed)
     pdfs, metrics = run_experiment(
         args.dataset, 

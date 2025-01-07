@@ -112,9 +112,6 @@ def run_experiment(
     print(torch.mean(bin_centers[y_test]**2))
     if exper == 'gaussian':
         target_pdfs = torch.tensor(np.array([gaussian_pdf(bin_centers.cpu(), x[1], var) for x in undig_test])).cuda()
-
-    elif exper == 'gmm':
-        target_pdfs = torch.tensor(np.array([gmm1_pdf(bin_centers.cpu(), x, var) for x in undig_test])).cuda()
     
     elif exper == 'gmm2':
         target_pdfs = torch.tensor(np.array([gmm2_pdf(bin_centers.cpu(), x, var) for x in undig_test])).cuda()
@@ -185,8 +182,7 @@ if __name__ == "__main__":
     num_samples = 5000
     var = 0.01
     bins = 50
-    dataset_dict = {"gaussian": generate_gaussian_dataset, 'gmm': generate_gmm_dataset, 
-                    'gmm2': generate_gmm_dataset2, 'beta': generate_beta_dataset}
+    dataset_dict = {"gaussian": generate_gaussian_dataset, 'gmm2': generate_gmm_dataset2, 'beta': generate_beta_dataset}
     dataset = dataset_dict[args.dataset](num_samples, var, seed=args.seed)
     metrics = run_experiment(
         args.dataset, 
