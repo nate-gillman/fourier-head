@@ -98,8 +98,6 @@ def main(output_dir):
     title_dict = {"gaussian": "Gaussian", "gmm": "GMM", "gmm2": "GMM-2", "beta": "Beta"}
     for dataset in ["gaussian", "gmm2", "beta"]:
         data, baseline_values, baseline_stds, gmm_values, gmm_stds = aggregate(output_dir, [dataset], verbose=False)[0]
-        print(baseline_stds)
-        print(gmm_stds)
         # Adjust standard deviations
         baseline_stds = {key: value / DIVIDE_STD_BY for key, value in baseline_stds.items()}
         gmm_stds = {key: value / DIVIDE_STD_BY for key, value in gmm_stds.items()}
@@ -121,8 +119,7 @@ def parse_arguments():
     parser = argparse.ArgumentParser(description="Parse input arguments.")
         
     # Adding arguments
-    parser.add_argument('--dir', type=str, required=True, 
-                            help='Specify output dir (string)')
+    parser.add_argument('--dir', type=str, required=True, help='Specify output dir (string)')
     # Parsing arguments
     return parser.parse_args()
 

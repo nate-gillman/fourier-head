@@ -152,3 +152,12 @@ def beta_pdf(bin_centers, locs, var=None):
     pmf =  beta.pdf(pos, np.abs(100*locs[0]), np.abs(100*locs[1])) * 1 / (2 * pos.shape[0])
     pmf = np.concatenate((pmf[::-1], pmf))
     return pmf / np.sum(pmf)
+
+
+# Quantization function, assuming dataset in the range (-1, 1)
+def quantize_dataset(dataset, b):
+    data_range = (-1, 1)
+    bin_edges = np.linspace(data_range[0], data_range[1], b + 1)
+    digitized_data = np.digitize(dataset, bin_edges) - 1
+    digitized_data = np.clip(digitized_data, 0, b - 1)
+    return digitized_data

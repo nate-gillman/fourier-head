@@ -32,138 +32,18 @@ import argparse
 import sys
 
 for path in sys.path:
-    if path.endswith("/toy-example-synthetic"):
-        sys.path.append(path.replace("/toy-example-synthetic", "/"))
+    if path.endswith("/toy-example-synthetic/scripts"):
+        sys.path.append(path.replace("/toy-example-synthetic/scripts", "/"))
 
 from fourier_head import Fourier_Head
 from generate_datasets import *
 
-def generate_gaussian_dataset(n_samples, var=0.1, seed=42):
-    """
-    Generates a 3D dataset with n_samples samples.
-
-    The dataset is generated as follows:
-    1. x is sampled uniformly from (-0.8, 0.8)
-    2. y is sampled from a Gaussian centered at x with variance var
-    3. z is sampled from a Gaussian centered at y with variance var
-
-    Parameters:
-    - n_samples (int): Number of samples to generate.
-
-    Returns:
-    - dataset (ndarray): An array of shape (n_samples, 3) containing the 3D dataset.
-    """
-    rng = np.random.default_rng(seed=seed)
-    # Step 1: Sample x uniformly from (-0.8, 0.8)
-    x = rng.uniform(-0.8, 0.8, n_samples)
-
-    # Step 2: Sample y from a Gaussian centered at x with variance var
-    y = rng.normal(loc=x, scale=np.sqrt(var))
-
-    # Step 3: Sample z from a Gaussian centered at y with variance var
-    z = rng.normal(loc=y, scale=np.sqrt(var))
-
-    # Combine x, y, z into a single dataset
-    dataset = np.vstack((x, y, z)).T
-    return dataset
-
-def gaussian_pdf(bin_centers, loc, var=0.01):
-    pmf =  norm.pdf(bin_centers, loc, np.sqrt(var))*2 / bin_centers.shape[0]
-    return pmf / np.sum(pmf)
-
-def generate_gmm_dataset(n_samples, var=0.01, seed=42):
-    """
-    Generates a 3D dataset with n_samples samples.
-
-    The dataset is generated as follows:
-    1. x is sampled uniformly from (-0.8, 0.8)
-    2. y is sampled from a Gaussian centered at x with variance 0.01
-    3. z is sampled from a GMM with means min{x,y}-0.1 and max{x,y}+0.1, each with variance 0.01
-
-    Parameters:
-    - n_samples (int): Number of samples to generate.
-
-    Returns:
-    - dataset (ndarray): An array of shape (n_samples, 3) containing the 3D dataset.
-    """
-
-    rng = np.random.default_rng(seed=seed)
-    # Step 1: Sample x uniformly from (-0.8, 0.8)
-    x = rng.uniform(-0.8, 0.8, n_samples)
-
-    # Step 2: Sample y from a Gaussian centered at x with variance 0.01
-    y = rng.normal(loc=x, scale=np.sqrt(var), size=n_samples)
-
-    # Step 3: Sample z from a GMM with means x and y, each with variance 0.01
-    z = np.zeros(n_samples)
-
-    a = np.minimum(x,y) - 0.1
-    b = np.maximum(x,y) + 0.1
-    for i in range(n_samples):
-        # Randomly choose either x[i] or y[i] as the mean for z
-        if rng.uniform(0, 1) < 0.5:
-            z[i] = rng.normal(loc=a[i], scale=np.sqrt(var))
-        else:
-            z[i] = rng.normal(loc=b[i], scale=np.sqrt(var))
-
-    # Combine x, y, z into a single dataset
-    dataset = np.vstack((x, y, z)).T
-    return dataset
-
-def generate_gmm_dataset2(n_samples, var=0.01, seed=42):
-    """
-    Generates a 3D dataset with n_samples samples.
-
-    The dataset is generated as follows:
-    1. x and y are sampled uniformly from (-0.8, 0.8)
-    3. z is sampled from a GMM with means x and y, each with variance var
-
-    Parameters:
-    - n_samples (int): Number of samples to generate.
-
-    Returns:
-    - dataset (ndarray): An array of shape (n_samples, 3) containing the 3D dataset.
-    """
-    rng = np.random.default_rng(seed=seed)
-    # Step 1: Sample x uniformly from (-0.8, 0.8)
-    x = rng.uniform(-0.8, 0.8, n_samples)
-    y = rng.uniform(-0.8, 0.8, n_samples)
-
-    # Step 3: Sample z from a GMM with means x and y, each with variance 0.01
-    z = np.zeros(n_samples)
-    for i in range(n_samples):
-        # Randomly choose either x[i] or y[i] as the mean for z
-        if rng.uniform(0, 1) < 0.5:
-            z[i] = rng.normal(loc=x[i], scale=np.sqrt(var))
-        else:
-            z[i] = rng.normal(loc=y[i], scale=np.sqrt(var))
-
-    # Combine x, y, z into a single dataset
-    dataset = np.vstack((x, y, z)).T
-    return dataset
-
-
-def gmm1_pdf(bin_centers, locs, var=0.01):
-    return (gaussian_pdf(bin_centers, np.min(locs)-0.1, var) + gaussian_pdf(bin_centers, np.max(locs)+0.1, var))/2
-
-def gmm2_pdf(bin_centers, locs, var=0.01):
-    return (gaussian_pdf(bin_centers, locs[0], var) + gaussian_pdf(bin_centers, locs[1], var))/2
-
-# Quantization function, assuming dataset in the range (-1, 1)
-def quantize_dataset(dataset, b):
-    data_range = (-1, 1)
-    bin_edges = np.linspace(data_range[0], data_range[1], b + 1)
-    digitized_data = np.digitize(dataset, bin_edges) - 1
-    digitized_data = np.clip(digitized_data, 0, b - 1)
-    return digitized_data
-
-
 # Define the MLP model with a hidden layer and a linear/fourier head
 class MLP(nn.Module):
-    def __init__(self, input_size, num_classes, head='linear_mse', num_frequencies=9, regularizion_gamma=0):
+    def __init__(self, input_size):
+
         super(MLP, self).__init__()
         self.mlp_head = nn.Linear(32, 1)
-
         self.layers = nn.Sequential(
             nn.Linear(input_size, 64),
             nn.ReLU(),
@@ -181,27 +61,25 @@ def run_experiment(
     exper, 
     dataset, 
     epochs, 
-    freqs=0, 
     num_samples=1000, 
     var=0.01, 
-    head='linear', 
     batch_size=32, 
     seed=42, 
-    gamma=0, 
     bins=50, 
     logging=False):
 
     # Start a new wandb run to track this script
     if logging:
+        head = 'linear_mse'
         wandb.init(
             project="fourier_toy_synthetic_mse",
             name=head+"_"+exper+"_"+str(freqs)+"_"+str(gamma)+"_"+str(seed),
             config={
                 "architecture": "MLP_" + head,
                 "dataset": exper,
-                "freqs": freqs,
+                "freqs": 0,
                 "seed": seed,
-                "regularization_gamma": gamma
+                "regularization_gamma": 0.0
             }
         )
 
@@ -225,7 +103,7 @@ def run_experiment(
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 
     # Instantiate the model, loss function, and optimizer
-    model = MLP(input_size=2, num_classes=bins, head=head, num_frequencies=freqs, regularizion_gamma=gamma).cuda()
+    model = MLP(input_size=2).cuda()
     criterion = nn.MSELoss() 
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
@@ -244,8 +122,6 @@ def run_experiment(
     elif exper == 'beta':
         target_pdfs = torch.tensor(np.array([beta_pdf(bin_centers.cpu(), x, var) for x in undig_test])).cuda()
 
-    saved_pdfs = None
-    kl = None
     mse = None
     # Training loop with Wandb logging
     for epoch in tqdm(range(epochs), desc="Training Progress"):
@@ -277,10 +153,8 @@ def run_experiment(
                 y_test = y_test.cpu()
               
                 # MSE
-                #print((predicted - bin_centers[y_test].unsqueeze(-1)).reshape((-1)))
                 quantized_predicted = quantize_dataset(predicted.cpu(), bins)
                 mse = torch.mean((bin_centers[quantized_predicted] - bin_centers[y_test].unsqueeze(-1))**2)
-                print(bin_centers[quantized_predicted][[90,80,180]])
                 tqdm.write(f'Epoch [{epoch + 1}/{epochs}], Loss: {avg_loss:.4f}, MSE: {mse:.4f}')
 
                 if logging:
@@ -289,21 +163,15 @@ def run_experiment(
 
     if logging:
         wandb.finish()
-    return saved_pdfs, {"MSE": mse}
+    return {"MSE": mse.item()}
 
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Parse input arguments.")
     
     # Adding arguments
-    parser.add_argument('--head', type=str, required=True, 
-                        help='Specify head option (string)')
-    parser.add_argument('--n_freqs', type=int, required=True, 
-                        help='Number of frequencies (int)')
     parser.add_argument('--dataset', type=str, required=True, 
                         help='Path to the dataset (string)')
-    parser.add_argument('--gamma', type=float, default=0.0, 
-                        help='Gamma value (float)')
     parser.add_argument('--seed', type=int, default=42, 
                         help='Seed value (int)')
     parser.add_argument('--wandb', action='store_true', help='Flag to enable wandb logging')
@@ -320,30 +188,25 @@ if __name__ == "__main__":
     dataset_dict = {"gaussian": generate_gaussian_dataset, 'gmm': generate_gmm_dataset, 
                     'gmm2': generate_gmm_dataset2, 'beta': generate_beta_dataset}
     dataset = dataset_dict[args.dataset](num_samples, var, seed=args.seed)
-    pdfs, metrics = run_experiment(
+    metrics = run_experiment(
         args.dataset, 
         dataset, 
         epochs=epochs,
-        freqs=args.n_freqs, 
         num_samples=num_samples, 
         var=var, 
-        head=args.head, 
         seed=args.seed,
-        gamma=args.gamma,
         logging=args.wandb,
         bins=bins
     )
 
     current_dir = os.getcwd()
-    if os.path.basename(current_dir) == 'toy-example-synthetic':
-        prefix = f'output/{args.dataset}/'
+    if os.path.basename(current_dir) == 'scripts':
+        prefix = f'../output/{args.dataset}/'
     else:
         prefix = f'toy-example-synthetic/output/{args.dataset}/'
     
-    model_path = f'{args.head}/{args.gamma}/{args.n_freqs}/'
+    model_path = f'linear_mse/0.0/0/'
     os.makedirs(prefix+model_path, exist_ok=True)
-    np.save(prefix+model_path+f'pmfs_{args.seed}.npy', pdfs[0].cpu())
-    np.save(prefix+f'true_{args.seed}.npy', pdfs[1].cpu())
 
     metrics_path = prefix+model_path+"model_metrics.json"
     if os.path.exists(metrics_path):
@@ -361,4 +224,4 @@ if __name__ == "__main__":
         json.dump(metrics_all, json_file, indent=4)
 
     ## Run script via 
-    ## python toy_synthetic.py --head "fourier" --n_freqs 12 --dataset "gmm2" --gamma 0.0
+    ## python toy_synthetic_regression.py --dataset "gmm2" --seed 42

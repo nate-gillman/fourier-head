@@ -65,9 +65,6 @@ def plot_combined_graphs(prefix, true, idxs, output_fname):
     # Create a 3x2 grid of subplots
     fig, axes = plt.subplots(3, 3, figsize=(12, 5)) 
 
-    # Set a suptitle for the figure, use padding to avoid overlap with plots
-    #fig.suptitle('Toy Example: Learned Conditional Distribution vs True Conditional Distribution', fontsize=18, y=0.95)
-
     # Plot for each dataset (fourier, linear, true)
     for i in range(len(true)):
         flag = i==0
@@ -96,7 +93,7 @@ if __name__ == "__main__":
 
     # Specify which pmf to be visualized for each of the datasets (there are a total 1000 test pmfs)
     pmf_ixs = [[488, 150, 400], [50,100,331], [90,80,180]]
-   # 70 50 130
+
    
     plot_combined_graphs(output_dir, true, pmf_ixs, "toy_predicted_vs_true_mse.png")
     print(f"Saved graph to {output_dir}")

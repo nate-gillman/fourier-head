@@ -2,7 +2,7 @@
 
 # Check if dataset argument is provided
 if [ -z "$1" ]; then
-  echo "Please provide a dataset as an argument. Options are: 'gaussian', 'gmm', 'gmm2'."
+  echo "Please provide a dataset as an argument. Options are: 'gaussian', 'gmm', 'gmm2', 'beta'."
   exit 1
 fi
 
@@ -13,5 +13,5 @@ for seed in 1 2 3 42; do
   echo "dataset = $dataset"
   echo "linear head"
   echo "seed = $seed"
-  python toy_synthetic.py --head "linear" --n_freqs 0 --dataset $dataset --seed $seed
+  python toy_synthetic_regression.py --dataset $dataset --seed $seed
 done

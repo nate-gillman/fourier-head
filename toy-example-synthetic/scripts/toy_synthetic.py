@@ -31,22 +31,12 @@ import argparse
 import sys
 
 for path in sys.path:
-    if path.endswith("/toy-example-synthetic"):
-        sys.path.append(path.replace("/toy-example-synthetic", "/"))
+    if path.endswith("/toy-example-synthetic/scripts"):
+        sys.path.append(path.replace("/toy-example-synthetic/scripts", "/"))
 
 from fourier_head import Fourier_Head
 from gmm_head import GMM_Head
-from beta_head import Beta_Head
 from generate_datasets import *
-
-
-# Quantization function, assuming dataset in the range (-1, 1)
-def quantize_dataset(dataset, b):
-    data_range = (-1, 1)
-    bin_edges = np.linspace(data_range[0], data_range[1], b + 1)
-    digitized_data = np.digitize(dataset, bin_edges) - 1
-    digitized_data = np.clip(digitized_data, 0, b - 1)
-    return digitized_data
 
 
 # Define the MLP model with a hidden layer and a linear/fourier head
@@ -56,7 +46,7 @@ class MLP(nn.Module):
         self.mlp_head = nn.Linear(32, num_classes)
         if head == 'fourier':
             self.mlp_head = Fourier_Head(32, num_classes, num_frequencies, regularizion_gamma)
-        elif head == "gmm":
+        elif head == 'gmm':
             self.mlp_head = GMM_Head(32, num_classes, num_gaussians)
 
         else:
@@ -191,17 +181,17 @@ def run_experiment(
                 mse_max = np.mean((bin_centers[predicted]-bin_centers[y_test])**2)
                 expected_bins = torch.sum(torch.arange(bins) * pdfs.cpu(), dim=1)
                 expected_vals = bin_centers[torch.round(expected_bins).to(torch.int)]
-                mse = np.mean((expected_vals - bin_centers[y_test])**2)
+                mse_expected = np.mean((expected_vals - bin_centers[y_test])**2)
 
-                tqdm.write(f'Epoch [{epoch + 1}/{epochs}], Loss: {avg_loss:.4f}, KL divergence: {kl:.4f}, MSE (mean): {mse:.4f}, MSE (argmax): {mse_max:.4f}')
+                tqdm.write(f'Epoch [{epoch + 1}/{epochs}], Loss: {avg_loss:.4f}, KL divergence: {kl:.4f}, MSE (mean): {mse_expected:.4f}, MSE (argmax): {mse_max:.4f}')
 
                 if logging:
-                    wandb.log({"loss": avg_loss, "accuracy": accuracy, "KL divergence": kl, "MSE": mse})
+                    wandb.log({"loss": avg_loss, "accuracy": accuracy, "KL divergence": kl, "MSE (mean)": mse_expected, "MSE (argmax)": mse_max})
             model.train()
 
     if logging:
         wandb.finish()
-    return saved_pdfs, {"KL divergence":kl.item(), "MSE": mse}
+    return saved_pdfs, {"KL divergence":kl.item(), "MSE": mse_expected, "MSE_argmax": mse_max}
 
 
 def parse_arguments():
@@ -227,7 +217,7 @@ def parse_arguments():
 
 if __name__ == "__main__":
     args = parse_arguments()
-    epochs = 500
+    epochs = 20
     num_samples = 5000
     var = 0.01
     bins = 50
@@ -250,8 +240,8 @@ if __name__ == "__main__":
     )
 
     current_dir = os.getcwd()
-    if os.path.basename(current_dir) == 'toy-example-synthetic':
-        prefix = f'output/{args.dataset}/'
+    if os.path.basename(current_dir) == 'scripts':
+        prefix = f'../output/{args.dataset}/'
     else:
         prefix = f'toy-example-synthetic/output/{args.dataset}/'
     

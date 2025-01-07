@@ -35,7 +35,7 @@ HOME_DIR=/users/daggarw5/scratch/fourier-head/toy-example-synthetic
 cd ${HOME_DIR}
 
 # linear head, running all datasets
-# sh ./run_exps_linear.sh gaussian
+sh ./run_exps_linear.sh gaussian
 # sh ./run_exps_linear.sh gmm
 # sh ./run_exps_linear.sh gmm2
 
@@ -48,4 +48,3 @@ cd ${HOME_DIR}
 # sh ./run_exps_fourier_reg.sh gaussian
 # sh ./run_exps_fourier_reg.sh gmm
 #sh ./run_exps_fourier_reg.sh gmm2
-sh ./beta_withreg.sh

@@ -13,9 +13,12 @@ for path in sys.path:
     if path.endswith("/toy-example-synthetic/eval"):
         sys.path.append(path.replace("/toy-example-synthetic/eval", "/"))
 
+
 for path in sys.path:
     if path.endswith("/toy-example-synthetic"):
         sys.path.append(path.replace("/toy-example-synthetic", "/"))
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
 from smoothness_metric import get_smoothness_metric
 

@@ -99,6 +99,5 @@ if __name__ == "__main__":
 
     # Specify which pmf to be visualized for each of the datasets (there are a total 1000 test pmfs)
     pmf_ixs = [488, 331, 180]  
-   # 70 50 130
     plot_combined_graphs(output_dir, fourier, linear, gmm, true, pmf_ixs, "toy_predicted_vs_true.png")
     print(f"Saved graph to {output_dir}")
