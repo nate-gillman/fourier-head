@@ -204,7 +204,7 @@ if __name__ == "__main__":
     model_path = f'linear_mse/0.0/0/'
     os.makedirs(prefix+model_path, exist_ok=True)
 
-    metrics_path = prefix+model_path+"model_metrics.json"
+    metrics_path = prefix+model_path+"mse.json"
     if os.path.exists(metrics_path):
         # Load existing data
         with open(metrics_path, "r") as json_file:
