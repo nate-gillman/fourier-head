@@ -31,11 +31,11 @@ source /gpfs/runtime/opt/anaconda/2020.02/etc/profile.d/conda.sh
 conda activate chronos-doover
 
 # Move to correct working directory
-HOME_DIR=/users/daggarw5/scratch/fourier-head/toy-example-synthetic
+HOME_DIR=/users/daggarw5/scratch/fourier-head/toy-example-synthetic/scripts
 cd ${HOME_DIR}
 
 # linear head, running all datasets
-sh ./run_exps_linear.sh gaussian
+#sh ./run_exps_linear.sh gaussian
 # sh ./run_exps_linear.sh gmm
 # sh ./run_exps_linear.sh gmm2
 
@@ -47,4 +47,12 @@ sh ./run_exps_linear.sh gaussian
 # experiments with regularization
 # sh ./run_exps_fourier_reg.sh gaussian
 # sh ./run_exps_fourier_reg.sh gmm
-#sh ./run_exps_fourier_reg.sh gmm2
+# sh ./run_exps_fourier_reg.sh gmm2
+
+# sh ./run_exps_fourier-mle_no_reg.sh gaussian
+# sh ./run_exps_fourier-mle_no_reg.sh gmm2
+# sh ./run_exps_fourier-mle_no_reg.sh beta
+
+sh ./run_exps_fourier-mle_reg.sh gaussian
+sh ./run_exps_fourier-mle_reg.sh gmm2
+sh ./run_exps_fourier-mle_reg.sh beta

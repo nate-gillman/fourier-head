@@ -209,6 +209,7 @@ def run_experiment(
     seed=42, 
     gamma=0, 
     bins=500,
+    graphing=False,
     logging=False):
 
     # Start a new wandb run to track this script
@@ -314,39 +315,39 @@ def run_experiment(
                     model_pdf_vals = torch.stack(model_pdf_vals).T # (1000, 200)
                     # as meshes are different widths, need to guarantee the areas are equal
                     model_pdf_vals = model_pdf_vals * (2/bins)
+                    if epoch == epochs-1:
+                        saved_pdfs = (model_pdf_vals, target_pdfs)
                     assert(torch.isclose(target_pdfs.mean(),model_pdf_vals.mean().to(torch.float64)))
 
-                    # PART 1B, optional: visualize the PDF by sampling from it, and graphing histogram
-                    VISUALIZE_SAMPLES_ALSO = [False, True][0]
-                    if VISUALIZE_SAMPLES_ALSO:
-                        
-                        NUM_SAMPLES_TO_VISUALIZE = 1024
-                        model_pdf_samples = model_pdf.sample_from(NUM_SAMPLES_TO_VISUALIZE) # (bs, NUM_SAMPLES_TO_VISUALIZE)
-
-                    # PART 3: actually writing the graphs...
-                    graphs_dir = "../output/graphs"
-                    os.makedirs(graphs_dir, exist_ok=True)
-                    idxs = [0,1,2,3]
-                    for idx in idxs:
-
-                        empirical_model_pmf = None
+                    if graphing:
+                        # PART 1B, optional: visualize the PDF by sampling from it, and graphing histogram
+                        VISUALIZE_SAMPLES_ALSO = [False, True][1]
                         if VISUALIZE_SAMPLES_ALSO:
-                            empirical_model_pmf = compute_nearest_bin_pmf(bin_centers, model_pdf_samples[idx].cpu().numpy())
-                        plot_sampling_comparison(
-                            model_pdf_x_vals.cpu()[0], # (200,)
-                            model_pdf_vals[idx].cpu(), # (200,)
-                            bin_centers, # (50,)
-                            target_pdfs[idx].cpu(), # (50,)
-                            os.path.join(graphs_dir, f"pdf_comparison_idx_{idx}_epoch_{epoch}.png"),
-                            empirical_pmf=empirical_model_pmf, # (50,)
-                        )
+                            
+                            NUM_SAMPLES_TO_VISUALIZE = 1024
+                            model_pdf_samples = model_pdf.sample_from(NUM_SAMPLES_TO_VISUALIZE) # (bs, NUM_SAMPLES_TO_VISUALIZE)
+
+                        # PART 2: actually writing the graphs...
+                        graphs_dir = "../output/graphs"
+                        os.makedirs(graphs_dir, exist_ok=True)
+                        idxs = [0,1,2,3]
+                        for idx in idxs:
+
+                            empirical_model_pmf = None
+                            if VISUALIZE_SAMPLES_ALSO:
+                                empirical_model_pmf = compute_nearest_bin_pmf(bin_centers, model_pdf_samples[idx].cpu().numpy())
+                            plot_sampling_comparison(
+                                model_pdf_x_vals.cpu()[0], # (200,)
+                                model_pdf_vals[idx].cpu(), # (200,)
+                                bin_centers, # (50,)
+                                target_pdfs[idx].cpu(), # (50,)
+                                os.path.join(graphs_dir, f"pdf_comparison_idx_{idx}_epoch_{epoch+1}.png"),
+                                empirical_pmf=empirical_model_pmf, # (50,)
+                            )
                     
                         
                     # KL divergence
                     kl = kl_loss(torch.clamp(model_pdf_vals, min=1e-10).log(), torch.clamp(target_pdfs, min=1e-10))
-
-                    if epoch == epochs-1:
-                        saved_pdfs = (model_pdf_vals, target_pdfs)
 
                     # Perplexity
                     model_pdf_test = torch.clamp(model_pdf.evaluate_at(y_test.cuda()), min=1e-10)
@@ -382,6 +383,7 @@ def parse_arguments():
                         help='Gamma value (float)')
     parser.add_argument('--seed', type=int, default=42, 
                         help='Seed value (int)')
+    parser.add_argument('--graph', action='store_true', help='Flag to enable test graphing')
     parser.add_argument('--wandb', action='store_true', help='Flag to enable wandb logging')
     
     # Parsing arguments
@@ -404,6 +406,7 @@ if __name__ == "__main__":
         head=args.head, 
         seed=args.seed,
         gamma=args.gamma,
+        graphing=args.graph,
         logging=args.wandb,
     )
 
@@ -434,4 +437,4 @@ if __name__ == "__main__":
         json.dump(metrics_all, json_file, indent=4)
 
     ## Run script via 
-    ## python toy_synthetic.py --head "fourier" --n_freqs 12 --dataset "gmm2" --gamma 0.0
+    ## python toy_synthetic.py --head "fourier-mle" --n_freqs 12 --dataset "gmm2" --gamma 0.0

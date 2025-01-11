@@ -1,0 +1,550 @@
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 2
+seed = 1
+Epoch [10/100], Loss: -0.3331, KL divergence: 0.5639, Perplexity: 0.7119
+Epoch [20/100], Loss: -0.3354, KL divergence: 0.5630, Perplexity: 0.7105
+Epoch [30/100], Loss: -0.3366, KL divergence: 0.5641, Perplexity: 0.7126
+Epoch [40/100], Loss: -0.3373, KL divergence: 0.5622, Perplexity: 0.7104
+Epoch [50/100], Loss: -0.3378, KL divergence: 0.5633, Perplexity: 0.7098
+Epoch [60/100], Loss: -0.3387, KL divergence: 0.5632, Perplexity: 0.7108
+Epoch [70/100], Loss: -0.3389, KL divergence: 0.5630, Perplexity: 0.7111
+Epoch [80/100], Loss: -0.3393, KL divergence: 0.5626, Perplexity: 0.7104
+Epoch [90/100], Loss: -0.3396, KL divergence: 0.5624, Perplexity: 0.7102
+Epoch [100/100], Loss: -0.3397, KL divergence: 0.5624, Perplexity: 0.7101
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 4
+seed = 1
+Epoch [10/100], Loss: -0.6938, KL divergence: 0.1986, Perplexity: 0.4921
+Epoch [20/100], Loss: -0.7043, KL divergence: 0.1932, Perplexity: 0.4870
+Epoch [30/100], Loss: -0.7078, KL divergence: 0.1943, Perplexity: 0.4886
+Epoch [40/100], Loss: -0.7099, KL divergence: 0.1985, Perplexity: 0.4923
+Epoch [50/100], Loss: -0.7117, KL divergence: 0.1927, Perplexity: 0.4872
+Epoch [60/100], Loss: -0.7130, KL divergence: 0.1878, Perplexity: 0.4846
+Epoch [70/100], Loss: -0.7144, KL divergence: 0.1864, Perplexity: 0.4842
+Epoch [80/100], Loss: -0.7154, KL divergence: 0.1869, Perplexity: 0.4847
+Epoch [90/100], Loss: -0.7165, KL divergence: 0.1871, Perplexity: 0.4847
+Epoch [100/100], Loss: -0.7168, KL divergence: 0.1873, Perplexity: 0.4848
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 6
+seed = 1
+Epoch [10/100], Loss: -0.8010, KL divergence: 0.1578, Perplexity: 0.4737
+Epoch [20/100], Loss: -0.8256, KL divergence: 0.0591, Perplexity: 0.4234
+Epoch [30/100], Loss: -0.8334, KL divergence: 0.0588, Perplexity: 0.4220
+Epoch [40/100], Loss: -0.8398, KL divergence: 0.0542, Perplexity: 0.4218
+Epoch [50/100], Loss: -0.8464, KL divergence: 0.0603, Perplexity: 0.4251
+Epoch [60/100], Loss: -0.8462, KL divergence: 0.0539, Perplexity: 0.4221
+Epoch [70/100], Loss: -0.8501, KL divergence: 0.0588, Perplexity: 0.4236
+Epoch [80/100], Loss: -0.8536, KL divergence: 0.0520, Perplexity: 0.4202
+Epoch [90/100], Loss: -0.8558, KL divergence: 0.0519, Perplexity: 0.4206
+Epoch [100/100], Loss: -0.8565, KL divergence: 0.0526, Perplexity: 0.4210
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 8
+seed = 1
+Epoch [10/100], Loss: -0.8304, KL divergence: 0.0557, Perplexity: 0.4181
+Epoch [20/100], Loss: -0.8552, KL divergence: 0.0475, Perplexity: 0.4148
+Epoch [30/100], Loss: -0.8610, KL divergence: 0.0719, Perplexity: 0.4233
+Epoch [40/100], Loss: -0.8705, KL divergence: 0.0421, Perplexity: 0.4139
+Epoch [50/100], Loss: -0.8795, KL divergence: 0.0386, Perplexity: 0.4108
+Epoch [60/100], Loss: -0.8810, KL divergence: 0.0366, Perplexity: 0.4144
+Epoch [70/100], Loss: -0.8865, KL divergence: 0.0317, Perplexity: 0.4079
+Epoch [80/100], Loss: -0.8902, KL divergence: 0.0294, Perplexity: 0.4081
+Epoch [90/100], Loss: -0.8932, KL divergence: 0.0279, Perplexity: 0.4058
+Epoch [100/100], Loss: -0.8943, KL divergence: 0.0282, Perplexity: 0.4060
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 10
+seed = 1
+Epoch [10/100], Loss: -0.8197, KL divergence: 0.0788, Perplexity: 0.4377
+Epoch [20/100], Loss: -0.8509, KL divergence: 0.0657, Perplexity: 0.4232
+Epoch [30/100], Loss: -0.8614, KL divergence: 0.0442, Perplexity: 0.4172
+Epoch [40/100], Loss: -0.8687, KL divergence: 0.0441, Perplexity: 0.4149
+Epoch [50/100], Loss: -0.8770, KL divergence: 0.0361, Perplexity: 0.4113
+Epoch [60/100], Loss: -0.8809, KL divergence: 0.0378, Perplexity: 0.4128
+Epoch [70/100], Loss: -0.8875, KL divergence: 0.0319, Perplexity: 0.4099
+Epoch [80/100], Loss: -0.8913, KL divergence: 0.0310, Perplexity: 0.4084
+Epoch [90/100], Loss: -0.8951, KL divergence: 0.0296, Perplexity: 0.4087
+Epoch [100/100], Loss: -0.8963, KL divergence: 0.0303, Perplexity: 0.4086
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 12
+seed = 1
+Epoch [10/100], Loss: -0.8248, KL divergence: 0.0488, Perplexity: 0.4182
+Epoch [20/100], Loss: -0.8543, KL divergence: 0.0587, Perplexity: 0.4232
+Epoch [30/100], Loss: -0.8658, KL divergence: 0.0532, Perplexity: 0.4142
+Epoch [40/100], Loss: -0.8747, KL divergence: 0.0336, Perplexity: 0.4061
+Epoch [50/100], Loss: -0.8788, KL divergence: 0.0393, Perplexity: 0.4092
+Epoch [60/100], Loss: -0.8852, KL divergence: 0.0317, Perplexity: 0.4070
+Epoch [70/100], Loss: -0.8903, KL divergence: 0.0309, Perplexity: 0.4091
+Epoch [80/100], Loss: -0.8950, KL divergence: 0.0285, Perplexity: 0.4062
+Epoch [90/100], Loss: -0.8983, KL divergence: 0.0274, Perplexity: 0.4053
+Epoch [100/100], Loss: -0.8997, KL divergence: 0.0274, Perplexity: 0.4052
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 14
+seed = 1
+Epoch [10/100], Loss: -0.8246, KL divergence: 0.0878, Perplexity: 0.4348
+Epoch [20/100], Loss: -0.8460, KL divergence: 0.0592, Perplexity: 0.4221
+Epoch [30/100], Loss: -0.8572, KL divergence: 0.0586, Perplexity: 0.4253
+Epoch [40/100], Loss: -0.8610, KL divergence: 0.0454, Perplexity: 0.4145
+Epoch [50/100], Loss: -0.8774, KL divergence: 0.0547, Perplexity: 0.4248
+Epoch [60/100], Loss: -0.8837, KL divergence: 0.0335, Perplexity: 0.4085
+Epoch [70/100], Loss: -0.8869, KL divergence: 0.0320, Perplexity: 0.4093
+Epoch [80/100], Loss: -0.8911, KL divergence: 0.0300, Perplexity: 0.4071
+Epoch [90/100], Loss: -0.8947, KL divergence: 0.0317, Perplexity: 0.4089
+Epoch [100/100], Loss: -0.8961, KL divergence: 0.0310, Perplexity: 0.4088
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 16
+seed = 1
+Epoch [10/100], Loss: -0.8278, KL divergence: 0.0945, Perplexity: 0.4522
+Epoch [20/100], Loss: -0.8469, KL divergence: 0.0752, Perplexity: 0.4346
+Epoch [30/100], Loss: -0.8676, KL divergence: 0.0437, Perplexity: 0.4204
+Epoch [40/100], Loss: -0.8787, KL divergence: 0.0463, Perplexity: 0.4135
+Epoch [50/100], Loss: -0.8802, KL divergence: 0.0446, Perplexity: 0.4164
+Epoch [60/100], Loss: -0.8883, KL divergence: 0.0390, Perplexity: 0.4124
+Epoch [70/100], Loss: -0.8922, KL divergence: 0.0335, Perplexity: 0.4090
+Epoch [80/100], Loss: -0.8984, KL divergence: 0.0328, Perplexity: 0.4087
+Epoch [90/100], Loss: -0.9007, KL divergence: 0.0331, Perplexity: 0.4087
+Epoch [100/100], Loss: -0.9022, KL divergence: 0.0330, Perplexity: 0.4086
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 18
+seed = 1
+Epoch [10/100], Loss: -0.8180, KL divergence: 0.0726, Perplexity: 0.4318
+Epoch [20/100], Loss: -0.8516, KL divergence: 0.0860, Perplexity: 0.4338
+Epoch [30/100], Loss: -0.8717, KL divergence: 0.0579, Perplexity: 0.4211
+Epoch [40/100], Loss: -0.8793, KL divergence: 0.0521, Perplexity: 0.4173
+Epoch [50/100], Loss: -0.8858, KL divergence: 0.0527, Perplexity: 0.4193
+Epoch [60/100], Loss: -0.8942, KL divergence: 0.0355, Perplexity: 0.4103
+Epoch [70/100], Loss: -0.8988, KL divergence: 0.0358, Perplexity: 0.4116
+Epoch [80/100], Loss: -0.9036, KL divergence: 0.0336, Perplexity: 0.4092
+Epoch [90/100], Loss: -0.9070, KL divergence: 0.0339, Perplexity: 0.4106
+Epoch [100/100], Loss: -0.9085, KL divergence: 0.0342, Perplexity: 0.4105
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 20
+seed = 1
+Epoch [10/100], Loss: -0.8263, KL divergence: 0.0562, Perplexity: 0.4220
+Epoch [20/100], Loss: -0.8509, KL divergence: 0.0485, Perplexity: 0.4180
+Epoch [30/100], Loss: -0.8661, KL divergence: 0.0470, Perplexity: 0.4185
+Epoch [40/100], Loss: -0.8760, KL divergence: 0.0466, Perplexity: 0.4195
+Epoch [50/100], Loss: -0.8842, KL divergence: 0.0440, Perplexity: 0.4127
+Epoch [60/100], Loss: -0.8919, KL divergence: 0.0375, Perplexity: 0.4114
+Epoch [70/100], Loss: -0.8974, KL divergence: 0.0369, Perplexity: 0.4109
+Epoch [80/100], Loss: -0.9021, KL divergence: 0.0383, Perplexity: 0.4108
+Epoch [90/100], Loss: -0.9050, KL divergence: 0.0359, Perplexity: 0.4102
+Epoch [100/100], Loss: -0.9066, KL divergence: 0.0358, Perplexity: 0.4102
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 2
+seed = 2
+Epoch [10/100], Loss: -0.3328, KL divergence: 0.5591, Perplexity: 0.7120
+Epoch [20/100], Loss: -0.3358, KL divergence: 0.5636, Perplexity: 0.7140
+Epoch [30/100], Loss: -0.3366, KL divergence: 0.5583, Perplexity: 0.7109
+Epoch [40/100], Loss: -0.3371, KL divergence: 0.5588, Perplexity: 0.7113
+Epoch [50/100], Loss: -0.3375, KL divergence: 0.5575, Perplexity: 0.7100
+Epoch [60/100], Loss: -0.3381, KL divergence: 0.5571, Perplexity: 0.7098
+Epoch [70/100], Loss: -0.3384, KL divergence: 0.5569, Perplexity: 0.7096
+Epoch [80/100], Loss: -0.3389, KL divergence: 0.5567, Perplexity: 0.7095
+Epoch [90/100], Loss: -0.3390, KL divergence: 0.5569, Perplexity: 0.7096
+Epoch [100/100], Loss: -0.3391, KL divergence: 0.5568, Perplexity: 0.7095
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 4
+seed = 2
+Epoch [10/100], Loss: -0.6984, KL divergence: 0.2074, Perplexity: 0.4981
+Epoch [20/100], Loss: -0.7028, KL divergence: 0.1907, Perplexity: 0.4904
+Epoch [30/100], Loss: -0.7060, KL divergence: 0.1858, Perplexity: 0.4872
+Epoch [40/100], Loss: -0.7085, KL divergence: 0.1838, Perplexity: 0.4849
+Epoch [50/100], Loss: -0.7102, KL divergence: 0.1842, Perplexity: 0.4867
+Epoch [60/100], Loss: -0.7121, KL divergence: 0.1867, Perplexity: 0.4876
+Epoch [70/100], Loss: -0.7137, KL divergence: 0.1824, Perplexity: 0.4847
+Epoch [80/100], Loss: -0.7147, KL divergence: 0.1822, Perplexity: 0.4844
+Epoch [90/100], Loss: -0.7157, KL divergence: 0.1820, Perplexity: 0.4844
+Epoch [100/100], Loss: -0.7160, KL divergence: 0.1821, Perplexity: 0.4845
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 6
+seed = 2
+Epoch [10/100], Loss: -0.8185, KL divergence: 0.0869, Perplexity: 0.4340
+Epoch [20/100], Loss: -0.8292, KL divergence: 0.0876, Perplexity: 0.4356
+Epoch [30/100], Loss: -0.8326, KL divergence: 0.0687, Perplexity: 0.4251
+Epoch [40/100], Loss: -0.8400, KL divergence: 0.0544, Perplexity: 0.4215
+Epoch [50/100], Loss: -0.8433, KL divergence: 0.0532, Perplexity: 0.4199
+Epoch [60/100], Loss: -0.8496, KL divergence: 0.0526, Perplexity: 0.4195
+Epoch [70/100], Loss: -0.8514, KL divergence: 0.0495, Perplexity: 0.4180
+Epoch [80/100], Loss: -0.8541, KL divergence: 0.0490, Perplexity: 0.4181
+Epoch [90/100], Loss: -0.8563, KL divergence: 0.0480, Perplexity: 0.4177
+Epoch [100/100], Loss: -0.8572, KL divergence: 0.0481, Perplexity: 0.4176
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 8
+seed = 2
+Epoch [10/100], Loss: -0.8262, KL divergence: 0.0635, Perplexity: 0.4287
+Epoch [20/100], Loss: -0.8540, KL divergence: 0.0465, Perplexity: 0.4165
+Epoch [30/100], Loss: -0.8612, KL divergence: 0.0415, Perplexity: 0.4133
+Epoch [40/100], Loss: -0.8705, KL divergence: 0.0332, Perplexity: 0.4124
+Epoch [50/100], Loss: -0.8739, KL divergence: 0.0286, Perplexity: 0.4078
+Epoch [60/100], Loss: -0.8784, KL divergence: 0.0316, Perplexity: 0.4077
+Epoch [70/100], Loss: -0.8833, KL divergence: 0.0263, Perplexity: 0.4089
+Epoch [80/100], Loss: -0.8872, KL divergence: 0.0245, Perplexity: 0.4060
+Epoch [90/100], Loss: -0.8900, KL divergence: 0.0240, Perplexity: 0.4061
+Epoch [100/100], Loss: -0.8910, KL divergence: 0.0235, Perplexity: 0.4060
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 10
+seed = 2
+Epoch [10/100], Loss: -0.8218, KL divergence: 0.0519, Perplexity: 0.4250
+Epoch [20/100], Loss: -0.8502, KL divergence: 0.0388, Perplexity: 0.4138
+Epoch [30/100], Loss: -0.8639, KL divergence: 0.0379, Perplexity: 0.4100
+Epoch [40/100], Loss: -0.8658, KL divergence: 0.0383, Perplexity: 0.4075
+Epoch [50/100], Loss: -0.8742, KL divergence: 0.0267, Perplexity: 0.4087
+Epoch [60/100], Loss: -0.8792, KL divergence: 0.0212, Perplexity: 0.4042
+Epoch [70/100], Loss: -0.8861, KL divergence: 0.0236, Perplexity: 0.4059
+Epoch [80/100], Loss: -0.8901, KL divergence: 0.0208, Perplexity: 0.4048
+Epoch [90/100], Loss: -0.8940, KL divergence: 0.0201, Perplexity: 0.4039
+Epoch [100/100], Loss: -0.8952, KL divergence: 0.0202, Perplexity: 0.4039
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 12
+seed = 2
+Epoch [10/100], Loss: -0.8159, KL divergence: 0.0661, Perplexity: 0.4255
+Epoch [20/100], Loss: -0.8471, KL divergence: 0.0378, Perplexity: 0.4135
+Epoch [30/100], Loss: -0.8599, KL divergence: 0.0446, Perplexity: 0.4165
+Epoch [40/100], Loss: -0.8631, KL divergence: 0.0304, Perplexity: 0.4069
+Epoch [50/100], Loss: -0.8708, KL divergence: 0.0386, Perplexity: 0.4103
+Epoch [60/100], Loss: -0.8761, KL divergence: 0.0245, Perplexity: 0.4044
+Epoch [70/100], Loss: -0.8828, KL divergence: 0.0243, Perplexity: 0.4033
+Epoch [80/100], Loss: -0.8879, KL divergence: 0.0237, Perplexity: 0.4050
+Epoch [90/100], Loss: -0.8910, KL divergence: 0.0233, Perplexity: 0.4051
+Epoch [100/100], Loss: -0.8925, KL divergence: 0.0232, Perplexity: 0.4048
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 14
+seed = 2
+Epoch [10/100], Loss: -0.8276, KL divergence: 0.0534, Perplexity: 0.4169
+Epoch [20/100], Loss: -0.8565, KL divergence: 0.0438, Perplexity: 0.4168
+Epoch [30/100], Loss: -0.8639, KL divergence: 0.0346, Perplexity: 0.4096
+Epoch [40/100], Loss: -0.8741, KL divergence: 0.0325, Perplexity: 0.4100
+Epoch [50/100], Loss: -0.8811, KL divergence: 0.0302, Perplexity: 0.4098
+Epoch [60/100], Loss: -0.8863, KL divergence: 0.0229, Perplexity: 0.4068
+Epoch [70/100], Loss: -0.8908, KL divergence: 0.0223, Perplexity: 0.4056
+Epoch [80/100], Loss: -0.8951, KL divergence: 0.0242, Perplexity: 0.4045
+Epoch [90/100], Loss: -0.8988, KL divergence: 0.0225, Perplexity: 0.4046
+Epoch [100/100], Loss: -0.9002, KL divergence: 0.0222, Perplexity: 0.4042
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 16
+seed = 2
+Epoch [10/100], Loss: -0.8156, KL divergence: 0.0775, Perplexity: 0.4298
+Epoch [20/100], Loss: -0.8402, KL divergence: 0.0664, Perplexity: 0.4200
+Epoch [30/100], Loss: -0.8573, KL divergence: 0.0696, Perplexity: 0.4252
+Epoch [40/100], Loss: -0.8621, KL divergence: 0.0515, Perplexity: 0.4159
+Epoch [50/100], Loss: -0.8721, KL divergence: 0.0325, Perplexity: 0.4131
+Epoch [60/100], Loss: -0.8759, KL divergence: 0.0263, Perplexity: 0.4082
+Epoch [70/100], Loss: -0.8830, KL divergence: 0.0294, Perplexity: 0.4093
+Epoch [80/100], Loss: -0.8877, KL divergence: 0.0259, Perplexity: 0.4083
+Epoch [90/100], Loss: -0.8910, KL divergence: 0.0244, Perplexity: 0.4068
+Epoch [100/100], Loss: -0.8925, KL divergence: 0.0246, Perplexity: 0.4067
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 18
+seed = 2
+Epoch [10/100], Loss: -0.8275, KL divergence: 0.0739, Perplexity: 0.4304
+Epoch [20/100], Loss: -0.8399, KL divergence: 0.0495, Perplexity: 0.4187
+Epoch [30/100], Loss: -0.8570, KL divergence: 0.0334, Perplexity: 0.4082
+Epoch [40/100], Loss: -0.8695, KL divergence: 0.0399, Perplexity: 0.4098
+Epoch [50/100], Loss: -0.8815, KL divergence: 0.0412, Perplexity: 0.4101
+Epoch [60/100], Loss: -0.8812, KL divergence: 0.0315, Perplexity: 0.4067
+Epoch [70/100], Loss: -0.8902, KL divergence: 0.0252, Perplexity: 0.4053
+Epoch [80/100], Loss: -0.8947, KL divergence: 0.0258, Perplexity: 0.4042
+Epoch [90/100], Loss: -0.8984, KL divergence: 0.0247, Perplexity: 0.4038
+Epoch [100/100], Loss: -0.8998, KL divergence: 0.0247, Perplexity: 0.4038
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 20
+seed = 2
+Epoch [10/100], Loss: -0.8197, KL divergence: 0.0587, Perplexity: 0.4251
+Epoch [20/100], Loss: -0.8444, KL divergence: 0.0438, Perplexity: 0.4168
+Epoch [30/100], Loss: -0.8637, KL divergence: 0.0373, Perplexity: 0.4142
+Epoch [40/100], Loss: -0.8743, KL divergence: 0.0454, Perplexity: 0.4151
+Epoch [50/100], Loss: -0.8799, KL divergence: 0.0383, Perplexity: 0.4136
+Epoch [60/100], Loss: -0.8890, KL divergence: 0.0315, Perplexity: 0.4077
+Epoch [70/100], Loss: -0.8947, KL divergence: 0.0323, Perplexity: 0.4094
+Epoch [80/100], Loss: -0.8987, KL divergence: 0.0279, Perplexity: 0.4060
+Epoch [90/100], Loss: -0.9026, KL divergence: 0.0275, Perplexity: 0.4059
+Epoch [100/100], Loss: -0.9042, KL divergence: 0.0276, Perplexity: 0.4062
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 2
+seed = 3
+Epoch [10/100], Loss: -0.3351, KL divergence: 0.5634, Perplexity: 0.7158
+Epoch [20/100], Loss: -0.3375, KL divergence: 0.5605, Perplexity: 0.7131
+Epoch [30/100], Loss: -0.3393, KL divergence: 0.5633, Perplexity: 0.7143
+Epoch [40/100], Loss: -0.3390, KL divergence: 0.5604, Perplexity: 0.7138
+Epoch [50/100], Loss: -0.3392, KL divergence: 0.5597, Perplexity: 0.7129
+Epoch [60/100], Loss: -0.3404, KL divergence: 0.5584, Perplexity: 0.7124
+Epoch [70/100], Loss: -0.3407, KL divergence: 0.5590, Perplexity: 0.7122
+Epoch [80/100], Loss: -0.3409, KL divergence: 0.5588, Perplexity: 0.7122
+Epoch [90/100], Loss: -0.3411, KL divergence: 0.5588, Perplexity: 0.7123
+Epoch [100/100], Loss: -0.3412, KL divergence: 0.5588, Perplexity: 0.7123
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 4
+seed = 3
+Epoch [10/100], Loss: -0.7010, KL divergence: 0.1939, Perplexity: 0.4950
+Epoch [20/100], Loss: -0.7110, KL divergence: 0.1885, Perplexity: 0.4924
+Epoch [30/100], Loss: -0.7128, KL divergence: 0.1941, Perplexity: 0.4956
+Epoch [40/100], Loss: -0.7160, KL divergence: 0.1986, Perplexity: 0.4980
+Epoch [50/100], Loss: -0.7171, KL divergence: 0.1892, Perplexity: 0.4902
+Epoch [60/100], Loss: -0.7189, KL divergence: 0.1853, Perplexity: 0.4896
+Epoch [70/100], Loss: -0.7205, KL divergence: 0.1851, Perplexity: 0.4896
+Epoch [80/100], Loss: -0.7210, KL divergence: 0.1843, Perplexity: 0.4894
+Epoch [90/100], Loss: -0.7220, KL divergence: 0.1847, Perplexity: 0.4898
+Epoch [100/100], Loss: -0.7223, KL divergence: 0.1848, Perplexity: 0.4896
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 6
+seed = 3
+Epoch [10/100], Loss: -0.8125, KL divergence: 0.0884, Perplexity: 0.4502
+Epoch [20/100], Loss: -0.8337, KL divergence: 0.0874, Perplexity: 0.4407
+Epoch [30/100], Loss: -0.8450, KL divergence: 0.0572, Perplexity: 0.4303
+Epoch [40/100], Loss: -0.8506, KL divergence: 0.0570, Perplexity: 0.4312
+Epoch [50/100], Loss: -0.8554, KL divergence: 0.0630, Perplexity: 0.4335
+Epoch [60/100], Loss: -0.8599, KL divergence: 0.0565, Perplexity: 0.4275
+Epoch [70/100], Loss: -0.8625, KL divergence: 0.0540, Perplexity: 0.4292
+Epoch [80/100], Loss: -0.8646, KL divergence: 0.0538, Perplexity: 0.4276
+Epoch [90/100], Loss: -0.8668, KL divergence: 0.0524, Perplexity: 0.4273
+Epoch [100/100], Loss: -0.8678, KL divergence: 0.0520, Perplexity: 0.4273
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 8
+seed = 3
+Epoch [10/100], Loss: -0.8294, KL divergence: 0.0670, Perplexity: 0.4403
+Epoch [20/100], Loss: -0.8630, KL divergence: 0.0623, Perplexity: 0.4345
+Epoch [30/100], Loss: -0.8688, KL divergence: 0.0375, Perplexity: 0.4228
+Epoch [40/100], Loss: -0.8740, KL divergence: 0.0412, Perplexity: 0.4246
+Epoch [50/100], Loss: -0.8826, KL divergence: 0.0396, Perplexity: 0.4242
+Epoch [60/100], Loss: -0.8899, KL divergence: 0.0313, Perplexity: 0.4215
+Epoch [70/100], Loss: -0.8953, KL divergence: 0.0265, Perplexity: 0.4188
+Epoch [80/100], Loss: -0.9001, KL divergence: 0.0270, Perplexity: 0.4161
+Epoch [90/100], Loss: -0.9026, KL divergence: 0.0267, Perplexity: 0.4170
+Epoch [100/100], Loss: -0.9038, KL divergence: 0.0266, Perplexity: 0.4169
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 10
+seed = 3
+Epoch [10/100], Loss: -0.8298, KL divergence: 0.0727, Perplexity: 0.4401
+Epoch [20/100], Loss: -0.8549, KL divergence: 0.0406, Perplexity: 0.4207
+Epoch [30/100], Loss: -0.8779, KL divergence: 0.0433, Perplexity: 0.4260
+Epoch [40/100], Loss: -0.8873, KL divergence: 0.0345, Perplexity: 0.4203
+Epoch [50/100], Loss: -0.8889, KL divergence: 0.0298, Perplexity: 0.4190
+Epoch [60/100], Loss: -0.8967, KL divergence: 0.0264, Perplexity: 0.4181
+Epoch [70/100], Loss: -0.9019, KL divergence: 0.0277, Perplexity: 0.4169
+Epoch [80/100], Loss: -0.9056, KL divergence: 0.0269, Perplexity: 0.4180
+Epoch [90/100], Loss: -0.9089, KL divergence: 0.0271, Perplexity: 0.4176
+Epoch [100/100], Loss: -0.9101, KL divergence: 0.0269, Perplexity: 0.4176
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 12
+seed = 3
+Epoch [10/100], Loss: -0.8282, KL divergence: 0.0863, Perplexity: 0.4442
+Epoch [20/100], Loss: -0.8570, KL divergence: 0.0724, Perplexity: 0.4337
+Epoch [30/100], Loss: -0.8692, KL divergence: 0.0425, Perplexity: 0.4245
+Epoch [40/100], Loss: -0.8829, KL divergence: 0.0392, Perplexity: 0.4191
+Epoch [50/100], Loss: -0.8912, KL divergence: 0.0358, Perplexity: 0.4206
+Epoch [60/100], Loss: -0.8986, KL divergence: 0.0424, Perplexity: 0.4218
+Epoch [70/100], Loss: -0.9048, KL divergence: 0.0288, Perplexity: 0.4185
+Epoch [80/100], Loss: -0.9081, KL divergence: 0.0278, Perplexity: 0.4177
+Epoch [90/100], Loss: -0.9108, KL divergence: 0.0294, Perplexity: 0.4162
+Epoch [100/100], Loss: -0.9124, KL divergence: 0.0293, Perplexity: 0.4167
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 14
+seed = 3
+Epoch [10/100], Loss: -0.8303, KL divergence: 0.0609, Perplexity: 0.4350
+Epoch [20/100], Loss: -0.8508, KL divergence: 0.0571, Perplexity: 0.4328
+Epoch [30/100], Loss: -0.8701, KL divergence: 0.0725, Perplexity: 0.4390
+Epoch [40/100], Loss: -0.8751, KL divergence: 0.0327, Perplexity: 0.4225
+Epoch [50/100], Loss: -0.8820, KL divergence: 0.0373, Perplexity: 0.4220
+Epoch [60/100], Loss: -0.8919, KL divergence: 0.0305, Perplexity: 0.4203
+Epoch [70/100], Loss: -0.8961, KL divergence: 0.0329, Perplexity: 0.4237
+Epoch [80/100], Loss: -0.9010, KL divergence: 0.0289, Perplexity: 0.4201
+Epoch [90/100], Loss: -0.9049, KL divergence: 0.0294, Perplexity: 0.4204
+Epoch [100/100], Loss: -0.9062, KL divergence: 0.0297, Perplexity: 0.4204
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 16
+seed = 3
+Epoch [10/100], Loss: -0.8375, KL divergence: 0.1089, Perplexity: 0.4496
+Epoch [20/100], Loss: -0.8652, KL divergence: 0.0775, Perplexity: 0.4397
+Epoch [30/100], Loss: -0.8779, KL divergence: 0.0379, Perplexity: 0.4264
+Epoch [40/100], Loss: -0.8860, KL divergence: 0.0474, Perplexity: 0.4305
+Epoch [50/100], Loss: -0.8884, KL divergence: 0.0375, Perplexity: 0.4263
+Epoch [60/100], Loss: -0.8949, KL divergence: 0.0346, Perplexity: 0.4227
+Epoch [70/100], Loss: -0.9038, KL divergence: 0.0326, Perplexity: 0.4237
+Epoch [80/100], Loss: -0.9098, KL divergence: 0.0340, Perplexity: 0.4234
+Epoch [90/100], Loss: -0.9136, KL divergence: 0.0337, Perplexity: 0.4235
+Epoch [100/100], Loss: -0.9152, KL divergence: 0.0337, Perplexity: 0.4235
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 18
+seed = 3
+Epoch [10/100], Loss: -0.8348, KL divergence: 0.0651, Perplexity: 0.4433
+Epoch [20/100], Loss: -0.8543, KL divergence: 0.0440, Perplexity: 0.4297
+Epoch [30/100], Loss: -0.8807, KL divergence: 0.0547, Perplexity: 0.4277
+Epoch [40/100], Loss: -0.8884, KL divergence: 0.0412, Perplexity: 0.4228
+Epoch [50/100], Loss: -0.8976, KL divergence: 0.0497, Perplexity: 0.4298
+Epoch [60/100], Loss: -0.9060, KL divergence: 0.0491, Perplexity: 0.4277
+Epoch [70/100], Loss: -0.9104, KL divergence: 0.0353, Perplexity: 0.4220
+Epoch [80/100], Loss: -0.9153, KL divergence: 0.0367, Perplexity: 0.4216
+Epoch [90/100], Loss: -0.9185, KL divergence: 0.0361, Perplexity: 0.4218
+Epoch [100/100], Loss: -0.9201, KL divergence: 0.0361, Perplexity: 0.4218
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 20
+seed = 3
+Epoch [10/100], Loss: -0.8419, KL divergence: 0.0683, Perplexity: 0.4386
+Epoch [20/100], Loss: -0.8625, KL divergence: 0.0591, Perplexity: 0.4305
+Epoch [30/100], Loss: -0.8800, KL divergence: 0.0506, Perplexity: 0.4237
+Epoch [40/100], Loss: -0.8935, KL divergence: 0.0432, Perplexity: 0.4243
+Epoch [50/100], Loss: -0.8962, KL divergence: 0.0441, Perplexity: 0.4212
+Epoch [60/100], Loss: -0.9054, KL divergence: 0.0419, Perplexity: 0.4198
+Epoch [70/100], Loss: -0.9118, KL divergence: 0.0372, Perplexity: 0.4210
+Epoch [80/100], Loss: -0.9169, KL divergence: 0.0381, Perplexity: 0.4217
+Epoch [90/100], Loss: -0.9197, KL divergence: 0.0369, Perplexity: 0.4211
+Epoch [100/100], Loss: -0.9211, KL divergence: 0.0369, Perplexity: 0.4212
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 2
+seed = 42
+Epoch [10/100], Loss: -0.3346, KL divergence: 0.5627, Perplexity: 0.7214
+Epoch [20/100], Loss: -0.3360, KL divergence: 0.5595, Perplexity: 0.7170
+Epoch [30/100], Loss: -0.3374, KL divergence: 0.5587, Perplexity: 0.7169
+Epoch [40/100], Loss: -0.3385, KL divergence: 0.5606, Perplexity: 0.7190
+Epoch [50/100], Loss: -0.3387, KL divergence: 0.5587, Perplexity: 0.7169
+Epoch [60/100], Loss: -0.3393, KL divergence: 0.5598, Perplexity: 0.7172
+Epoch [70/100], Loss: -0.3395, KL divergence: 0.5588, Perplexity: 0.7173
+Epoch [80/100], Loss: -0.3401, KL divergence: 0.5583, Perplexity: 0.7165
+Epoch [90/100], Loss: -0.3402, KL divergence: 0.5583, Perplexity: 0.7166
+Epoch [100/100], Loss: -0.3403, KL divergence: 0.5582, Perplexity: 0.7165
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 4
+seed = 42
+Epoch [10/100], Loss: -0.6983, KL divergence: 0.1899, Perplexity: 0.5000
+Epoch [20/100], Loss: -0.7040, KL divergence: 0.1928, Perplexity: 0.5049
+Epoch [30/100], Loss: -0.7075, KL divergence: 0.1877, Perplexity: 0.5013
+Epoch [40/100], Loss: -0.7127, KL divergence: 0.1849, Perplexity: 0.4999
+Epoch [50/100], Loss: -0.7127, KL divergence: 0.1874, Perplexity: 0.5004
+Epoch [60/100], Loss: -0.7152, KL divergence: 0.1842, Perplexity: 0.4985
+Epoch [70/100], Loss: -0.7157, KL divergence: 0.1830, Perplexity: 0.4981
+Epoch [80/100], Loss: -0.7170, KL divergence: 0.1832, Perplexity: 0.4983
+Epoch [90/100], Loss: -0.7178, KL divergence: 0.1832, Perplexity: 0.4985
+Epoch [100/100], Loss: -0.7182, KL divergence: 0.1830, Perplexity: 0.4982
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 6
+seed = 42
+Epoch [10/100], Loss: -0.8078, KL divergence: 0.0717, Perplexity: 0.4543
+Epoch [20/100], Loss: -0.8228, KL divergence: 0.0725, Perplexity: 0.4561
+Epoch [30/100], Loss: -0.8375, KL divergence: 0.0657, Perplexity: 0.4494
+Epoch [40/100], Loss: -0.8375, KL divergence: 0.0718, Perplexity: 0.4544
+Epoch [50/100], Loss: -0.8469, KL divergence: 0.0595, Perplexity: 0.4482
+Epoch [60/100], Loss: -0.8522, KL divergence: 0.0526, Perplexity: 0.4469
+Epoch [70/100], Loss: -0.8544, KL divergence: 0.0498, Perplexity: 0.4451
+Epoch [80/100], Loss: -0.8575, KL divergence: 0.0496, Perplexity: 0.4461
+Epoch [90/100], Loss: -0.8595, KL divergence: 0.0492, Perplexity: 0.4457
+Epoch [100/100], Loss: -0.8608, KL divergence: 0.0491, Perplexity: 0.4458
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 8
+seed = 42
+Epoch [10/100], Loss: -0.8427, KL divergence: 0.0511, Perplexity: 0.4439
+Epoch [20/100], Loss: -0.8570, KL divergence: 0.0373, Perplexity: 0.4427
+Epoch [30/100], Loss: -0.8650, KL divergence: 0.0482, Perplexity: 0.4445
+Epoch [40/100], Loss: -0.8706, KL divergence: 0.0337, Perplexity: 0.4454
+Epoch [50/100], Loss: -0.8827, KL divergence: 0.0388, Perplexity: 0.4493
+Epoch [60/100], Loss: -0.8846, KL divergence: 0.0278, Perplexity: 0.4438
+Epoch [70/100], Loss: -0.8899, KL divergence: 0.0244, Perplexity: 0.4400
+Epoch [80/100], Loss: -0.8941, KL divergence: 0.0255, Perplexity: 0.4397
+Epoch [90/100], Loss: -0.8966, KL divergence: 0.0255, Perplexity: 0.4405
+Epoch [100/100], Loss: -0.8978, KL divergence: 0.0252, Perplexity: 0.4404
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 10
+seed = 42
+Epoch [10/100], Loss: -0.8323, KL divergence: 0.0485, Perplexity: 0.4450
+Epoch [20/100], Loss: -0.8557, KL divergence: 0.0681, Perplexity: 0.4583
+Epoch [30/100], Loss: -0.8697, KL divergence: 0.0406, Perplexity: 0.4454
+Epoch [40/100], Loss: -0.8695, KL divergence: 0.0384, Perplexity: 0.4475
+Epoch [50/100], Loss: -0.8780, KL divergence: 0.0270, Perplexity: 0.4394
+Epoch [60/100], Loss: -0.8880, KL divergence: 0.0325, Perplexity: 0.4410
+Epoch [70/100], Loss: -0.8939, KL divergence: 0.0320, Perplexity: 0.4439
+Epoch [80/100], Loss: -0.8962, KL divergence: 0.0258, Perplexity: 0.4398
+Epoch [90/100], Loss: -0.9001, KL divergence: 0.0256, Perplexity: 0.4394
+Epoch [100/100], Loss: -0.9015, KL divergence: 0.0257, Perplexity: 0.4397
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 12
+seed = 42
+Epoch [10/100], Loss: -0.8261, KL divergence: 0.0737, Perplexity: 0.4585
+Epoch [20/100], Loss: -0.8490, KL divergence: 0.0379, Perplexity: 0.4429
+Epoch [30/100], Loss: -0.8659, KL divergence: 0.0384, Perplexity: 0.4429
+Epoch [40/100], Loss: -0.8808, KL divergence: 0.0416, Perplexity: 0.4501
+Epoch [50/100], Loss: -0.8864, KL divergence: 0.0357, Perplexity: 0.4437
+Epoch [60/100], Loss: -0.8946, KL divergence: 0.0334, Perplexity: 0.4428
+Epoch [70/100], Loss: -0.8997, KL divergence: 0.0351, Perplexity: 0.4490
+Epoch [80/100], Loss: -0.9041, KL divergence: 0.0258, Perplexity: 0.4400
+Epoch [90/100], Loss: -0.9076, KL divergence: 0.0280, Perplexity: 0.4418
+Epoch [100/100], Loss: -0.9090, KL divergence: 0.0279, Perplexity: 0.4418
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 14
+seed = 42
+Epoch [10/100], Loss: -0.8119, KL divergence: 0.0961, Perplexity: 0.4675
+Epoch [20/100], Loss: -0.8527, KL divergence: 0.0476, Perplexity: 0.4446
+Epoch [30/100], Loss: -0.8603, KL divergence: 0.0454, Perplexity: 0.4444
+Epoch [40/100], Loss: -0.8660, KL divergence: 0.0328, Perplexity: 0.4418
+Epoch [50/100], Loss: -0.8767, KL divergence: 0.0436, Perplexity: 0.4436
+Epoch [60/100], Loss: -0.8837, KL divergence: 0.0350, Perplexity: 0.4443
+Epoch [70/100], Loss: -0.8908, KL divergence: 0.0325, Perplexity: 0.4394
+Epoch [80/100], Loss: -0.8955, KL divergence: 0.0304, Perplexity: 0.4411
+Epoch [90/100], Loss: -0.8989, KL divergence: 0.0290, Perplexity: 0.4406
+Epoch [100/100], Loss: -0.9003, KL divergence: 0.0289, Perplexity: 0.4407
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 16
+seed = 42
+Epoch [10/100], Loss: -0.8296, KL divergence: 0.0646, Perplexity: 0.4497
+Epoch [20/100], Loss: -0.8578, KL divergence: 0.0379, Perplexity: 0.4372
+Epoch [30/100], Loss: -0.8632, KL divergence: 0.0431, Perplexity: 0.4431
+Epoch [40/100], Loss: -0.8767, KL divergence: 0.0398, Perplexity: 0.4405
+Epoch [50/100], Loss: -0.8850, KL divergence: 0.0352, Perplexity: 0.4417
+Epoch [60/100], Loss: -0.8895, KL divergence: 0.0335, Perplexity: 0.4430
+Epoch [70/100], Loss: -0.8968, KL divergence: 0.0327, Perplexity: 0.4433
+Epoch [80/100], Loss: -0.9014, KL divergence: 0.0323, Perplexity: 0.4429
+Epoch [90/100], Loss: -0.9045, KL divergence: 0.0310, Perplexity: 0.4422
+Epoch [100/100], Loss: -0.9059, KL divergence: 0.0308, Perplexity: 0.4425
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 18
+seed = 42
+Epoch [10/100], Loss: -0.8287, KL divergence: 0.0556, Perplexity: 0.4487
+Epoch [20/100], Loss: -0.8485, KL divergence: 0.0480, Perplexity: 0.4442
+Epoch [30/100], Loss: -0.8659, KL divergence: 0.0411, Perplexity: 0.4428
+Epoch [40/100], Loss: -0.8800, KL divergence: 0.0412, Perplexity: 0.4457
+Epoch [50/100], Loss: -0.8851, KL divergence: 0.0377, Perplexity: 0.4438
+Epoch [60/100], Loss: -0.8947, KL divergence: 0.0431, Perplexity: 0.4472
+Epoch [70/100], Loss: -0.9023, KL divergence: 0.0344, Perplexity: 0.4415
+Epoch [80/100], Loss: -0.9073, KL divergence: 0.0342, Perplexity: 0.4447
+Epoch [90/100], Loss: -0.9108, KL divergence: 0.0351, Perplexity: 0.4451
+Epoch [100/100], Loss: -0.9123, KL divergence: 0.0350, Perplexity: 0.4450
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 20
+seed = 42
