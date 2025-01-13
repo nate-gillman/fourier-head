@@ -164,3 +164,57 @@ regularization_gamma = 1e-6
 dataset = gaussian
 fourier_frequencies = 8
 seed = 1
+Epoch [10/500], Loss: -0.8279, KL divergence: 0.0744, Perplexity: 0.4295
+Epoch [20/500], Loss: -0.8390, KL divergence: 0.0654, Perplexity: 0.4235
+Epoch [30/500], Loss: -0.8574, KL divergence: 0.0420, Perplexity: 0.4151
+Epoch [40/500], Loss: -0.8580, KL divergence: 0.0445, Perplexity: 0.4140
+Epoch [50/500], Loss: -0.8654, KL divergence: 0.0351, Perplexity: 0.4147
+Epoch [60/500], Loss: -0.8667, KL divergence: 0.0580, Perplexity: 0.4246
+Epoch [70/500], Loss: -0.8694, KL divergence: 0.0354, Perplexity: 0.4093
+Epoch [80/500], Loss: -0.8709, KL divergence: 0.0365, Perplexity: 0.4107
+Epoch [90/500], Loss: -0.8716, KL divergence: 0.0482, Perplexity: 0.4154
+Epoch [100/500], Loss: -0.8771, KL divergence: 0.0375, Perplexity: 0.4092
+Epoch [110/500], Loss: -0.8754, KL divergence: 0.0508, Perplexity: 0.4191
+Epoch [120/500], Loss: -0.8766, KL divergence: 0.0524, Perplexity: 0.4186
+Epoch [130/500], Loss: -0.8760, KL divergence: 0.0421, Perplexity: 0.4164
+Epoch [140/500], Loss: -0.8795, KL divergence: 0.0373, Perplexity: 0.4111
+Epoch [150/500], Loss: -0.8806, KL divergence: 0.0394, Perplexity: 0.4121
+Epoch [160/500], Loss: -0.8816, KL divergence: 0.0336, Perplexity: 0.4099
+Epoch [170/500], Loss: -0.8841, KL divergence: 0.0289, Perplexity: 0.4091
+Epoch [180/500], Loss: -0.8837, KL divergence: 0.0342, Perplexity: 0.4082
+Epoch [190/500], Loss: -0.8814, KL divergence: 0.0415, Perplexity: 0.4117
+Epoch [200/500], Loss: -0.8839, KL divergence: 0.0348, Perplexity: 0.4115
+Epoch [210/500], Loss: -0.8868, KL divergence: 0.0453, Perplexity: 0.4164
+Epoch [220/500], Loss: -0.8880, KL divergence: 0.0347, Perplexity: 0.4074
+Epoch [230/500], Loss: -0.8870, KL divergence: 0.0372, Perplexity: 0.4116
+Epoch [240/500], Loss: -0.8898, KL divergence: 0.0343, Perplexity: 0.4102
+Epoch [250/500], Loss: -0.8880, KL divergence: 0.0317, Perplexity: 0.4074
+Epoch [260/500], Loss: -0.8911, KL divergence: 0.0357, Perplexity: 0.4110
+Epoch [270/500], Loss: -0.8912, KL divergence: 0.0293, Perplexity: 0.4061
+Epoch [280/500], Loss: -0.8910, KL divergence: 0.0331, Perplexity: 0.4076
+Epoch [290/500], Loss: -0.8918, KL divergence: 0.0318, Perplexity: 0.4084
+Epoch [300/500], Loss: -0.8927, KL divergence: 0.0317, Perplexity: 0.4066
+Epoch [310/500], Loss: -0.8928, KL divergence: 0.0316, Perplexity: 0.4080
+Epoch [320/500], Loss: -0.8949, KL divergence: 0.0336, Perplexity: 0.4081
+Epoch [330/500], Loss: -0.8942, KL divergence: 0.0325, Perplexity: 0.4079
+Epoch [340/500], Loss: -0.8941, KL divergence: 0.0355, Perplexity: 0.4082
+Epoch [350/500], Loss: -0.8953, KL divergence: 0.0327, Perplexity: 0.4073
+Epoch [360/500], Loss: -0.8959, KL divergence: 0.0343, Perplexity: 0.4086
+Epoch [370/500], Loss: -0.8962, KL divergence: 0.0335, Perplexity: 0.4075
+Epoch [380/500], Loss: -0.8976, KL divergence: 0.0344, Perplexity: 0.4083
+Epoch [390/500], Loss: -0.8976, KL divergence: 0.0331, Perplexity: 0.4077
+Epoch [400/500], Loss: -0.8977, KL divergence: 0.0336, Perplexity: 0.4069
+Epoch [410/500], Loss: -0.8976, KL divergence: 0.0326, Perplexity: 0.4078
+Epoch [420/500], Loss: -0.8985, KL divergence: 0.0322, Perplexity: 0.4074
+Epoch [430/500], Loss: -0.8988, KL divergence: 0.0328, Perplexity: 0.4076
+Epoch [440/500], Loss: -0.8990, KL divergence: 0.0328, Perplexity: 0.4076
+Epoch [450/500], Loss: -0.8991, KL divergence: 0.0329, Perplexity: 0.4075
+Epoch [460/500], Loss: -0.8994, KL divergence: 0.0328, Perplexity: 0.4075
+Epoch [470/500], Loss: -0.8996, KL divergence: 0.0330, Perplexity: 0.4075
+Epoch [480/500], Loss: -0.8997, KL divergence: 0.0330, Perplexity: 0.4076
+Epoch [490/500], Loss: -0.8998, KL divergence: 0.0329, Perplexity: 0.4075
+Epoch [500/500], Loss: -0.8998, KL divergence: 0.0330, Perplexity: 0.4076
+regularization_gamma = 1e-6
+dataset = gaussian
+fourier_frequencies = 10
+seed = 1

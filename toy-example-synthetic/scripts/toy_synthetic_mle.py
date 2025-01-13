@@ -186,6 +186,9 @@ class MLP(nn.Module):
         elif head == 'gmm-mle':
             self.mlp_head = GMM_Head_MLE(32, num_gaussians)
 
+        else:
+            return ValueError("Invalid head type")
+
         self.layers = nn.Sequential(
             nn.Linear(input_size, 64),
             nn.ReLU(),
@@ -285,7 +288,6 @@ def run_experiment(
             elif head == 'gmm-mle':
                 # loss is negative log likelihood
                 pdf_values = outputs.evaluate_at(labels)
-                #print('loss pdf ', pdf_values)
                 loss = torch.mean(-torch.log(pdf_values + 1e-10))
 
             # Backward pass and optimization
@@ -319,9 +321,7 @@ def run_experiment(
                     model_pdf_vals.append(model_pdf_vals_)
                 model_pdf_vals = torch.stack(model_pdf_vals).T # (1000, 200)
                 model_pdf_vals = model_pdf_vals * (2.0/bins)
-                #print(model_pdf_vals.sum(dim=1))
                 
-
                 if epoch == epochs-1:
                     saved_pdfs = (model_pdf_vals, target_pdfs)
 
