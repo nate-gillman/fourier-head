@@ -217,7 +217,7 @@ def parse_arguments():
 
 if __name__ == "__main__":
     args = parse_arguments()
-    epochs = 20
+    epochs = 500
     num_samples = 5000
     var = 0.01
     bins = 50

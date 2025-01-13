@@ -38,7 +38,7 @@ for path in sys.path:
         sys.path.append(path.replace("/toy-example-synthetic/scripts", "/"))
 
 from fourier_head_mle import Fourier_Head_MLE
-# from gmm_head import GMM_Head
+from gmm_head_mle import GMM_Head_MLE
 
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
@@ -116,7 +116,7 @@ def plot_sampling_comparison(fourier_x, fourier_pdf, target_x, target_pdf, outpu
     
     # Plot both PDFs as lines
     ax.plot(target_x, target_pdf, color='tab:green', linewidth=2, label='Target PDF')
-    ax.plot(fourier_x, fourier_pdf, color='tab:blue', linewidth=2, label='Fourier PDF')
+    ax.plot(fourier_x, fourier_pdf, color='tab:blue', linewidth=2, label='Model PDF')
     # plot sampled PMF
     if empirical_pmf is not None:
         ax.bar(target_x, empirical_pmf, width=target_x[1]-target_x[0], color="tab:blue", alpha=0.4, label=f"Empirical Model PMF")
@@ -183,6 +183,8 @@ class MLP(nn.Module):
         self.mlp_head = nn.Linear(32, num_classes)
         if head == 'fourier-mle':
             self.mlp_head = Fourier_Head_MLE(32, num_frequencies, regularizion_gamma)
+        elif head == 'gmm-mle':
+            self.mlp_head = GMM_Head_MLE(32, num_gaussians)
 
         self.layers = nn.Sequential(
             nn.Linear(input_size, 64),
@@ -208,7 +210,7 @@ def run_experiment(
     batch_size=32, 
     seed=42, 
     gamma=0, 
-    bins=500,
+    bins=1000,
     graphing=False,
     logging=False):
 
@@ -237,11 +239,10 @@ def run_experiment(
     undig_test = X_test # unquantized version of test data
 
     # Convert to PyTorch tensors
-    if head == 'fourier-mle': # want continuous values...
-        X_train = torch.tensor(X_train, dtype=torch.float32)
-        X_test = torch.tensor(X_test, dtype=torch.float32)
-        y_train = torch.tensor(y_train, dtype=torch.float32)
-        y_test = torch.tensor(y_test, dtype=torch.float32)
+    X_train = torch.tensor(X_train, dtype=torch.float32)
+    X_test = torch.tensor(X_test, dtype=torch.float32)
+    y_train = torch.tensor(y_train, dtype=torch.float32)
+    y_test = torch.tensor(y_test, dtype=torch.float32)
 
     # Create PyTorch DataLoader for batching
     train_dataset = TensorDataset(X_train, y_train)
@@ -250,7 +251,6 @@ def run_experiment(
     # Instantiate the model, loss function, and optimizer
     model = MLP(input_size=2, num_classes=bins, head=head, num_frequencies=freqs, regularizion_gamma=gamma, num_gaussians=args.n_gaussians).cuda()
 
-    criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.001)
     scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=epochs, eta_min=1e-6)
     kl_loss = nn.KLDivLoss(reduction='batchmean')
@@ -282,6 +282,12 @@ def run_experiment(
                 pdf_values = outputs.evaluate_at(labels)
                 loss = torch.mean(-torch.log(pdf_values + 1e-10)) + model.mlp_head.loss_regularization
 
+            elif head == 'gmm-mle':
+                # loss is negative log likelihood
+                pdf_values = outputs.evaluate_at(labels)
+                #print('loss pdf ', pdf_values)
+                loss = torch.mean(-torch.log(pdf_values + 1e-10))
+
             # Backward pass and optimization
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=0.1)
@@ -301,62 +307,62 @@ def run_experiment(
             model.eval()
             # Evaluate the model
             with torch.no_grad():
+               
+                model_pdf = model(X_test.cuda()) # (1000, 2) --> (a fourier pdf which maps (bs=1000,) --> (bs=1000)
 
-                if head == "fourier-mle":
-                    model_pdf = model(X_test.cuda()) # (1000, 2) --> (a fourier pdf which maps (bs=1000,) --> (bs=1000)
+                # PART 1: visualize PDF by evaluating the PDF and graphing it
+                model_pdf = model(X_test.cuda()) # (1000, 2) --> (a fourier pdf which maps (bs=1000,) --> (bs=1000)
+                model_pdf_x_vals = torch.from_numpy(bin_centers).expand(X_test.shape[0], bin_centers.shape[0]).cuda() # (1000, 200)
+                model_pdf_vals = []
+                for batch_idx in range(model_pdf_x_vals.shape[1]):
+                    model_pdf_vals_ = model_pdf.evaluate_at(model_pdf_x_vals[:, batch_idx])
+                    model_pdf_vals.append(model_pdf_vals_)
+                model_pdf_vals = torch.stack(model_pdf_vals).T # (1000, 200)
+                model_pdf_vals = model_pdf_vals * (2.0/bins)
+                #print(model_pdf_vals.sum(dim=1))
+                
 
-                    # PART 1: visualize PDF by evaluating the PDF and graphing it
-                    model_pdf = model(X_test.cuda()) # (1000, 2) --> (a fourier pdf which maps (bs=1000,) --> (bs=1000)
-                    model_pdf_x_vals = torch.from_numpy(bin_centers).expand(X_test.shape[0], bin_centers.shape[0]).cuda() # (1000, 200)
-                    model_pdf_vals = []
-                    for batch_idx in range(model_pdf_x_vals.shape[1]):
-                        model_pdf_vals_ = model_pdf.evaluate_at(model_pdf_x_vals[:, batch_idx])
-                        model_pdf_vals.append(model_pdf_vals_)
-                    model_pdf_vals = torch.stack(model_pdf_vals).T # (1000, 200)
-                    # as meshes are different widths, need to guarantee the areas are equal
-                    model_pdf_vals = model_pdf_vals * (2/bins)
-                    if epoch == epochs-1:
-                        saved_pdfs = (model_pdf_vals, target_pdfs)
-                    assert(torch.isclose(target_pdfs.mean(),model_pdf_vals.mean().to(torch.float64)))
+                if epoch == epochs-1:
+                    saved_pdfs = (model_pdf_vals, target_pdfs)
 
-                    if graphing:
-                        # PART 1B, optional: visualize the PDF by sampling from it, and graphing histogram
-                        VISUALIZE_SAMPLES_ALSO = [False, True][1]
-                        if VISUALIZE_SAMPLES_ALSO:
-                            
-                            NUM_SAMPLES_TO_VISUALIZE = 1024
-                            model_pdf_samples = model_pdf.sample_from(NUM_SAMPLES_TO_VISUALIZE) # (bs, NUM_SAMPLES_TO_VISUALIZE)
-
-                        # PART 2: actually writing the graphs...
-                        graphs_dir = "../output/graphs"
-                        os.makedirs(graphs_dir, exist_ok=True)
-                        idxs = [0,1,2,3]
-                        for idx in idxs:
-
-                            empirical_model_pmf = None
-                            if VISUALIZE_SAMPLES_ALSO:
-                                empirical_model_pmf = compute_nearest_bin_pmf(bin_centers, model_pdf_samples[idx].cpu().numpy())
-                            plot_sampling_comparison(
-                                model_pdf_x_vals.cpu()[0], # (200,)
-                                model_pdf_vals[idx].cpu(), # (200,)
-                                bin_centers, # (50,)
-                                target_pdfs[idx].cpu(), # (50,)
-                                os.path.join(graphs_dir, f"pdf_comparison_idx_{idx}_epoch_{epoch+1}.png"),
-                                empirical_pmf=empirical_model_pmf, # (50,)
-                            )
-                    
+                if graphing:
+                    # PART 1B, optional: visualize the PDF by sampling from it, and graphing histogram
+                    VISUALIZE_SAMPLES_ALSO = [False, True][0]
+                    if VISUALIZE_SAMPLES_ALSO:
                         
-                    # KL divergence
-                    kl = kl_loss(torch.clamp(model_pdf_vals, min=1e-10).log(), torch.clamp(target_pdfs, min=1e-10))
+                        NUM_SAMPLES_TO_VISUALIZE = 1024
+                        model_pdf_samples = model_pdf.sample_from(NUM_SAMPLES_TO_VISUALIZE) # (bs, NUM_SAMPLES_TO_VISUALIZE)
 
-                    # Perplexity
-                    model_pdf_test = torch.clamp(model_pdf.evaluate_at(y_test.cuda()), min=1e-10)
-                    nll = torch.mean(-torch.log(model_pdf_test))
-                    perplexity = torch.exp(nll)
+                    # PART 2: actually writing the graphs...
+                    graphs_dir = "../output/graphs"
+                    os.makedirs(graphs_dir, exist_ok=True)
+                    idxs = [0,1,2,3]
+                    for idx in idxs:
 
-                    tqdm.write(f'Epoch [{epoch + 1}/{epochs}], Loss: {avg_loss:.4f}, KL divergence: {kl:.4f}, Perplexity: {perplexity:.4f}')
-                    if logging:
-                        wandb.log({"loss": avg_loss, "accuracy": accuracy, "KL divergence": kl, "Perplexity": perplexity})
+                        empirical_model_pmf = None
+                        if VISUALIZE_SAMPLES_ALSO:
+                            empirical_model_pmf = compute_nearest_bin_pmf(bin_centers, model_pdf_samples[idx].cpu().numpy())
+                        plot_sampling_comparison(
+                            model_pdf_x_vals.cpu()[0], # (200,)
+                            model_pdf_vals[idx].cpu(), # (200,)
+                            bin_centers, # (50,)
+                            target_pdfs[idx].cpu(), # (50,)
+                            os.path.join(graphs_dir, f"pdf_comparison_idx_{idx}_epoch_{epoch+1}.png"),
+                            empirical_pmf=empirical_model_pmf, # (50,)
+                        )
+                
+                    
+                # KL divergence
+                kl = kl_loss(torch.clamp(model_pdf_vals, min=1e-10).log(), torch.clamp(target_pdfs, min=1e-10))
+
+                # Perplexity
+                model_pdf_test = torch.clamp(model_pdf.evaluate_at(y_test.cuda()), min=1e-10)
+                nll = torch.mean(-torch.log(model_pdf_test))
+                perplexity = torch.exp(nll)
+
+                tqdm.write(f'Epoch [{epoch + 1}/{epochs}], Loss: {avg_loss:.4f}, KL divergence: {kl:.4f}, Perplexity: {perplexity:.4f}')
+                if logging:
+                    wandb.log({"loss": avg_loss, "accuracy": accuracy, "KL divergence": kl, "Perplexity": perplexity})
 
             model.train()
 
@@ -391,7 +397,7 @@ def parse_arguments():
 
 if __name__ == "__main__":
     args = parse_arguments()
-    epochs = 100
+    epochs = 500
     num_samples = args.dataset_size
     var = 0.01
     dataset_dict = {'gaussian': generate_gaussian_dataset, 'gmm2': generate_gmm_dataset2, 'beta': generate_beta_dataset}
@@ -437,4 +443,4 @@ if __name__ == "__main__":
         json.dump(metrics_all, json_file, indent=4)
 
     ## Run script via 
-    ## python toy_synthetic.py --head "fourier-mle" --n_freqs 12 --dataset "gmm2" --gamma 0.0
+    ## python toy_synthetic_mle.py --head "fourier-mle" --n_freqs 12 --dataset "gmm2" --gamma 0.0

@@ -9,7 +9,7 @@
 #SBATCH -N 1 # gives one node, makes sure cpu cores are on same node
 #SBATCH -c 1 # num CPU cores
 #SBATCH --mem=31G
-#SBATCH -t 24:00:00
+#SBATCH -t 30:00:00
 #SBATCH -e output/slurm_logs/%j.err
 #SBATCH -o output/slurm_logs/%j.out
 #SBATCH --mail-user=daksh_aggarwal@brown.edu
@@ -53,6 +53,10 @@ cd ${HOME_DIR}
 # sh ./run_exps_fourier-mle_no_reg.sh gmm2
 # sh ./run_exps_fourier-mle_no_reg.sh beta
 
-sh ./run_exps_fourier-mle_reg.sh gaussian
-sh ./run_exps_fourier-mle_reg.sh gmm2
-sh ./run_exps_fourier-mle_reg.sh beta
+# sh ./run_exps_fourier-mle_reg.sh gaussian
+# sh ./run_exps_fourier-mle_reg.sh gmm2
+# sh ./run_exps_fourier-mle_reg.sh beta
+
+sh ./run_exps_gmm-mle.sh gaussian
+sh ./run_exps_gmm-mle.sh gmm2
+sh ./run_exps_gmm-mle.sh beta

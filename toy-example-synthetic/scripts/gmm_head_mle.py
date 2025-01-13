@@ -56,33 +56,18 @@ class GMM_PDF(nn.Module):
             pdf_values (torch.Tensor): same shape as x
                 The GMM's PDF value at each x.
         """
-        # Ensure x is on the same device
-        device = self.means.device
-        x = x.to(device)
-
-        if x.ndim == 1:
-            # shape: (batch_size,) => (batch_size, 1)
-            x = x.unsqueeze(1)
-        else:
-            # shape: (batch_size, M) => (batch_size, 1, M)
-            x = x.unsqueeze(1)
-
         # Evaluate each Gaussian’s pdf via torch.distributions.Normal
         # means, stds: (batch_size, num_gaussians)
-        # broadcast so that final shape => (batch_size, num_gaussians, M)
-        dist = Normal(self.means.unsqueeze(-1), self.stds.unsqueeze(-1))  # shape broadcast
-        log_probs = dist.log_prob(x) # shape: (batch_size, num_gaussians, M)
+        # broadcast so that final shape => (batch_size, num_gaussians)
+        dist = Normal(self.means, self.stds)  # shape broadcast
+        log_probs = dist.log_prob(x.unsqueeze(-1)) 
         pdf_values_per_gaussian = torch.exp(log_probs)
 
         # Weight each Gaussian by mixture_weights
-        weighted_pdfs = pdf_values_per_gaussian * self.mixture_weights.unsqueeze(-1)
-
-        # Sum across gaussians
-        # result => (batch_size, M)
+        weighted_pdfs = pdf_values_per_gaussian * self.mixture_weights
         pdf_values = weighted_pdfs.sum(dim=1)
 
-        # Squeeze out the trailing dimension if M=1
-        return pdf_values.squeeze(-1)
+        return pdf_values
 
     def sample_from(self, num_samples=1):
         """
@@ -119,9 +104,8 @@ class GMM_Head_MLE(nn.Module):
         input_dim,
         num_gaussians,
         learn_stds=True,
-        mixture_weights_learned=True,
-        init_std=2.0,
-        device="cpu"
+        mixture_weights_learned=False,
+        device="cuda"
     ):
         """
          A PyTorch implementation of a Continuous Fourier Head, which inputs a vector, and uses a linear layer 
@@ -147,13 +131,12 @@ class GMM_Head_MLE(nn.Module):
 
         # 2) Standard deviations
         if learn_stds:
-            # One std per Gaussian, so size = (num_gaussians,)
-            self.log_stds = nn.Parameter(torch.full((num_gaussians,), math.log(init_std)))
+            self.log_stds = nn.Parameter(torch.full((num_gaussians,), math.log(2.0)))
         else:
             # Fixed std
             self.register_buffer(
                 "fixed_std",
-                torch.tensor(init_std, device=device, dtype=torch.float),
+                torch.tensor(2.0, device=device, dtype=torch.float)
             )
 
         # 3) Mixture weights
@@ -187,7 +170,7 @@ class GMM_Head_MLE(nn.Module):
 
         # Stds
         if self.learn_stds:
-            # apply softplus or exp to ensure positivity
+            # apply softplus to ensure positivity
             # shape => (num_gaussians,) => broadcast to (batch_size, num_gaussians)
             std_values = F.softplus(self.log_stds)
             stds = std_values.unsqueeze(0).expand(batch_size, -1)
@@ -205,6 +188,5 @@ class GMM_Head_MLE(nn.Module):
             mixture_weights = means.new_ones(batch_size, self.num_gaussians)
             mixture_weights = mixture_weights / float(self.num_gaussians)
 
-        # Build the PDF object
         gmm_pdf = GMM_PDF(means, stds, mixture_weights)
         return gmm_pdf
