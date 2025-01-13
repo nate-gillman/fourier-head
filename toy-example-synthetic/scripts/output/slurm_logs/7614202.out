@@ -1,0 +1,3 @@
+dataset = gaussian
+gmm head
+seed = 1
