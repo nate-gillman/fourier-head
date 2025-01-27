@@ -43,12 +43,12 @@ from generate_datasets import *
 class MLP(nn.Module):
     def __init__(self, input_size, num_classes, head='linear', num_frequencies=9, num_gaussians=0, regularizion_gamma=0):
         super(MLP, self).__init__()
-        self.mlp_head = nn.Linear(32, num_classes)
-        if head == 'fourier':
+        if head == "linear":
+            self.mlp_head = nn.Linear(32, num_classes)
+        elif head == 'fourier':
             self.mlp_head = Fourier_Head(32, num_classes, num_frequencies, regularizion_gamma)
         elif head == 'gmm':
             self.mlp_head = GMM_Head(32, num_classes, num_gaussians)
-
         else:
             return NotImplementedError
 
