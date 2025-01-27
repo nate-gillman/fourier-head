@@ -57,6 +57,8 @@ cd ${HOME_DIR}
 # sh ./run_exps_fourier-mle_reg.sh gmm2
 # sh ./run_exps_fourier-mle_reg.sh beta
 
-sh ./run_exps_gmm-mle.sh gaussian
-sh ./run_exps_gmm-mle.sh gmm2
-sh ./run_exps_gmm-mle.sh beta
+# sh ./run_exps_gmm-mle.sh gaussian
+# sh ./run_exps_gmm-mle.sh gmm2
+# sh ./run_exps_gmm-mle.sh beta
+
+
