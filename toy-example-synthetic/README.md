@@ -52,6 +52,7 @@ sh ./run_exps_fourier_reg.sh beta
 
 If you would like to also run experiments with the GMM-head (which learns parameters for an optimal Gaussian mixture model), you can run:
 ```bash
+# experiments with gaussian mixture model head
 sh ./run_exps_gmm.sh gaussian
 sh ./run_exps_gmm.sh gmm2
 sh ./run_exps_gmm.sh beta
@@ -59,6 +60,7 @@ sh ./run_exps_gmm.sh beta
 
 You can also consider a pointwise estimate for the value of z given (x,y) via an MLP trained using an MSE objective. Linear-MSE experiments can be run using:
 ```bash
+# experiments with linear regression head
 sh ./run_exps_linear_regression.sh gaussian
 sh ./run_exps_linear_regression.sh gmm2
 sh ./run_exps_linear_regression.sh beta
