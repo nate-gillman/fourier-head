@@ -34,28 +34,43 @@ conda activate chronos-doover
 HOME_DIR=/oscar/data/superlab/users/nates_stuff/fourier-head/toy-example-synthetic
 cd ${HOME_DIR}
 
-# linear head, running all datasets
 cd scripts
-sh ./run_exps_linear.sh gaussian
-sh ./run_exps_linear.sh gmm2
-sh ./run_exps_linear.sh beta
 
-# fourier head with no regularization
-sh ./run_exps_fourier_no_reg.sh gaussian
-sh ./run_exps_fourier_no_reg.sh gmm2
-sh ./run_exps_fourier_no_reg.sh beta
+# # linear head, running all datasets
+# sh ./run_exps_linear.sh gaussian
+# sh ./run_exps_linear.sh gmm2
+# sh ./run_exps_linear.sh beta
+
+# # fourier head with no regularization
+# sh ./run_exps_fourier_no_reg.sh gaussian
+# sh ./run_exps_fourier_no_reg.sh gmm2
+# sh ./run_exps_fourier_no_reg.sh beta
+
+# # experiments with regularization
+# sh ./run_exps_fourier_reg.sh gaussian
+# sh ./run_exps_fourier_reg.sh gmm2
+# sh ./run_exps_fourier_no_reg.sh beta
+
+# sh ./run_exps_gmm.sh gaussian
+# sh ./run_exps_gmm.sh gmm2
+# sh ./run_exps_gmm.sh beta
+
+# sh ./run_exps_linear_regression.sh gaussian
+# sh ./run_exps_linear_regression.sh gmm2
+# sh ./run_exps_linear_regression.sh beta
+
+# Fourier-MLE head with no regularization
+# sh ./run_exps_fourier-mle_no_reg.sh gaussian
+# sh ./run_exps_fourier-mle_no_reg.sh gmm2
+# sh ./run_exps_fourier-mle_no_reg.sh beta
 
 # experiments with regularization
-sh ./run_exps_fourier_reg.sh gaussian
-sh ./run_exps_fourier_reg.sh gmm2
-sh ./run_exps_fourier_no_reg.sh beta
+# sh ./run_exps_fourier-mle_reg.sh gaussian
+# sh ./run_exps_fourier-mle_reg.sh gmm2
+# sh ./run_exps_fourier-mle_reg.sh beta
 
-sh ./run_exps_gmm.sh gaussian
-sh ./run_exps_gmm.sh gmm2
-sh ./run_exps_gmm.sh beta
-
-sh ./run_exps_linear_regression.sh gaussian
-sh ./run_exps_linear_regression.sh gmm2
-sh ./run_exps_linear_regression.sh beta
+# sh ./run_exps_gmm-mle.sh gaussian
+# sh ./run_exps_gmm-mle.sh gmm2
+sh ./run_exps_gmm-mle.sh beta
 
 
