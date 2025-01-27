@@ -47,7 +47,7 @@ sh ./run_exps_fourier_no_reg.sh beta
 # experiments with regularization
 sh ./run_exps_fourier_reg.sh gaussian
 sh ./run_exps_fourier_reg.sh gmm2
-sh ./run_exps_fourier_no_reg.sh beta
+sh ./run_exps_fourier_reg.sh beta
 ```
 
 If you would like to also run experiments with the GMM-head (which learns parameters for an optimal Gaussian mixture model), you can run:
@@ -95,7 +95,7 @@ sh ./run_exps_fourier-mle_no_reg.sh beta
 # experiments with regularization
 sh ./run_exps_fourier-mle_reg.sh gaussian
 sh ./run_exps_fourier-mle_reg.sh gmm2
-sh ./run_exps_fourier-mle_no_reg.sh beta
+sh ./run_exps_fourier-mle_reg.sh beta
 ```
 
 If you would like to also run experiments with the GMM-MLE head (which learns parameters for an optimal Gaussian mixture model using an MLE objective), you can run:
