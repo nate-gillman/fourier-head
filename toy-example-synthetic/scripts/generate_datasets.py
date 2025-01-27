@@ -32,9 +32,10 @@ def generate_gaussian_dataset(n_samples, var=0.1, seed=42):
     return dataset
 
 def gaussian_pdf(bin_centers, loc, var=0.01):
-    mean = loc[0]
-    if len(loc) == 2:
-        mean = loc[1]
+    if hasattr(loc, '__len__'):
+        mean = loc[1] if len(loc) == 2 else loc[0]
+    else:
+        mean = loc
     pmf =  norm.pdf(bin_centers, mean, np.sqrt(var))*2 / bin_centers.shape[0]
     return pmf / np.sum(pmf)
 
