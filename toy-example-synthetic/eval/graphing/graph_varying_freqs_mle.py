@@ -30,8 +30,6 @@ def build_graphs(data, gmm_values, gmm_stds, output_fname, title=""):
     # X-axis values (2, 4, 6, ..., 32)
     generations = list(range(2, 22, 2))
     for i, (metric, values) in enumerate(data.items()):
-        print(metric)
-        print(values)
         for gamma, (gamma_values, gamma_std) in values.items():
             if gamma == 'gamma0':
                 axs[i].plot(generations, gamma_values, c="tab:orange", label='Fourier, no regularization')
