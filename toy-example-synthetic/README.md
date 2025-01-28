@@ -29,7 +29,7 @@ python toy_synthetic.py --head "fourier" --n_freqs 12 --gamma 1e-6 --dataset "gm
 
 KL divergence and MSE are evaluated and printed every 10 epochs. Each run saves the final predicted pmf and true pmf to the appropriate model directory as `npy` files under the `output` directory. The metrics are saved in `model_metrics.json` in the model directory.
 
-To reproduce all the synthetic toy experiments using cross entropy loss, you can run the following scripts.
+To reproduce all the synthetic toy experiments, you can run the following scripts.
 Each script took less than 24h on a geforce3090 GPU.
 
 ```bash
@@ -48,19 +48,13 @@ sh ./run_exps_fourier_no_reg.sh beta
 sh ./run_exps_fourier_reg.sh gaussian
 sh ./run_exps_fourier_reg.sh gmm2
 sh ./run_exps_fourier_reg.sh beta
-```
 
-If you would like to also run experiments with the GMM-head (which learns parameters for an optimal Gaussian mixture model), you can run:
-```bash
 # experiments with gaussian mixture model head
 sh ./run_exps_gmm.sh gaussian
 sh ./run_exps_gmm.sh gmm2
 sh ./run_exps_gmm.sh beta
-```
 
-You can also consider a pointwise estimate for the value of z given (x,y) via an MLP trained using an MSE objective. Linear-MSE experiments can be run using:
-```bash
-# experiments with linear regression head
+# experiments with linear regression head (pointwise estimate)
 sh ./run_exps_linear_regression.sh gaussian
 sh ./run_exps_linear_regression.sh gmm2
 sh ./run_exps_linear_regression.sh beta
@@ -98,11 +92,8 @@ sh ./run_exps_fourier-mle_no_reg.sh beta
 sh ./run_exps_fourier-mle_reg.sh gaussian
 sh ./run_exps_fourier-mle_reg.sh gmm2
 sh ./run_exps_fourier-mle_reg.sh beta
-```
 
-If you would like to also run experiments with the GMM-MLE head (which learns parameters for an optimal Gaussian mixture model using an MLE objective), you can run:
-
-```bash
+# experiments with GMM-MLE head
 sh ./run_exps_gmm-mle.sh gaussian
 sh ./run_exps_gmm-mle.sh gmm2
 sh ./run_exps_gmm-mle.sh beta
