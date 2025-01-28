@@ -2,8 +2,6 @@
 
 ![teaser](../misc/assets/toy_predicted_vs_true.png)
 
-## Recreating results from paper
-
 <details>
   <summary><b> Environment setup </b></summary>
 
