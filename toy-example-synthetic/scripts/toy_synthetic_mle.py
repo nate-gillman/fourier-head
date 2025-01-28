@@ -23,7 +23,6 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
 from scipy.stats import norm
 from tqdm import tqdm
 import wandb, json
@@ -39,104 +38,6 @@ for path in sys.path:
 
 from fourier_head_mle import Fourier_Head_MLE
 from gmm_head_mle import GMM_Head_MLE
-
-import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
-
-font_path = '../eval/graphing/Times_New_Roman.ttf'
-fm.fontManager.addfont(font_path)
-plt.rcParams['font.family'] = 'serif'
-plt.rcParams['font.serif'] = 'Times New Roman'
-
-plt.rcParams.update({
-    'font.size': 11,          # Adjust global font size
-    'axes.titlesize': 14,     # Adjust title size
-    'axes.labelsize': 12,     # Adjust axis label size
-    'legend.fontsize': 10,    # Adjust legend font size
-    'xtick.labelsize': 10,    # X-axis tick label size
-    'ytick.labelsize': 10,    # Y-axis tick label size
-    'axes.linewidth': 1.0,    # Adjust axes line width
-    'grid.alpha': 0.6,        # Gridline transparency
-})
-
-def plot_pdf_comparison(fourier_x, fourier_pdf, target_x, target_pdf, output_path):
-    """
-    Plot two PDFs on the same axes.
-    
-    Args:
-        fourier_x: x-values for the fourier PDF (200 points)
-        fourier_pdf: y-values for the fourier PDF (200 points)
-        target_x: x-values for the target PDF (50 points)
-        target_pdf: y-values for the target PDF (50 points)
-        output_path: where it'll be saved
-    """
-
-    ylim = 0.20
-
-    # import matplotlib.pyplot as plt
-    fig, ax = plt.subplots(figsize=(8, 4))
-
-    # Plot both PDFs as lines
-    ax.plot(fourier_x, fourier_pdf, color='tab:blue', linewidth=2, label='Fourier PDF')
-    ax.plot(target_x, target_pdf, color='tab:green', linewidth=2, label='Target PDF')
-    
-    ax.set_ylim(0.0, ylim)
-    ax.set_ylabel('Probability Density')
-    ax.set_xlabel('Value')
-    ax.grid(True, linewidth=0.5)
-    ax.legend(loc='upper right', fontsize=10)
-
-    title = output_path.split("/")[-1].split(".")[0]
-    ax.set_title(title, fontsize=12)
-    
-    plt.tight_layout()
-
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
-    plt.close()
-
-    return None
-
-def plot_sampling_comparison(fourier_x, fourier_pdf, target_x, target_pdf, output_path, empirical_pmf=None):
-    """
-    Plot two PDFs on the same axes.
-    
-    Args:
-        fourier_x: x-values for the fourier PDF (200 points)
-        fourier_pdf: y-values for the fourier PDF (200 points)
-        target_x: x-values for the target PDF (50 points)
-        target_pdf: y-values for the target PDF (50 points)
-        pmf: categorical obtained via sampling
-        output_path: where it'll be saved
-    """
-
-    ylim = 1.5 * target_pdf.max()
-
-    # import matplotlib.pyplot as plt
-    fig, ax = plt.subplots(figsize=(8, 4))
-    
-    # Plot both PDFs as lines
-    ax.plot(target_x, target_pdf, color='tab:green', linewidth=2, label='Target PDF')
-    ax.plot(fourier_x, fourier_pdf, color='tab:blue', linewidth=2, label='Model PDF')
-    # plot sampled PMF
-    if empirical_pmf is not None:
-        ax.bar(target_x, empirical_pmf, width=target_x[1]-target_x[0], color="tab:blue", alpha=0.4, label=f"Empirical Model PMF")
-    
-    ax.set_ylim(0.0, ylim)
-    ax.set_ylabel('Probability Density')
-    ax.set_xlabel('Value')
-    ax.grid(True, linewidth=0.5)
-    ax.legend(loc='upper right', fontsize=10)
-
-    title = output_path.split("/")[-1].split(".")[0]
-    ax.set_title(title, fontsize=12)
-    
-    plt.tight_layout()
-
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
-    plt.close()
-
-    return None
-
 
 def compute_nearest_bin_pmf(bin_centers, samples):
     """
@@ -214,7 +115,6 @@ def run_experiment(
     seed=42, 
     gamma=0, 
     bins=1000,
-    graphing=False,
     logging=False):
 
     # Start a new wandb run to track this script
@@ -268,7 +168,6 @@ def run_experiment(
 
     saved_pdfs = None
     kl = None
-    mse = None
     # Training loop with Wandb logging
     pbar = tqdm(range(epochs), desc="Training Progress")
     for epoch in pbar:
@@ -312,7 +211,6 @@ def run_experiment(
                
                 model_pdf = model(X_test.cuda()) # (1000, 2) --> (a fourier pdf which maps (bs=1000,) --> (bs=1000)
 
-                # PART 1: visualize PDF by evaluating the PDF and graphing it
                 model_pdf = model(X_test.cuda()) # (1000, 2) --> (a fourier pdf which maps (bs=1000,) --> (bs=1000)
                 model_pdf_x_vals = torch.from_numpy(bin_centers).expand(X_test.shape[0], bin_centers.shape[0]).cuda() # (1000, 200)
                 model_pdf_vals = []
@@ -324,34 +222,7 @@ def run_experiment(
                 
                 if epoch == epochs-1:
                     saved_pdfs = (model_pdf_vals, target_pdfs)
-
-                if graphing:
-                    # PART 1B, optional: visualize the PDF by sampling from it, and graphing histogram
-                    VISUALIZE_SAMPLES_ALSO = [False, True][0]
-                    if VISUALIZE_SAMPLES_ALSO:
-                        
-                        NUM_SAMPLES_TO_VISUALIZE = 1024
-                        model_pdf_samples = model_pdf.sample_from(NUM_SAMPLES_TO_VISUALIZE) # (bs, NUM_SAMPLES_TO_VISUALIZE)
-
-                    # PART 2: actually writing the graphs...
-                    graphs_dir = "../output/graphs"
-                    os.makedirs(graphs_dir, exist_ok=True)
-                    idxs = [0,1,2,3]
-                    for idx in idxs:
-
-                        empirical_model_pmf = None
-                        if VISUALIZE_SAMPLES_ALSO:
-                            empirical_model_pmf = compute_nearest_bin_pmf(bin_centers, model_pdf_samples[idx].cpu().numpy())
-                        plot_sampling_comparison(
-                            model_pdf_x_vals.cpu()[0], # (200,)
-                            model_pdf_vals[idx].cpu(), # (200,)
-                            bin_centers, # (50,)
-                            target_pdfs[idx].cpu(), # (50,)
-                            os.path.join(graphs_dir, f"pdf_comparison_idx_{idx}_epoch_{epoch+1}.png"),
-                            empirical_pmf=empirical_model_pmf, # (50,)
-                        )
-                
-                    
+  
                 # KL divergence
                 kl = kl_loss(torch.clamp(model_pdf_vals, min=1e-10).log(), torch.clamp(target_pdfs, min=1e-10))
 
@@ -362,7 +233,7 @@ def run_experiment(
 
                 tqdm.write(f'Epoch [{epoch + 1}/{epochs}], Loss: {avg_loss:.4f}, KL divergence: {kl:.4f}, Perplexity: {perplexity:.4f}')
                 if logging:
-                    wandb.log({"loss": avg_loss, "accuracy": accuracy, "KL divergence": kl, "Perplexity": perplexity})
+                    wandb.log({"loss": avg_loss, "KL divergence": kl, "Perplexity": perplexity})
 
             model.train()
 
@@ -412,16 +283,10 @@ if __name__ == "__main__":
         head=args.head, 
         seed=args.seed,
         gamma=args.gamma,
-        graphing=args.graph,
         logging=args.wandb,
     )
 
-    current_dir = os.getcwd()
-    if os.path.basename(current_dir) == 'scripts':
-        prefix = f'../output/{args.dataset}/'
-    else:
-        prefix = f'toy-example-synthetic/output/{args.dataset}/'
-
+    prefix = f'output/{args.dataset}/'
     model_path = f'{args.head}/{args.gamma}/{args.n_freqs}/'
     os.makedirs(prefix+model_path, exist_ok=True)
     np.save(prefix+model_path+f'pmfs_{args.seed}.npy', pdfs[0].cpu())

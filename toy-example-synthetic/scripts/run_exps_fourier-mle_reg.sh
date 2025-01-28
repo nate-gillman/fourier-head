@@ -15,6 +15,6 @@ for seed in 1 2 3 42; do
     echo "dataset = $dataset"
     echo "fourier_frequencies = $n_freqs"
     echo "seed = $seed"
-    python toy_synthetic_mle.py --head "fourier-mle" --n_freqs $n_freqs --dataset $dataset --gamma 1e-6 --seed $seed
+    python scripts/toy_synthetic_mle.py --head "fourier-mle" --n_freqs $n_freqs --dataset $dataset --gamma 1e-6 --seed $seed
   done
 done

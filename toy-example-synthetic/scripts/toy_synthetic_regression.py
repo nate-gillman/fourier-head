@@ -195,12 +195,7 @@ if __name__ == "__main__":
         bins=bins
     )
 
-    current_dir = os.getcwd()
-    if os.path.basename(current_dir) == 'scripts':
-        prefix = f'../output/{args.dataset}/'
-    else:
-        prefix = f'toy-example-synthetic/output/{args.dataset}/'
-    
+    prefix = f'output/{args.dataset}/'
     model_path = f'linear_mse/0.0/0/'
     os.makedirs(prefix+model_path, exist_ok=True)
 

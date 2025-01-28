@@ -1,74 +1,89 @@
 # Toy Experiment: Learning a Known Conditional Distribution
 
-## Environment
+![teaser](../misc/assets/toy_predicted_vs_true.png)
 
-These experiments work in the `chronos` conda env built in [time-series-forecasting](../time-series-forecasting/README.md).
+<details>
+  <summary><b> Environment setup </b></summary>
 
-## Running the experiments 
+<br>
+
+```bash
+# create and activate conda environment
+conda create -n toy-example-synthetic python=3.11
+conda activate toy-example-synthetic
+
+# install any version of torch, verify it was installed correctly
+pip install torch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0 --index-url https://download.pytorch.org/whl/cu121
+python -c 'import torch; print(torch.cuda.is_available()); a = torch.zeros(5); a = a.to("cuda:0"); print(a)'
+
+# install remaining things
+conda install scikit-learn tqdm pandas matplotlib
+pip install wandb
+```
+
+</details>
+
+## Running the experiments
+
+<b> Example usage </b>
 
 The experiment can be run on three datasets: `gaussian`, `gmm2`, `beta`. 
+This is how you can run the linear classification head on the `gmm2` dataset:
 
-### Example usage (Discrete/Cross Entropy training):
-
-Linear head:
 ```bash
-python toy_synthetic.py --head "linear" --n_freqs 0 --dataset "gmm2"
+python scripts/toy_synthetic.py --head "linear" --n_freqs 0 --dataset "gmm2"
 ```
 
-Fourier head with no regularization:
+This is how you can run the Fourier head with no regularization and 12 frequencies:
 ```bash
-python toy_synthetic.py --head "fourier" --n_freqs 12 --gamma 0.0 --dataset "gmm2" 
+python scripts/toy_synthetic.py --head "fourier" --n_freqs 12 --gamma 0.0 --dataset "gmm2" 
 ```
 
-Fourier head with regularization:
+And this is how you can run the Fourier head with `1e-6` regularization and 12 frequencies:
 ```bash
-python toy_synthetic.py --head "fourier" --n_freqs 12 --gamma 1e-6 --dataset "gmm2" 
+python scripts/toy_synthetic.py --head "fourier" --n_freqs 12 --gamma 1e-6 --dataset "gmm2" 
 ```
 
-* To log the experiments to wandb, use the `--wandb` flag.
-
+To log the experiments to wandb, you can add a `--wandb` flag.
 KL divergence and MSE are evaluated and printed every 10 epochs. Each run saves the final predicted pmf and true pmf to the appropriate model directory as `npy` files under the `output` directory. The metrics are saved in `model_metrics.json` in the model directory.
 
-To reproduce all the synthetic toy experiments using cross entropy loss, you can run the following scripts.
-Each script took less than 24h on a geforce3090 GPU.
+<details>
+  <summary><b> Reproducing all experiments from the paper </b></summary>
+
+<br>
+
+To reproduce all the synthetic toy experiments in the paper, you can run the following scripts.
+Each script takes less than 6h on a geforce3090 GPU.
 
 ```bash
-# linear head, running all datasets
-cd scripts
-sh ./run_exps_linear.sh gaussian
-sh ./run_exps_linear.sh gmm2
-sh ./run_exps_linear.sh beta
+# linear classification head
+sh scripts/run_exps_linear.sh gaussian
+sh scripts/run_exps_linear.sh gmm2
+sh scripts/run_exps_linear.sh beta
 
-# fourier head with no regularization
-sh ./run_exps_fourier_no_reg.sh gaussian
-sh ./run_exps_fourier_no_reg.sh gmm2
-sh ./run_exps_fourier_no_reg.sh beta
+# gaussian mixture model head
+sh scripts/run_exps_gmm.sh gaussian
+sh scripts/run_exps_gmm.sh gmm2
+sh scripts/run_exps_gmm.sh beta
 
-# experiments with regularization
-sh ./run_exps_fourier_reg.sh gaussian
-sh ./run_exps_fourier_reg.sh gmm2
-sh ./run_exps_fourier_reg.sh beta
-```
+# fourier head (with no regularization)
+sh scripts/run_exps_fourier_no_reg.sh gaussian
+sh scripts/run_exps_fourier_no_reg.sh gmm2
+sh scripts/run_exps_fourier_no_reg.sh beta
 
-If you would like to also run experiments with the GMM-head (which learns parameters for an optimal Gaussian mixture model), you can run:
-```bash
-# experiments with gaussian mixture model head
-sh ./run_exps_gmm.sh gaussian
-sh ./run_exps_gmm.sh gmm2
-sh ./run_exps_gmm.sh beta
-```
+# fourier head (with regularization)
+sh scripts/run_exps_fourier_reg.sh gaussian
+sh scripts/run_exps_fourier_reg.sh gmm2
+sh scripts/run_exps_fourier_reg.sh beta
 
-You can also consider a pointwise estimate for the value of z given (x,y) via an MLP trained using an MSE objective. Linear-MSE experiments can be run using:
-```bash
-# experiments with linear regression head
-sh ./run_exps_linear_regression.sh gaussian
-sh ./run_exps_linear_regression.sh gmm2
-sh ./run_exps_linear_regression.sh beta
+# linear regression head (pointwise estimate)
+sh scripts/run_exps_linear_regression.sh gaussian
+sh scripts/run_exps_linear_regression.sh gmm2
+sh scripts/run_exps_linear_regression.sh beta
 ```
 
 Once all the experiments have finished, to aggregate all the results from the experiments, run:
 ```bash
-cd ..
 python eval/aggregate.py --dir output --datasets 'gaussian' 'gmm2' 'beta'
 ```
 
@@ -83,34 +98,27 @@ python eval/graphing/graph_varying_freqs.py --dir output
 ### MLE training:
 
 To reproduce all the synthetic toy experiments using MLE training, you can run the following scripts.
-Each script took less than 24h on a geforce3090 GPU.
+Each script took less than 3h on a geforce3090 GPU.
 
 ```bash
+# Fourier-MLE head (with no regularization)
+sh scripts/run_exps_fourier-mle_no_reg.sh gaussian
+sh scripts/run_exps_fourier-mle_no_reg.sh gmm2
+sh scripts/run_exps_fourier-mle_no_reg.sh beta
 
-cd scripts
+# Fourier-MLE head (with regularization)
+sh scripts/run_exps_fourier-mle_reg.sh gaussian
+sh scripts/run_exps_fourier-mle_reg.sh gmm2
+sh scripts/run_exps_fourier-mle_reg.sh beta
 
-# Fourier-MLE head with no regularization
-sh ./run_exps_fourier-mle_no_reg.sh gaussian
-sh ./run_exps_fourier-mle_no_reg.sh gmm2
-sh ./run_exps_fourier-mle_no_reg.sh beta
-
-# experiments with regularization
-sh ./run_exps_fourier-mle_reg.sh gaussian
-sh ./run_exps_fourier-mle_reg.sh gmm2
-sh ./run_exps_fourier-mle_reg.sh beta
-```
-
-If you would like to also run experiments with the GMM-MLE head (which learns parameters for an optimal Gaussian mixture model using an MLE objective), you can run:
-
-```bash
-sh ./run_exps_gmm-mle.sh gaussian
-sh ./run_exps_gmm-mle.sh gmm2
-sh ./run_exps_gmm-mle.sh beta
+# GMM-MLE head
+sh scripts/run_exps_gmm-mle.sh gaussian
+sh scripts/run_exps_gmm-mle.sh gmm2
+sh scripts/run_exps_gmm-mle.sh beta
 ```
 
 Once all the experiments have finished, to aggregate all the results from the MLE experiments, run:
 ```bash
-cd ..
 python eval/aggregate_mle.py --dir output --datasets 'gaussian' 'gmm2' 'beta'
 ```
 Finally, we can graph the KL divergence and Perplexity as number of Fourier frequencies vary via:
@@ -132,5 +140,7 @@ Similarly, we can visualize the learned pdf vs true pdf for the GMM-MLE and Four
 ```bash
 python eval/graphing/visualize_pdfs_mle.py 
 ```
+
+</details>
 
 
