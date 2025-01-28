@@ -33,28 +33,29 @@ To reproduce all the synthetic toy experiments, you can run the following script
 Each script took less than 24h on a geforce3090 GPU.
 
 ```bash
-# linear head, running all datasets
 cd scripts
+
+# linear classification head
 sh ./run_exps_linear.sh gaussian
 sh ./run_exps_linear.sh gmm2
 sh ./run_exps_linear.sh beta
 
-# fourier head with no regularization
-sh ./run_exps_fourier_no_reg.sh gaussian
-sh ./run_exps_fourier_no_reg.sh gmm2
-sh ./run_exps_fourier_no_reg.sh beta
-
-# experiments with regularization
-sh ./run_exps_fourier_reg.sh gaussian
-sh ./run_exps_fourier_reg.sh gmm2
-sh ./run_exps_fourier_reg.sh beta
-
-# experiments with gaussian mixture model head
+# gaussian mixture model head
 sh ./run_exps_gmm.sh gaussian
 sh ./run_exps_gmm.sh gmm2
 sh ./run_exps_gmm.sh beta
 
-# experiments with linear regression head (pointwise estimate)
+# fourier head (with no regularization)
+sh ./run_exps_fourier_no_reg.sh gaussian
+sh ./run_exps_fourier_no_reg.sh gmm2
+sh ./run_exps_fourier_no_reg.sh beta
+
+# fourier head (with regularization)
+sh ./run_exps_fourier_reg.sh gaussian
+sh ./run_exps_fourier_reg.sh gmm2
+sh ./run_exps_fourier_reg.sh beta
+
+# linear regression head (pointwise estimate)
 sh ./run_exps_linear_regression.sh gaussian
 sh ./run_exps_linear_regression.sh gmm2
 sh ./run_exps_linear_regression.sh beta
@@ -80,20 +81,19 @@ To reproduce all the synthetic toy experiments using MLE training, you can run t
 Each script took less than 24h on a geforce3090 GPU.
 
 ```bash
-
 cd scripts
 
-# Fourier-MLE head with no regularization
+# Fourier-MLE head (with no regularization)
 sh ./run_exps_fourier-mle_no_reg.sh gaussian
 sh ./run_exps_fourier-mle_no_reg.sh gmm2
 sh ./run_exps_fourier-mle_no_reg.sh beta
 
-# experiments with regularization
+# Fourier-MLE head (with regularization)
 sh ./run_exps_fourier-mle_reg.sh gaussian
 sh ./run_exps_fourier-mle_reg.sh gmm2
 sh ./run_exps_fourier-mle_reg.sh beta
 
-# experiments with GMM-MLE head
+# GMM-MLE head
 sh ./run_exps_gmm-mle.sh gaussian
 sh ./run_exps_gmm-mle.sh gmm2
 sh ./run_exps_gmm-mle.sh beta
