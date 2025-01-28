@@ -1,12 +1,7 @@
 import json
 import os
-from typing import Callable
-from scipy.ndimage import gaussian_filter1d
-from scipy.stats import entropy
 import numpy as np
-import pandas as pd
-from tqdm import tqdm
-from transformers.trainer_utils import denumpify_detensorize
+import torch
 
 import sys
 for path in sys.path:
@@ -22,6 +17,19 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")
 
 from smoothness_metric import get_smoothness_metric
 
+def denumpify_detensorize(metrics):
+    """
+    Recursively calls `.item()` on the element of the dictionary passed
+    """
+    if isinstance(metrics, (list, tuple)):
+        return type(metrics)(denumpify_detensorize(m) for m in metrics)
+    elif isinstance(metrics, dict):
+        return type(metrics)({k: denumpify_detensorize(v) for k, v in metrics.items()})
+    elif isinstance(metrics, np.generic):
+        return metrics.item()
+    elif torch.cuda.is_available() and isinstance(metrics, torch.Tensor) and metrics.numel() == 1:
+        return metrics.item()
+    return metrics
 
 def compute_and_save_smoothness_dict_in_dir(dir):
 
