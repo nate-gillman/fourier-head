@@ -1,5 +1,12 @@
 # Toy Experiment: Learning a Known Conditional Distribution
 
+## Recreating results from paper
+
+<details>
+  <summary><b> Environment setup </b></summary>
+
+<br>
+
 ## Environment
 
 ```bash
@@ -15,6 +22,8 @@ python -c 'import torch; print(torch.cuda.is_available()); a = torch.zeros(5); a
 conda install scikit-learn tqdm pandas matplotlib
 pip install wandb
 ```
+
+</details>
 
 ## Running the experiments 
 
