@@ -1,5 +1,7 @@
 # Toy Experiment: Learning a Known Conditional Distribution
 
+![teaser](misc/assets/toy_predicted_vs_true.png)
+
 ## Recreating results from paper
 
 <details>
