@@ -7,8 +7,6 @@
 
 <br>
 
-## Environment
-
 ```bash
 # create and activate conda environment
 conda create -n toy-example-synthetic python=3.11
