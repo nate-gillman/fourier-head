@@ -6,6 +6,8 @@ for path in sys.path:
     if path.endswith("/eval"):
         sys.path.append(path.replace("/eval", "/"))
 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+
 import numpy as np
 
 def load_metrics_from_directory(base_dir, dataset):
@@ -32,7 +34,8 @@ def load_metrics_from_directory(base_dir, dataset):
                             "freqs": freq,
                             "seed": seed,
                             "KL divergence": result.get("KL divergence", None),
-                            "MSE": result.get("MSE", None)
+                            "MSE": result.get("MSE", None),
+                            "MSE_argmax": result.get("MSE_argmax", None)
                         })
 
                 smoothness_file = os.path.join(root, "smoothness_dict.json")
@@ -67,7 +70,9 @@ def aggregate(output_dir, dataset_list, verbose=True):
             kl_mean=('KL divergence', 'mean'),
             kl_std=('KL divergence', 'std'),
             mse_mean=('MSE', 'mean'),
-            mse_std=('MSE', 'std')
+            mse_std=('MSE', 'std'),
+            mse_max_mean=('MSE_argmax', 'mean'),
+            mse_max_std=('MSE_argmax', 'std')
         ).reset_index()
 
         result_df = pd.merge(aggregation, l2_df, on=["dataset", "head", "gamma", "freqs"], how="outer")
@@ -75,6 +80,7 @@ def aggregate(output_dir, dataset_list, verbose=True):
         result_df = result_df.sort_values(by=['freqs', 'gamma'])
         result_df['KL divergence'] = result_df['kl_mean'].round(3).astype(str) + r' $\pm$ ' + result_df['kl_std'].round(3).astype(str)
         result_df['MSE'] = result_df['mse_mean'].round(3).astype(str) + r' $\pm$ ' + result_df['mse_std'].round(3).astype(str)
+        result_df['MSE_argmax'] = result_df['mse_max_mean'].round(3).astype(str) + r' $\pm$ ' + result_df['mse_max_std'].round(3).astype(str)
         if verbose:
             print(result_df.to_string(index=False))
 
@@ -89,6 +95,13 @@ def aggregate(output_dir, dataset_list, verbose=True):
             best_mse_model_rounded = best_mse_model.round(3)
             print("\nBest model based on MSE (rounded):")
             print(best_mse_model_rounded)
+
+            # Find the model with the lowest MSE mean (argmax) and round to 3 decimal places
+            best_mse_model = result_df.loc[result_df['mse_max_mean'].idxmin()]
+            best_mse_model_rounded = best_mse_model.round(3)
+            print("\nBest model based on MSE_argmax (rounded):")
+            print(best_mse_model_rounded)
+
 
             # Find the model with the lowest L2_mean and round to 4 decimal places
             best_l2_model = result_df.loc[result_df['L2_mean'].idxmin()]
@@ -145,7 +158,11 @@ def aggregate(output_dir, dataset_list, verbose=True):
         linear = result_df[(result_df['head'] == 'linear')]
         baseline_values = {"KL Divergence" : float(linear['kl_mean'].iloc[0]), "MSE": float(linear['mse_mean'].iloc[0]), "Smoothness": float(linear['L2_mean'].iloc[0])}
         baseline_stds = {"KL Divergence" : float(linear['kl_std'].iloc[0]), "MSE": float(linear['mse_std'].iloc[0]), "Smoothness": float(linear['L2_std'].iloc[0])}
-        agg_data.append((data, baseline_values, baseline_stds))
+
+        gmm = result_df[(result_df['head'] == 'gmm')]
+        gmm_values = {"KL Divergence" : float(gmm['kl_mean'].iloc[0]), "MSE": float(gmm['mse_mean'].iloc[0]), "Smoothness": float(gmm['L2_mean'].iloc[0])}
+        gmm_stds = {"KL Divergence" : float(gmm['kl_std'].iloc[0]), "MSE": float(gmm['mse_std'].iloc[0]), "Smoothness": float(gmm['L2_std'].iloc[0])}
+        agg_data.append((data, baseline_values, baseline_stds, gmm_values, gmm_stds))
 
     return agg_data
     

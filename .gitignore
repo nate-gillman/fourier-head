@@ -9,6 +9,7 @@ time-series-forecasting/output
 
 
 toy-example-synthetic/output
+toy-example-synthetic/output-old
 toy-example-synthetic/wandb
 wandb
 
@@ -16,3 +17,4 @@ toy_example_audio/output
 toy_example_audio/data
 
 misc/website-demo/output
+toy-example-synthetic/output-nate/slurm_logs
