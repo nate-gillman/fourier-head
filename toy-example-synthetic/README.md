@@ -54,8 +54,13 @@ KL divergence and MSE are evaluated and printed every 10 epochs. Each run saves 
 
 </details>
 
-To reproduce all the synthetic toy experiments, you can run the following scripts.
-Each script took less than 24h on a geforce3090 GPU.
+<details>
+  <summary><b> Reproducing all experiments from the paper </b></summary>
+
+<br>
+
+To reproduce all the synthetic toy experiments in the paper, you can run the following scripts.
+Each script takes less than 6 hours on a geforce3090 GPU.
 
 ```bash
 # linear classification head
@@ -142,5 +147,7 @@ Similarly, we can visualize the learned pdf vs true pdf for the GMM-MLE and Four
 ```bash
 python eval/graphing/visualize_pdfs_mle.py 
 ```
+
+</details>
 
 
