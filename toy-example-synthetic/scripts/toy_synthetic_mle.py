@@ -425,7 +425,7 @@ if __name__ == "__main__":
     model_path = f'{args.head}/{args.gamma}/{args.n_freqs}/'
     os.makedirs(prefix+model_path, exist_ok=True)
     np.save(prefix+model_path+f'pmfs_{args.seed}.npy', pdfs[0].cpu())
-    np.save(prefix+f'true_{args.seed}.npy', pdfs[1].cpu())
+    np.save(prefix+f'true_mle_{args.seed}.npy', pdfs[1].cpu())
 
     metrics_path = prefix+model_path+"mle_model_metrics.json"
     if os.path.exists(metrics_path):

@@ -28,7 +28,6 @@ b = 1000
 def plot_model_and_true(data, data_true, ax, title, label, label_true, ylim=0.20):
     bin_edges = np.linspace(-1, 1, b + 1)
     bin_centers = (bin_edges[:-1] + bin_edges[1:]) / 2
-    
     if label == 'Fourier-MLE':
         color = 'tab:blue'  
     else:
@@ -62,6 +61,7 @@ def plot_combined_graphs(prefix, fourier, gmm, true, idxs, output_fname):
     # Plot for each dataset (fourier, linear, true)
     for i in range(len(fourier)):
         flag = i==0
+        print(gmm[i].shape)
         plot_model_and_true(gmm[i]*500, true[i]*500, axes[i, 0], titles[i], label='GMM-MLE', label_true=flag, ylim= y_lim[i])
         plot_model_and_true(fourier[i]*500, true[i]*500, axes[i, 1], titles[i], label='Fourier-MLE', label_true=flag, ylim=y_lim[i])
 
@@ -84,7 +84,7 @@ if __name__ == "__main__":
     # For each dataset, be sure to specify the same seed for fourier, linear, and true
     fourier = ['gaussian/fourier-mle/0.0/8/pmfs_1.npy', 'gmm2/fourier-mle/0.0/8/pmfs_1.npy', 'beta/fourier-mle/0.0/16/pmfs_42.npy']
     gmm = ['gaussian/gmm-mle/0.0/0/pmfs_1.npy', 'gmm2/gmm-mle/0.0/0/pmfs_1.npy', 'beta/gmm-mle/0.0/0/pmfs_42.npy']
-    true = ['gaussian/true_1.npy', 'gmm2/true_1.npy','beta/true_42.npy']
+    true = ['gaussian/true_mle_1.npy', 'gmm2/true_mle_1.npy','beta/true_mle_42.npy']
 
     # Specify which pmf to be visualized for each of the datasets (there are a total 1000 test pmfs)
     pmf_ixs = [350, 500, 400]  
