@@ -13,5 +13,5 @@ for seed in 1 2 3 42; do
   echo "dataset = $dataset"
   echo "linear head"
   echo "seed = $seed"
-  python toy_synthetic.py --head "linear" --n_freqs 0 --dataset $dataset --seed $seed
+  python scripts/toy_synthetic.py --head "linear" --n_freqs 0 --dataset $dataset --seed $seed
 done

@@ -13,14 +13,14 @@ if [[ "$dataset" == "beta" || "$dataset" == "gmm2" ]]; then
     echo "dataset = $dataset"
     echo "gmm head"
     echo "seed = $seed"
-    python toy_synthetic.py --head "gmm" --n_gaussians 2 --dataset $dataset --seed $seed
+    python scripts/toy_synthetic.py --head "gmm" --n_gaussians 2 --dataset $dataset --seed $seed
   done
 elif [[ "$dataset" == "gaussian" ]]; then
   for seed in 1 2 3 42; do
     echo "dataset = $dataset"
     echo "gmm head"
     echo "seed = $seed"
-    python toy_synthetic.py --head "gmm" --n_gaussians 1 --dataset $dataset --seed $seed
+    python scripts/toy_synthetic.py --head "gmm" --n_gaussians 1 --dataset $dataset --seed $seed
   done
 else
   echo "Invalid dataset: $dataset. Options are: 'gaussian', 'gmm2', 'beta'"
