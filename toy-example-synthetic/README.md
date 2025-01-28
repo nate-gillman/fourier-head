@@ -25,30 +25,34 @@ pip install wandb
 
 </details>
 
-## Running the experiments 
+## Running the experiments
+
+<details>
+  <summary><b> Example usage </b></summary>
+
+<br>
 
 The experiment can be run on three datasets: `gaussian`, `gmm2`, `beta`. 
+This is how you can run the linear classification head on the `gmm2` dataset:
 
-### Example usage (Discrete/Cross Entropy training):
-
-Linear head:
 ```bash
 python scripts/toy_synthetic.py --head "linear" --n_freqs 0 --dataset "gmm2"
 ```
 
-Fourier head with no regularization:
+This is how you can run the Fourier head with no regularization and 12 frequencies:
 ```bash
 python scripts/toy_synthetic.py --head "fourier" --n_freqs 12 --gamma 0.0 --dataset "gmm2" 
 ```
 
-Fourier head with regularization:
+And this is how you can run the Fourier head with `1e-6` regularization and 12 frequencies:
 ```bash
 python scripts/toy_synthetic.py --head "fourier" --n_freqs 12 --gamma 1e-6 --dataset "gmm2" 
 ```
 
-* To log the experiments to wandb, use the `--wandb` flag.
-
+To log the experiments to wandb, you can add a `--wandb` flag.
 KL divergence and MSE are evaluated and printed every 10 epochs. Each run saves the final predicted pmf and true pmf to the appropriate model directory as `npy` files under the `output` directory. The metrics are saved in `model_metrics.json` in the model directory.
+
+</details>
 
 To reproduce all the synthetic toy experiments, you can run the following scripts.
 Each script took less than 24h on a geforce3090 GPU.
