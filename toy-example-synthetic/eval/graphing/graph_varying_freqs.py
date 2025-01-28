@@ -24,7 +24,6 @@ FONTSIZE = 19
 
 def build_graphs(data, baseline_values, baseline_stds, gmm_values, gmm_stds, output_fname, title=""):
     fig, axs = plt.subplots(1, 2, figsize=(20, 4))  # Three vertical graphs
-    print(data)
     # Global title for all graphs
     fig.suptitle(title, fontsize=26, y=0.99)
     # X-axis values (2, 4, 6, ..., 32)
@@ -37,7 +36,6 @@ def build_graphs(data, baseline_values, baseline_stds, gmm_values, gmm_stds, out
 
         for gamma, (gamma_values, gamma_std) in values.items():
             if gamma == 'gamma0':
-                print(len(gamma_values))
                 axs[i].plot(generations, gamma_values, c="tab:orange", label='Fourier, no regularization')
                 axs[i].fill_between(generations,
                                     np.array(gamma_values) - np.array(gamma_std),

@@ -61,7 +61,6 @@ def plot_combined_graphs(prefix, fourier, gmm, true, idxs, output_fname):
     # Plot for each dataset (fourier, linear, true)
     for i in range(len(fourier)):
         flag = i==0
-        print(gmm[i].shape)
         plot_model_and_true(gmm[i]*500, true[i]*500, axes[i, 0], titles[i], label='GMM-MLE', label_true=flag, ylim= y_lim[i])
         plot_model_and_true(fourier[i]*500, true[i]*500, axes[i, 1], titles[i], label='Fourier-MLE', label_true=flag, ylim=y_lim[i])
 
