@@ -238,12 +238,7 @@ if __name__ == "__main__":
         bins=bins
     )
 
-    current_dir = os.getcwd()
-    if os.path.basename(current_dir) == 'scripts':
-        prefix = f'../output/{args.dataset}/'
-    else:
-        prefix = f'toy-example-synthetic/output/{args.dataset}/'
-    
+    prefix = f'output/{args.dataset}/'
     model_path = f'{args.head}/{args.gamma}/{args.n_freqs}/'
     os.makedirs(prefix+model_path, exist_ok=True)
     np.save(prefix+model_path+f'pmfs_{args.seed}.npy', pdfs[0].cpu())
