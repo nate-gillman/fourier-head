@@ -9,6 +9,7 @@ time-series-forecasting/output
 
 
 toy-example-synthetic/output
+toy-example-synthetic/output-old
 toy-example-synthetic/wandb
 wandb
 
