@@ -25,10 +25,7 @@ pip install wandb
 
 ## Running the experiments
 
-<details>
-  <summary><b> Example usage </b></summary>
-
-<br>
+<b> Example usage </b>
 
 The experiment can be run on three datasets: `gaussian`, `gmm2`, `beta`. 
 This is how you can run the linear classification head on the `gmm2` dataset:
@@ -50,15 +47,13 @@ python scripts/toy_synthetic.py --head "fourier" --n_freqs 12 --gamma 1e-6 --dat
 To log the experiments to wandb, you can add a `--wandb` flag.
 KL divergence and MSE are evaluated and printed every 10 epochs. Each run saves the final predicted pmf and true pmf to the appropriate model directory as `npy` files under the `output` directory. The metrics are saved in `model_metrics.json` in the model directory.
 
-</details>
-
 <details>
   <summary><b> Reproducing all experiments from the paper </b></summary>
 
 <br>
 
 To reproduce all the synthetic toy experiments in the paper, you can run the following scripts.
-Each script takes less than 6 hours on a geforce3090 GPU.
+Each script takes less than 6h on a geforce3090 GPU.
 
 ```bash
 # linear classification head
@@ -103,7 +98,7 @@ python eval/graphing/graph_varying_freqs.py --dir output
 ### MLE training:
 
 To reproduce all the synthetic toy experiments using MLE training, you can run the following scripts.
-Each script took less than 24h on a geforce3090 GPU.
+Each script took less than 3h on a geforce3090 GPU.
 
 ```bash
 # Fourier-MLE head (with no regularization)
