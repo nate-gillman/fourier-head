@@ -1,0 +1,38 @@
+{
+  "0": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: ",
+    "response": "-0.64",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "1": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: ",
+    "response": "-0.04",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "2": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: ",
+    "response": "-0.10",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "3": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: ",
+    "response": "0.45",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  }
+}
