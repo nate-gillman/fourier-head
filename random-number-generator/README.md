@@ -58,6 +58,8 @@ done
 
 ## Step 3: evaluate the baseline (doesn't require any fine-tuning)
 
+This whole loop can run in less than 6 hours on a 3090 gpu.
+
 ```bash
 nums_in_context_samples_per_prompt=(0 1 2 3 4 5 6 7 8 9)
 seeds=(42 43 44 45 46 47 48 49 50 51)
@@ -71,7 +73,8 @@ done
 
 ## Step 4: fine-tune, run inference and eval scripts
 
-LoRA train the linear baseline, then evaluate the trained model:
+LoRA train the linear baseline, then evaluate the trained model.
+This whole loop can run in less than 20 hours on an a6000 gpu.
 
 ```bash
 num_epochs=16
@@ -86,7 +89,8 @@ for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@
 done
 ```
 
-LoRA train the fourier model, and then evaluate it:
+LoRA train the fourier model, and then evaluate it.
+Each inner loop runs in less than 2 hours on a 3090 gpu.
 
 ```bash
 num_epochs=16
@@ -107,7 +111,7 @@ Note that, for a fixed frequency, and a fixed number of in-context samples per p
 
 ## Step 5: aggregate metrics across seeds, in preparation for graphing
 
-PICK UP HERE!!!!!
+PICK UP HERE!!!
 
 Note that in this script, there is error catching, so we can indeed aggregate metrics while experiments are still in progress.
 
