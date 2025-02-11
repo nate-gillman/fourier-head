@@ -8,6 +8,7 @@ misc/website-demo/output
 
 random-number-generator/llama-fourier-head-env
 random-number-generator/models
+random-number-generator/output
 
 time-series-forecasting/data
 time-series-forecasting/output
