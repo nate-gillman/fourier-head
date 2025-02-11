@@ -172,7 +172,7 @@ class FourierHeadLlama(LlamaForCausalLM):
 
         # --- swap ---
         base.lm_head = Fourier_Head(
-            base.config.hidden_size, base.config.vocab_size, num_frequencies=num_frequencies
+            base.config.hidden_size, base.config.vocab_size, num_frequencies=num_frequencies, dtype=torch.float32
         )
         base.lm_head.to(base.device)
 
@@ -238,7 +238,7 @@ def load_fourier_head_llama_lora(output_dir) -> Tuple[PeftModelForCausalLM, Auto
         quantization_config=config,
         cache_dir="models",
         attn_implementation="sdpa" if train_config.use_fast_kernels else None,
-        torch_dtype=torch.float16,
+        torch_dtype=torch.float32,
     )
     # load adapters
     peft_model = PeftModel.from_pretrained(model, output_dir)
@@ -302,7 +302,7 @@ def train_LoRA(
             device_map="auto",
             cache_dir="models",
             quantization_config=config,
-            torch_dtype=torch.float16,
+            torch_dtype=torch.float32,
         )
     elif head_type == "fourier":  
         fourier_config = {
@@ -318,7 +318,7 @@ def train_LoRA(
             cache_dir="models",
             attn_implementation="sdpa" if train_config.use_fast_kernels else None,
             quantization_config=config,
-            torch_dtype=torch.float16,
+            torch_dtype=torch.float32,
         )
 
     tokenizer = AutoTokenizer.from_pretrained(train_config.model_name)
@@ -400,7 +400,7 @@ def train_LoRA(
         # if this is true, then our custom fourier head network can be saved and loaded from disk
         for p1, p2 in zip(lora_model.base_model.lm_head.parameters(), base_model_loaded_from_disk.lm_head.parameters()):
             # down cast to same quantization level for comparison
-            if not torch.allclose(p1.to(torch.float16), p2.to(torch.float16), rtol=1e-5, atol=1e-8):
+            if not torch.allclose(p1.to(torch.float32), p2.to(torch.float32), rtol=1e-5, atol=1e-8):
                 raise AssertionError("Module parameters are not equal.")
         
     # if we reach here, all seems ok. 

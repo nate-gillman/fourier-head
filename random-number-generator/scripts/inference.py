@@ -41,7 +41,7 @@ def load_model_and_tokenizer(train_config, LoRA_model=None):
         quantization_config=config,
         cache_dir="models",
         attn_implementation="sdpa" if train_config.use_fast_kernels else None,
-        torch_dtype=torch.float16,
+        torch_dtype=torch.float32,
     )
     
     if LoRA_model[0]:
