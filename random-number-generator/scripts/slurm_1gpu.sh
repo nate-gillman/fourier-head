@@ -9,7 +9,7 @@
 #SBATCH -N 1 # gives one node, makes sure cpu cores are on same node
 #SBATCH -c 1 # num CPU cores
 #SBATCH --mem=31G
-#SBATCH -t 12:00:00
+#SBATCH -t 6:00:00
 #SBATCH -e output/slurm_logs/%j.err
 #SBATCH -o output/slurm_logs/%j.out
 #SBATCH --mail-user=nate_gillman@brown.edu
@@ -25,17 +25,41 @@ conda activate $CONDA_ENV_DIR
 HOME_DIR=/oscar/data/superlab/users/nates_stuff/fourier-head/random-number-generator
 cd ${HOME_DIR}
 
+
+
 # experiment script here...
 
+# nums_in_context_samples_per_prompt=(0 1 2 3 4 5 6 7 8 9)
+# seeds=(42 43 44 45 46 47 48 49 50 51)
+# for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@]}"; do
+#     data_dir=data/$(printf "%02d" $num_in_context_samples_per_prompt)_in_context_samples
+#     for seed in "${seeds[@]}"; do
+#         sh scripts/experiment_eval_baseline.sh $num_in_context_samples_per_prompt $data_dir $seed
+#     done
+# done
+
+
+# num_epochs=16
+# num_freqs=0
+# nums_in_context_samples_per_prompt=(9)
+# seeds=(42 43 44 45 46 47 48 49 50 51)
+# for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@]}"; do
+#     data_dir=data/$(printf "%02d" $num_in_context_samples_per_prompt)_in_context_samples
+#     for seed in "${seeds[@]}"; do
+#         sh scripts/experiment_LoRA.sh $num_in_context_samples_per_prompt $data_dir $num_epochs $num_freqs $seed
+#     done
+# done
+
+
 num_epochs=16
+nums_in_context_samples_per_prompt=(9)
 # nums_freqs=(1 2 3)
 # nums_freqs=(4 5 6)
 # nums_freqs=(7 8 9)
 nums_freqs=(10 11 12)
-nums_in_context_samples_per_prompt=(0)
 seeds=(42 43 44 45 46 47 48 49 50 51)
-for num_freqs in "${nums_freqs[@]}"; do
-    for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@]}"; do
+for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@]}"; do
+    for num_freqs in "${nums_freqs[@]}"; do
         data_dir=data/$(printf "%02d" $num_in_context_samples_per_prompt)_in_context_samples
         for seed in "${seeds[@]}"; do
             sh scripts/experiment_LoRA.sh $num_in_context_samples_per_prompt $data_dir $num_epochs $num_freqs $seed
