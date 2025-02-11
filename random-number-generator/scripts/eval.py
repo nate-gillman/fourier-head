@@ -6,6 +6,7 @@ import json
 
 import numpy as np
 from scipy.stats import norm
+import time
 
 def kl_divergence_gaussian(mu1, sigma1, mu2, sigma2):
     """
@@ -103,6 +104,7 @@ def parse_args():
     return args
 
 if __name__ == "__main__":
+    start_time = time.time()
     args = parse_args()
     output_dir = args.output_dir
     test_split = args.test_split
@@ -111,3 +113,4 @@ if __name__ == "__main__":
     stats, avg_kl  = evaluate_samples(input_fname)
 
     print("avg_kl = ", avg_kl)
+    print(f"\nExecution time for eval: {(time.time() - start_time)/60} minutes\n")

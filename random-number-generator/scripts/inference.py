@@ -11,6 +11,7 @@ from transformers import LlamaForCausalLM, AutoTokenizer, BitsAndBytesConfig
 from llama_recipes.configs import train_config as TRAIN_CONFIG
 from peft import PeftModel
 from peft.peft_model import PeftModelForCausalLM
+import time
 
 from train_LoRA import output_dir_contains_fourier_model_p, load_fourier_head_llama_lora, Quantizer
 
@@ -234,4 +235,6 @@ if __name__ == "__main__":
 
         python inference.py --output_dir output/test --test_split in_domain --is_LoRA_model True
     """
+    start_time = time.time()
     main()
+    print(f"\nExecution time for inference: {(time.time() - start_time)/60} minutes\n")
