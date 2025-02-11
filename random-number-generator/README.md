@@ -75,8 +75,8 @@ LoRA train the linear baseline, then evaluate the trained model:
 
 ```bash
 num_epochs=16
-num_freqs=0
 nums_in_context_samples_per_prompt=(0 1 2 3 4 5 6 7 8 9)
+num_freqs=0
 seeds=(42 43 44 45 46 47 48 49 50 51)
 for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@]}"; do
     data_dir=data/$(printf "%02d" $num_in_context_samples_per_prompt)_in_context_samples
@@ -90,11 +90,11 @@ LoRA train the fourier model, and then evaluate it:
 
 ```bash
 num_epochs=16
-nums_freqs=(1 2 3 4 5 6 7 8 9 10 11 12)
 nums_in_context_samples_per_prompt=(0 1 2 3 4 5 6 7 8 9)
+nums_freqs=(1 2 3 4 5 6 7 8 9 10 11 12)
 seeds=(42 43 44 45 46 47 48 49 50 51)
-for num_freqs in "${nums_freqs[@]}"; do
-    for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@]}"; do
+for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@]}"; do
+    for num_freqs in "${nums_freqs[@]}"; do
         data_dir=data/$(printf "%02d" $num_in_context_samples_per_prompt)_in_context_samples
         for seed in "${seeds[@]}"; do
             sh scripts/experiment_LoRA.sh $num_in_context_samples_per_prompt $data_dir $num_epochs $num_freqs $seed
@@ -107,7 +107,7 @@ Note that, for a fixed frequency, and a fixed number of in-context samples per p
 
 ## Step 5: aggregate metrics across seeds, in preparation for graphing
 
-PICK UP HERE!!!!
+PICK UP HERE!!!!!
 
 Note that in this script, there is error catching, so we can indeed aggregate metrics while experiments are still in progress.
 
