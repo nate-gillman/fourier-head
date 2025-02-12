@@ -38,13 +38,10 @@ The following script downloads the Llama model we'll use, and tests the download
 python scripts/download_llama.py
 ```
 
-If the models download, and eventually training begins, then it worked!
-
 ## Step 2: build the dataset
 
-You don't need to run this, as we already committed our data to the `data` folder.
-But if you want to re-run the script, go for it.
-This gives in-context examples, and doesn't say describe in english the nature of the distribution, opting instead to only provide samples from the distribution.
+We have already committed our training data to the `data` folder.
+If you wish to re-create it, then you can run the following script.
 
 ```bash
 train_set_size=256
@@ -56,9 +53,10 @@ for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@
 done
 ```
 
-## Step 3: evaluate the baseline (doesn't require any fine-tuning)
+## Step 3: evaluate the baseline
 
 This whole loop can run in less than 6 hours on a 3090 gpu.
+This doesn't require any fine-tuning, only inference on the pretrained model.
 
 ```bash
 nums_in_context_samples_per_prompt=(0 1 2 3 4 5 6 7 8 9)
@@ -90,7 +88,7 @@ done
 ```
 
 LoRA train the fourier model, and then evaluate it.
-Each inner loop over the 10 seeds runs in less than 2 hours on a 3090 gpu.
+Note that, for a fixed frequency, and a fixed number of in-context samples per prompt, it takes between 45 minutes and 2 hours to run the inner loop over the 10 seeds.
 
 ```bash
 num_epochs=16
@@ -107,11 +105,13 @@ for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@
 done
 ```
 
-Note that, for a fixed frequency, and a fixed number of in-context samples per prompt, it takes approximately one hour to run the inner loop over all 10 seeds.
+
 
 ## Step 5: graph the results
 
-Once the training experiments are done, we can indeed aggregate metrics while the experiments are still in progress.
+### Step 5a: aggregate metrics across seeds, in preparation for graphing
+
+Once the training experiments are done, the following script should be run to aggregate metrics into json files.
 This takes less than a minute and doesn't need GPU.
 
 ```bash
@@ -121,8 +121,6 @@ for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@
         output/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt
 done
 ```
-
-### Step 5a: aggregate metrics across seeds, in preparation for graphing
 
 ### Step 5b: x_axis = num_freqs, y_axis = tvd, or num_unique_samples
 
