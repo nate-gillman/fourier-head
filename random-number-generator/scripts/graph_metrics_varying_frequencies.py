@@ -115,7 +115,7 @@ def build_graph(data_dir, output_fname, metric_type, max_num_freqs, test_idx):
     ax.xaxis.set_major_locator(MultipleLocator(1))
     
     # Match original legend styling
-    ax.legend(loc="upper right", fontsize=FONTSIZE)
+    ax.legend(loc="upper right", fontsize=14)
     ax.tick_params(axis='x', labelsize=FONTSIZE)
     ax.tick_params(axis='y', labelsize=FONTSIZE)
     
