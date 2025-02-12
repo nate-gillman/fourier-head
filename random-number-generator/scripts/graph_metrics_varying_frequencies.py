@@ -26,8 +26,6 @@ def extract_metrics(data, metric_type, key="0"):
         return data[key]["tvd_error_mean"], data[key]["tvd_error_sem"]
     elif metric_type == "num_unique_samples":
         return data[key]["num_unique_samples_mean"], data[key]["num_unique_samples_sem"]
-    elif metric_type == "containment":
-        return data[key]["containment_mean"], data[key]["containment_sem"]
 
 def build_graph(data_dir, output_fname, metric_type, max_num_freqs, test_idx):
     # Get all json files in directory
@@ -80,10 +78,6 @@ def build_graph(data_dir, output_fname, metric_type, max_num_freqs, test_idx):
         min_y = min([baseline_mean] + [LoRA_mean] + means.tolist())
         max_y = max([baseline_mean] + [LoRA_mean] + means.tolist())
         ylim = (min_y-5, max_y+20)
-    elif metric_type == "containment":
-        title = "Fraction of Samples Contained in [0,1]"
-        ylabel = "Containment"
-        ylim = None
     else:
         raise NotImplementedError
     
@@ -138,8 +132,8 @@ if __name__ == "__main__":
                         help='Directory containing the JSON files')
     parser.add_argument('--output_dir', type=str, required=True, 
                         help='Directory to write the image')
-    parser.add_argument('--metric', type=str, required=True, choices=['tvd', 'num_unique_samples', 'containment'],
-                        help='Metric to plot: tvd (Total Variation Distance) or num_unique_samples or containment')
+    parser.add_argument('--metric', type=str, required=True, choices=['tvd', 'num_unique_samples'],
+                        help='Metric to plot: tvd (Total Variation Distance) or num_unique_samples')
     parser.add_argument('--max_num_freqs', type=int, required=True,
                         help='Largest value to graph on the x axis')
     args = parser.parse_args()
