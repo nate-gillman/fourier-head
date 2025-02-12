@@ -57,14 +57,13 @@ class DistributionPlotter:
         ax.set_xticklabels([f'{x:.1f}' for x in bin_edges], rotation=45)
         ax.set_ylim(0.0, ymax)
         ax.grid(True, linewidth=0.5)
-        ax.legend(loc='upper right', fontsize=10)
-        ax.set_title(data.title, fontsize=12)
+        ax.legend(loc='upper right', fontsize=14)
+        ax.set_title(data.title, fontsize=18)
 
     def create_figure(self, n_plots: int = 3) -> Tuple[plt.Figure, List[plt.Axes]]:
         """Create a figure with specified number of subplots."""
         fig, axes = plt.subplots(1, n_plots, figsize=(5 * n_plots, 5))
-        fig.text(0.04, 0.5, 'Probability Mass', va='center', rotation='vertical', fontsize=14)
-        fig.text(0.5, 0.02, 'Value', ha='center', fontsize=14)
+        fig.text(0.04, 0.5, 'Probability Mass', va='center', rotation='vertical', fontsize=18)
         plt.tight_layout(pad=1.0, rect=[0.05, 0.08, 1, 0.95])
         return fig, axes
 
@@ -87,7 +86,7 @@ class DistributionAnalyzer:
     def get_color_for_file(self, filename: str) -> str:
         """Determine color based on filename."""
         if filename.startswith("original"):
-            return "tab:purple"
+            return "tab:orange"
         elif "freqs-0" in filename:
             return "tab:red"
         return "tab:blue"
@@ -143,21 +142,21 @@ def process_frequency_comparison(test_idx: str, json_dir: str, output_dir: str):
                 predicted_distribution=baseline_data['predicted_distributions']['median_tvd']['distribution'],
                 tvd=baseline_data['predicted_distributions']['median_tvd']['tvd'],
                 color="tab:orange",
-                title="Llama-3.1-8B-instruct"
+                title="Llama"
             ),
             DistributionData(
                 true_distribution=true_dist,
                 predicted_distribution=freq0_data['predicted_distributions']['median_tvd']['distribution'],
                 tvd=freq0_data['predicted_distributions']['median_tvd']['tvd'],
                 color="tab:red",
-                title="Llama-3.1-8B-instruct + LoRA"
+                title="Llama + LoRA"
             ),
             DistributionData(
                 true_distribution=true_dist,
                 predicted_distribution=freqn_data['predicted_distributions']['median_tvd']['distribution'],
                 tvd=freqn_data['predicted_distributions']['median_tvd']['tvd'],
                 color="tab:blue",
-                title=f"Llama-3.1-8B-instruct + LoRA + {model_name_str})"
+                title=f"Llama + LoRA + {model_name_str}"
             )
         ]
         
