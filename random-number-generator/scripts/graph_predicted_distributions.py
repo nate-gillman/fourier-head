@@ -22,7 +22,7 @@ plt.rcParams.update({
     'grid.alpha': 0.6,
 })
 
-def plot_distribution_comparison(true_dist, pred_dist, tvd, ax, title, ymax=0.20):
+def plot_distribution_comparison(true_dist, pred_dist, tvd, ax, title, color, ymax=0.20):
     """
     Plot histogram comparison between true and predicted distributions
     """
@@ -32,7 +32,7 @@ def plot_distribution_comparison(true_dist, pred_dist, tvd, ax, title, ymax=0.20
     width = 0.1  # Width of bars (matches bin width)
     
     # Plot bars for predicted distribution
-    ax.bar(bin_centers, pred_dist, width, color='tab:blue', alpha=0.7, 
+    ax.bar(bin_centers, pred_dist, width, color=color, alpha=0.7, 
           label=f"Predicted PMF\nTVD = {tvd:.4f}")
     
     # Plot dots for true distribution
@@ -56,6 +56,15 @@ def process_json_file(json_path, output_dir, test_idx):
     # Read JSON file
     with open(json_path, 'r') as f:
         data = json.load(f)
+
+    # red for linear, blue for fourier
+    json_fname = json_path.split("/")[-1].split(".")[0]
+    if json_fname.startswith("original"):
+        color = "tab:purple"
+    elif json_fname.split("-")[3] == "0":
+        color = "tab:red"
+    else:
+        color = "tab:blue"
     
     # Extract data from first key (assuming structure as provided)
     experiment_data = data[test_idx]
@@ -78,6 +87,7 @@ def process_json_file(json_path, output_dir, test_idx):
         pred_distributions['min_tvd']['tvd'],
         axes[0],
         f"{file_name}\nMin TVD",
+        color,
         ymax=y_max
     )
     
@@ -88,6 +98,7 @@ def process_json_file(json_path, output_dir, test_idx):
         pred_distributions['median_tvd']['tvd'],
         axes[1],
         f"{file_name}\nMedian TVD",
+        color,
         ymax=y_max
     )
     
@@ -98,6 +109,7 @@ def process_json_file(json_path, output_dir, test_idx):
         pred_distributions['max_tvd']['tvd'],
         axes[2],
         f"{file_name}\nMax TVD",
+        color,
         ymax=y_max
     )
     
