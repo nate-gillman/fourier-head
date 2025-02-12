@@ -82,6 +82,18 @@ def aggregate_metrics(seed_results: List[Dict]) -> Dict:
                 }
             }
         }
+
+    # Calculate aggregate statistics across all test cases
+    tvd_means = [metrics[test_idx]['tvd_error_mean'] for test_idx in metrics]
+    unique_samples_means = [metrics[test_idx]['num_unique_samples_mean'] for test_idx in metrics]
+    
+    # Add aggregate statistics
+    metrics['agg'] = {
+        'tvd_error_mean': float(np.mean(tvd_means)),
+        'tvd_error_sem': float(np.std(tvd_means) / np.sqrt(len(tvd_means))),
+        'num_unique_samples_mean': float(np.mean(unique_samples_means)),
+        'num_unique_samples_sem': float(np.std(unique_samples_means) / np.sqrt(len(unique_samples_means)))
+    }
     
     return metrics
 
