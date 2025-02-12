@@ -111,9 +111,8 @@ def process_json_file(json_path, output_dir, test_idx):
     plt.tight_layout(pad=1.0, rect=[0.05, 0.08, 1, 0.95])
     
     # Save plot
-    output_dir_path = os.path.join(output_dir, "graph_predicted_distributions")
-    output_path = os.path.join(output_dir_path, f"test_idx_{test_idx}_{file_name}_pred_dists.png")
-    os.makedirs(output_dir_path, exist_ok=True)
+    output_path = os.path.join(output_dir, f"test_idx_{test_idx}_{file_name}_pred_dists.png")
+    os.makedirs(output_dir, exist_ok=True)
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
     print(f"Graph saved as: {output_path}")
     plt.close()
