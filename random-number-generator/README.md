@@ -109,7 +109,7 @@ done
 
 Note that, for a fixed frequency, and a fixed number of in-context samples per prompt, it takes approximately one hour to run the inner loop over all 10 seeds.
 
-## Step 5: aggregate metrics across seeds, in preparation for graphing
+## Step 5: graph the results
 
 Once the training experiments are done, we can indeed aggregate metrics while the experiments are still in progress.
 This takes less than a minute and doesn't need GPU.
@@ -122,9 +122,9 @@ for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@
 done
 ```
 
-## Step 6: graph the results
+### Step 5a: aggregate metrics across seeds, in preparation for graphing
 
-### Step 6a: x_axis = num_freqs, y_axis = tvd, or num_unique_samples
+### Step 5b: x_axis = num_freqs, y_axis = tvd, or num_unique_samples
 
 Graphing the total variation distance and num_unique_sample metrics as a function of frequencies:
 
@@ -143,7 +143,7 @@ for metric in "${metrics[@]}"; do
 done
 ```
 
-### Step 6b: x_axis = num_in_context_samples_per_prompt, y_axis = tvd, or num_unique_samples
+### Step 5c: x_axis = num_in_context_samples_per_prompt, y_axis = tvd, or num_unique_samples
 
 Graphing the total variation distance and num_unique_sample metrics as a function of num_in_context_samples_per_prompt:
 
@@ -164,7 +164,7 @@ done
 ```
 
 
-### Step 6c: graph the learned empirical distributions
+### Step 5d: graph the learned empirical distributions
 
 This will graph the true distribution, against the learned distribution (obtained via sampling and histogram binning).
 
