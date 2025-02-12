@@ -33,7 +33,7 @@ def build_graph(data_dir, output_fname, metric_type, freqs_to_graph, max_num_in_
     
     # Load baseline data (no fine-tuning)
     baseline_means, baseline_sems = [], []
-    for i in range(1, max_num_in_context_samples_per_prompt + 1):
+    for i in range(0, max_num_in_context_samples_per_prompt + 1):
         baseline_file = os.path.join(data_dir, f"{i:02d}_in_context_samples_per_prompt", "original-model-baseline-aggregated.json")
         baseline_data = load_json_data(baseline_file)
         baseline_mean, baseline_sem = extract_metrics(baseline_data, metric_type, test_idx)
@@ -43,7 +43,7 @@ def build_graph(data_dir, output_fname, metric_type, freqs_to_graph, max_num_in_
     
     # Load LoRA data (freqs = 0)
     LoRA_means, LoRA_sems = [], []
-    for i in range(1, max_num_in_context_samples_per_prompt + 1):
+    for i in range(0, max_num_in_context_samples_per_prompt + 1):
         LoRA_file = os.path.join(data_dir, f"{i:02d}_in_context_samples_per_prompt", "epochs-16-freqs-0-aggregated.json")
         LoRA_data = load_json_data(LoRA_file)
         LoRA_mean, LoRA_sem = extract_metrics(LoRA_data, metric_type, test_idx)
@@ -57,7 +57,7 @@ def build_graph(data_dir, output_fname, metric_type, freqs_to_graph, max_num_in_
         # Initialize lists to store data points
         means_ = []
         sems_ = []
-        for i in range(1, max_num_in_context_samples_per_prompt + 1):
+        for i in range(0, max_num_in_context_samples_per_prompt + 1):
             # Get all json files in directory
             json_files = glob.glob(os.path.join(data_dir, f"{i:02d}_in_context_samples_per_prompt", "*-aggregated.json"))
             # Load LoRA + Fourier Head Data; process each frequency file...
@@ -102,7 +102,7 @@ def build_graph(data_dir, output_fname, metric_type, freqs_to_graph, max_num_in_
     
     # Global title
     fig.suptitle(title, fontsize=26, y=0.99)
-    x_axis = np.arange(1, max_num_in_context_samples_per_prompt + 1)
+    x_axis = np.arange(0, max_num_in_context_samples_per_prompt + 1)
     
     # Plot baseline datapoint as horizontal line
     ax.plot(x_axis, baseline_means, c="tab:purple", linestyle='-.', label='Llama-3.1-8B-instruct')
@@ -130,7 +130,7 @@ def build_graph(data_dir, output_fname, metric_type, freqs_to_graph, max_num_in_
     ax.set_xlabel("Quantity of In-Context Samples in Prompt", fontsize=FONTSIZE)
     ax.set_ylabel(ylabel, fontsize=FONTSIZE)
     ax.grid(True, linewidth=0.3)
-    ax.set_xlim((1, max_num_in_context_samples_per_prompt))
+    ax.set_xlim((0, max_num_in_context_samples_per_prompt))
     if ylim:
         ax.set_ylim(*ylim)
     ax.xaxis.set_major_locator(MultipleLocator(1))
@@ -160,8 +160,8 @@ if __name__ == "__main__":
                         help='Directory to write the image')
     parser.add_argument('--metric', type=str, required=True, choices=['tvd', 'num_unique_samples', 'containment'],
                         help='Metric to plot: tvd (Total Variation Distance) or num_unique_samples or containment')
-    parser.add_argument('--freqs_to_graph', type=list_of_ints, required=True,
-                        help='List of frequencies to graph (each one corresponds to a different curve)')
+    parser.add_argument('--freq', type=int, required=True,
+                        help='The frequency to graph')
     parser.add_argument('--max_num_in_context_samples_per_prompt', type=int, required=True,
                         help='Largest value to graph on the x axis')
     args = parser.parse_args()
@@ -169,8 +169,7 @@ if __name__ == "__main__":
     # Set output filename based on metric type
     os.makedirs(args.output_dir, exist_ok=True)
     
-    for test_idx in ["0", "1", "2", "3"]:
-        for freq in args.freqs_to_graph:
-            output_fname = os.path.join(args.output_dir, f"test_idx_{test_idx}_metric_{args.metric}_freq_{freq}.png")
-            build_graph(args.input_dir, output_fname, args.metric, [freq], args.max_num_in_context_samples_per_prompt, test_idx)
-            print(f'Graph saved as: {output_fname}')
+    for test_idx in ["0", "1", "2", "3", "agg"]:
+        output_fname = os.path.join(args.output_dir, f"test_idx_{test_idx}_metric_{args.metric}_freq_{args.freq}.png")
+        build_graph(args.input_dir, output_fname, args.metric, [args.freq], args.max_num_in_context_samples_per_prompt, test_idx)
+        print(f'Graph saved as: {output_fname}')
