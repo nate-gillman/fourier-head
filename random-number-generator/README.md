@@ -3,9 +3,7 @@
 ## Step 1: Environment setup
 
 
-### Conda env
-
-First, create conda environment.
+### Step 1a: build conda environment
 
 ```bash
 # CONDA_ENV_DIR=/path/to/where/you/want/to/store/your/env
@@ -22,7 +20,7 @@ pip install --prefix=$CONDA_ENV_DIR ipywidgets
 pip install --prefix=$CONDA_ENV_DIR wandb
 ```
 
-### Download the models
+### Step 1b: download the llama model
 
 You'll need to sign into HuggingFace, and have access to the Llama models.
 Inside the python interpreter, do the following:
