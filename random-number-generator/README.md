@@ -90,7 +90,7 @@ done
 ```
 
 LoRA train the fourier model, and then evaluate it.
-Each inner loop runs in less than 2 hours on a 3090 gpu.
+Each inner loop over the 10 seeds runs in less than 2 hours on a 3090 gpu.
 
 ```bash
 num_epochs=16
@@ -111,16 +111,14 @@ Note that, for a fixed frequency, and a fixed number of in-context samples per p
 
 ## Step 5: aggregate metrics across seeds, in preparation for graphing
 
-PICK UP HERE!!!
-
-Note that in this script, there is error catching, so we can indeed aggregate metrics while experiments are still in progress.
+Once the training experiments are done, we can indeed aggregate metrics while the experiments are still in progress.
+This takes less than a minute and doesn't need GPU.
 
 ```bash
-exp_name=01-16-2025-pt1-varying-num-in-context-samples
 nums_in_context_samples_per_prompt=(0 1 2 3 4 5 6 7 8 9)
 for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@]}"; do
-    python scripts/$exp_name/aggregate_metrics_across_seeds.py \
-        output/$exp_name/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt
+    python scripts/aggregate_metrics_across_seeds.py \
+        output/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt
 done
 ```
 
@@ -128,30 +126,15 @@ done
 
 ### x_axis = num_freqs, y_axis = {metric}
 
-Graphing the TVD metric as a function of frequencies:
+Graphing the total variation distance metric as a function of frequencies:
 
 ```bash
-exp_name=01-16-2025-pt1-varying-num-in-context-samples
 nums_in_context_samples_per_prompt=(0 1 2 3 4 5 6 7 8 9)
 for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@]}"; do
-    python scripts/$exp_name/graph_metrics.py \
+    python scripts/graph_metrics.py \
         --metric tvd \
-        --input_dir output/$exp_name/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt \
-        --output_dir scripts/$exp_name/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt \
-        --max_num_freqs 12
-done
-```
-
-Graphing the containment metric as a function of frequencies:
-
-```bash
-exp_name=01-16-2025-pt1-varying-num-in-context-samples
-nums_in_context_samples_per_prompt=(0 1 2 3 4 5 6 7 8 9)
-for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@]}"; do
-    python scripts/$exp_name/graph_metrics.py \
-        --metric containment \
-        --input_dir output/$exp_name/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt \
-        --output_dir scripts/$exp_name/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt \
+        --input_dir output/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt \
+        --output_dir scripts/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt \
         --max_num_freqs 12
 done
 ```
@@ -159,13 +142,12 @@ done
 Graphing the num_unique_samples metric as a function of frequencies:
 
 ```bash
-exp_name=01-16-2025-pt1-varying-num-in-context-samples
 nums_in_context_samples_per_prompt=(0 1 2 3 4 5 6 7 8 9)
 for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@]}"; do
-    python scripts/$exp_name/graph_metrics.py \
+    python scripts/graph_metrics.py \
         --metric num_unique_samples \
-            --input_dir output/$exp_name/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt \
-            --output_dir scripts/$exp_name/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt \
+            --input_dir output/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt \
+            --output_dir scripts/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt \
             --max_num_freqs 12
 done
 ```
@@ -175,11 +157,10 @@ done
 Graphing the TVD metric as a function of num_in_context_samples_per_prompt:
 
 ```bash 
-exp_name=01-16-2025-pt1-varying-num-in-context-samples
-python scripts/$exp_name/graph_metrics_varying_in_context_samples.py \
+python scripts/graph_metrics_varying_in_context_samples.py \
     --metric tvd \
-    --input_dir output/$exp_name \
-    --output_dir scripts/$exp_name/graph_metrics_varying_in_context_samples \
+    --input_dir output \
+    --output_dir scripts/graph_metrics_varying_in_context_samples \
     --freqs_to_graph 1,2,3,4,5,6,7,8,9,10,11,12 \
     --max_num_in_context_samples_per_prompt 9
 ```
@@ -187,37 +168,24 @@ python scripts/$exp_name/graph_metrics_varying_in_context_samples.py \
 Graphing the num_unique_samples metric as a function of num_in_context_samples_per_prompt:
 
 ```bash
-exp_name=01-16-2025-pt1-varying-num-in-context-samples
-python scripts/$exp_name/graph_metrics_varying_in_context_samples.py \
+python scripts/graph_metrics_varying_in_context_samples.py \
     --metric num_unique_samples \
-    --input_dir output/$exp_name \
-    --output_dir scripts/$exp_name/graph_metrics_varying_in_context_samples \
+    --input_dir output \
+    --output_dir scripts/graph_metrics_varying_in_context_samples \
     --freqs_to_graph 1,2,3,4,5,6,7,8,9,10,11,12 \
     --max_num_in_context_samples_per_prompt 9
 ```
 
-Graphing the containment metric as a function of num_in_context_samples_per_prompt:
-
-```bash
-exp_name=01-16-2025-pt1-varying-num-in-context-samples
-python scripts/$exp_name/graph_metrics_varying_in_context_samples.py \
-    --metric containment \
-    --input_dir output/$exp_name \
-    --output_dir scripts/$exp_name/graph_metrics_varying_in_context_samples \
-    --freqs_to_graph 1,2,3,4,5,6,7,8,9,10,11,12 \
-    --max_num_in_context_samples_per_prompt 9
-```
 
 ## STEP 9: graph predicted distributions 
 
 This will graph the true distribution, against the learned distribution (obtained via sampling and histogram binning).
 
 ```bash
-exp_name=01-16-2025-pt1-varying-num-in-context-samples
 nums_in_context_samples_per_prompt=(0 1 2 3 4 5 6 7 8 9)
 for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@]}"; do
-    python scripts/$exp_name/graph_predicted_distributions.py \
-            --input_dir output/$exp_name/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt \
-            --output_dir scripts/$exp_name/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt
+    python scripts/graph_predicted_distributions.py \
+            --input_dir output/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt \
+            --output_dir scripts/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt
 done
 ```
