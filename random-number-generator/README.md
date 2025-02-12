@@ -38,8 +38,8 @@ python scripts/download_llama.py
 
 ## Step 2: build the dataset
 
-We have already committed our training data to the `data` folder.
-If you wish to re-create it, then you can run the following script.
+We have already committed our training data to the `data` folder, so this step is optional.
+If you wish to re-create it for completeness, then you can run the following script, which only takes a few seconds.
 
 ```bash
 train_set_size=256
