@@ -57,7 +57,7 @@ class DistributionPlotter:
         ax.set_xticklabels([f'{x:.1f}' for x in bin_edges], rotation=45)
         ax.set_ylim(0.0, ymax)
         ax.grid(True, linewidth=0.5)
-        ax.legend(loc='upper right', fontsize=14)
+        ax.legend(loc='upper left', fontsize=14)
         ax.set_title(data.title, fontsize=18)
 
     def create_figure(self, n_plots: int = 3) -> Tuple[plt.Figure, List[plt.Axes]]:

@@ -85,11 +85,11 @@ def build_graph(data_dir, output_fname, metric_type, max_num_freqs, test_idx):
     fig.suptitle(title, fontsize=26, y=0.99)
     
     # Plot baseline datapoint as horizontal line
-    ax.axhline(y=baseline_mean, color='tab:purple', linestyle='-.', label='Llama-3.1-8B-instruct')
+    ax.axhline(y=baseline_mean, color='tab:orange', linestyle='-.', label='Llama-3.1-8B-instruct')
     ax.fill_between(freqs,
                     baseline_mean - baseline_sem,
                     baseline_mean + baseline_sem,
-                    color='tab:purple', alpha=0.2)
+                    color='tab:orange', alpha=0.2)
 
     # Plot LoRA datapoint as horizontal line
     ax.axhline(y=LoRA_mean, color='tab:red', linestyle='--', label='Llama-3.1-8B-instruct + LoRA')

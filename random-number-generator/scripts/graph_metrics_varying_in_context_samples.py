@@ -105,11 +105,11 @@ def build_graph(data_dir, output_fname, metric_type, freqs_to_graph, max_num_in_
     x_axis = np.arange(0, max_num_in_context_samples_per_prompt + 1)
     
     # Plot baseline datapoint as horizontal line
-    ax.plot(x_axis, baseline_means, c="tab:purple", linestyle='-.', label='Llama-3.1-8B-instruct')
+    ax.plot(x_axis, baseline_means, c="tab:orange", linestyle='-.', label='Llama-3.1-8B-instruct')
     ax.fill_between(x_axis,
                     baseline_means - baseline_sems,
                     baseline_means + baseline_sems,
-                    color='tab:purple', alpha=0.2)
+                    color='tab:orange', alpha=0.2)
 
     # Plot LoRA datapoint as horizontal line
     ax.plot(x_axis, LoRA_means, color='tab:red', linestyle='--', label='Llama-3.1-8B-instruct + LoRA')
