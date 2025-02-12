@@ -67,3 +67,9 @@ cd ${HOME_DIR}
 #     done
 # done
 
+nums_in_context_samples_per_prompt=(0 1 2 3 4 5 6 7 8 9)
+for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@]}"; do
+    python scripts/graph_predicted_distributions.py \
+            --input_dir output/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt \
+            --output_dir output/graphs/pred_distributions_0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt
+done
