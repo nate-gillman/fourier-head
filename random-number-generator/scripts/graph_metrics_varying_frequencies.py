@@ -141,7 +141,7 @@ if __name__ == "__main__":
     # Set output filename based on metric type
     os.makedirs(args.output_dir, exist_ok=True)
     
-    for test_idx in ["0", "1", "2", "3"]:
+    for test_idx in ["0", "1", "2", "3", "agg"]:
         output_fname = os.path.join(args.output_dir, f"test_idx_{test_idx}_graph_metrics_{args.metric}.png")
         build_graph(args.input_dir, output_fname, args.metric, args.max_num_freqs, test_idx)
         print(f'Graph saved as: {output_fname}')
