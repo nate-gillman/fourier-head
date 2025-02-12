@@ -71,7 +71,7 @@ for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@
 done
 ```
 
-## Step 4: fine-tune, run inference and eval scripts
+## Step 4: LoRA fine-tune, run inference and eval scripts
 
 LoRA train the linear baseline, then evaluate the trained model.
 This whole loop can run in less than 20 hours on an a6000 gpu.
@@ -124,60 +124,47 @@ done
 
 ## Step 6: graph the results
 
-### x_axis = num_freqs, y_axis = {metric}
+### Step 6a: x_axis = num_freqs, y_axis = tvd, or num_unique_samples
 
-Graphing the total variation distance metric as a function of frequencies:
-
-```bash
-nums_in_context_samples_per_prompt=(0 1 2 3 4 5 6 7 8 9)
-for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@]}"; do
-    python scripts/graph_metrics.py \
-        --metric tvd \
-        --input_dir output/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt \
-        --output_dir scripts/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt \
-        --max_num_freqs 12
-done
-```
-
-Graphing the num_unique_samples metric as a function of frequencies:
+Graphing the total variation distance and num_unique_sample metrics as a function of frequencies:
 
 ```bash
+metrics=(tvd num_unique_samples)
 nums_in_context_samples_per_prompt=(0 1 2 3 4 5 6 7 8 9)
-for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@]}"; do
-    python scripts/graph_metrics.py \
-        --metric num_unique_samples \
+
+for metric in "${metrics[@]}"; do
+    for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@]}"; do
+        python scripts/graph_metrics_varying_frequencies.py \
+            --metric ${metric} \
             --input_dir output/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt \
-            --output_dir scripts/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt \
+            --output_dir output/graphs/num_in_context_samples_per_prompt_0${num_in_context_samples_per_prompt} \
             --max_num_freqs 12
+    done
 done
 ```
 
-## x_axis = num_in_context_samples_per_prompt, y_axis = {metric}
+### Step 6b: x_axis = num_in_context_samples_per_prompt, y_axis = tvd, or num_unique_samples
 
-Graphing the TVD metric as a function of num_in_context_samples_per_prompt:
+Graphing the total variation distance and num_unique_sample metrics as a function of num_in_context_samples_per_prompt:
 
 ```bash 
-python scripts/graph_metrics_varying_in_context_samples.py \
-    --metric tvd \
-    --input_dir output \
-    --output_dir scripts/graph_metrics_varying_in_context_samples \
-    --freqs_to_graph 1,2,3,4,5,6,7,8,9,10,11,12 \
-    --max_num_in_context_samples_per_prompt 9
-```
+metrics=(tvd num_unique_samples)
+freqs=(1 2 3 4 5 6 7 8 9 10 11 12)
 
-Graphing the num_unique_samples metric as a function of num_in_context_samples_per_prompt:
-
-```bash
-python scripts/graph_metrics_varying_in_context_samples.py \
-    --metric num_unique_samples \
-    --input_dir output \
-    --output_dir scripts/graph_metrics_varying_in_context_samples \
-    --freqs_to_graph 1,2,3,4,5,6,7,8,9,10,11,12 \
-    --max_num_in_context_samples_per_prompt 9
+for metric in "${metrics[@]}"; do
+    for freq in "${freqs[@]}"; do
+        python scripts/graph_metrics_varying_in_context_samples.py \
+            --metric ${metric} \
+            --input_dir output \
+            --output_dir output/graphs/num_freqs_${freq} \
+            --freq $freq \
+            --max_num_in_context_samples_per_prompt 9
+    done
+done
 ```
 
 
-## STEP 9: graph predicted distributions 
+### Step 6c: graph the learned empirical distributions
 
 This will graph the true distribution, against the learned distribution (obtained via sampling and histogram binning).
 
@@ -186,6 +173,6 @@ nums_in_context_samples_per_prompt=(0 1 2 3 4 5 6 7 8 9)
 for num_in_context_samples_per_prompt in "${nums_in_context_samples_per_prompt[@]}"; do
     python scripts/graph_predicted_distributions.py \
             --input_dir output/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt \
-            --output_dir scripts/0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt
+            --output_dir output/graphs/pred_distributions_0${num_in_context_samples_per_prompt}_in_context_samples_per_prompt
 done
 ```
