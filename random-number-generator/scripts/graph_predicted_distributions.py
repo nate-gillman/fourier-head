@@ -38,7 +38,7 @@ class DistributionPlotter:
         os.makedirs(output_dir, exist_ok=True)
         setup_matplotlib()
 
-    def plot_single_distribution(self, data: DistributionData, ax, ymax: float):
+    def plot_single_distribution(self, data: DistributionData, ax, ymax: float, test_idx: int):
         """Plot a single distribution comparison on given axis."""
         bin_edges = np.linspace(-1, 1, 21)
         bin_centers = (bin_edges[:-1] + bin_edges[1:]) / 2
@@ -57,7 +57,11 @@ class DistributionPlotter:
         ax.set_xticklabels([f'{x:.1f}' for x in bin_edges], rotation=45)
         ax.set_ylim(0.0, ymax)
         ax.grid(True, linewidth=0.5)
-        ax.legend(loc='upper left', fontsize=14)
+        if test_idx in ["0","1"]:
+            loc = 'upper right'
+        elif test_idx in ["2","3"]:
+            loc = "upper left"
+        ax.legend(loc=loc, fontsize=14)
         ax.set_title(data.title, fontsize=18)
 
     def create_figure(self, n_plots: int = 3) -> Tuple[plt.Figure, List[plt.Axes]]:
@@ -118,7 +122,6 @@ def process_frequency_comparison(test_idx: str, json_dir: str, output_dir: str):
     # Load baseline data
     baseline_data, freq0_data = analyzer.load_baseline_and_freq0(test_idx)
     true_dist = baseline_data['true_distribution']
-    ymax = 1.2 * max(true_dist)
     
     # Process each frequency
     for freq in range(1, 13):
@@ -136,6 +139,12 @@ def process_frequency_comparison(test_idx: str, json_dir: str, output_dir: str):
             model_name_str = f"Fourier Head ({freq} freq)"
         elif freq > 1:
             model_name_str = f"Fourier Head ({freq} freqs)"
+        ymax = 1.2 * max(
+            max(true_dist),
+            max(baseline_data['predicted_distributions']['median_tvd']['distribution']),
+            max(freq0_data['predicted_distributions']['median_tvd']['distribution']),
+            max(freqn_data['predicted_distributions']['median_tvd']['distribution'])
+        )
         distributions = [
             DistributionData(
                 true_distribution=true_dist,
@@ -163,7 +172,7 @@ def process_frequency_comparison(test_idx: str, json_dir: str, output_dir: str):
         # Create and save plot
         fig, axes = plotter.create_figure(3)
         for ax, dist in zip(axes, distributions):
-            plotter.plot_single_distribution(dist, ax, ymax)
+            plotter.plot_single_distribution(dist, ax, ymax, test_idx)
         
         output_filename = f"method_comparison_test_idx_{test_idx}_epochs-16-freqs-{freq}-aggregated.png"
         plotter.save_figure(fig, output_filename)
@@ -196,7 +205,7 @@ def process_min_median_max(test_idx: str, json_dir: str, output_dir: str):
         # Create and save plot
         fig, axes = plotter.create_figure(3)
         for ax, dist in zip(axes, distributions):
-            plotter.plot_single_distribution(dist, ax, ymax)
+            plotter.plot_single_distribution(dist, ax, ymax, test_idx)
             
         output_filename = f"min_median_max_test_idx_{test_idx}_{os.path.splitext(filename)[0]}.png"
         plotter.save_figure(fig, output_filename)
