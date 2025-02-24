@@ -66,7 +66,7 @@ class DistributionPlotter:
 
     def create_figure(self, n_plots: int = 3) -> Tuple[plt.Figure, List[plt.Axes]]:
         """Create a figure with specified number of subplots."""
-        fig, axes = plt.subplots(1, n_plots, figsize=(5 * n_plots, 5))
+        fig, axes = plt.subplots(1, n_plots, figsize=(5 * n_plots, 3))
         fig.text(0.04, 0.5, 'Probability Mass', va='center', rotation='vertical', fontsize=18)
         plt.tight_layout(pad=1.0, rect=[0.05, 0.08, 1, 0.95])
         return fig, axes
@@ -139,7 +139,7 @@ def process_frequency_comparison(test_idx: str, json_dir: str, output_dir: str):
             model_name_str = f"Fourier Head ({freq} freq)"
         elif freq > 1:
             model_name_str = f"Fourier Head ({freq} freqs)"
-        ymax = 1.2 * max(
+        ymax = 1.1 * max(
             max(true_dist),
             max(baseline_data['predicted_distributions']['median_tvd']['distribution']),
             max(freq0_data['predicted_distributions']['median_tvd']['distribution']),
@@ -188,7 +188,7 @@ def process_min_median_max(test_idx: str, json_dir: str, output_dir: str):
             
         data = analyzer.load_json(filename, test_idx)
         true_dist = data['true_distribution']
-        ymax = 1.2 * max(true_dist)
+        ymax = 1.1 * max(true_dist)
         color = analyzer.get_color_for_file(filename)
         
         # Create distributions for min/median/max
