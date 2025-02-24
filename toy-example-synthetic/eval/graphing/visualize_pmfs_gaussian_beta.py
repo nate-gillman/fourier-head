@@ -60,8 +60,8 @@ def plot_combined_graphs(prefix, fourier, linear, gmm, true, idxs, output_fname)
     gmm = [np.load(prefix + gmm[j])[idxs[j]] for j in range(2)]
     true = [np.load(prefix + true[j])[idxs[j]] for j in range(2)]
     
-    titles = ['Gaussian Dataset', 'GMM-2 Dataset', 'Beta Dataset'][1:]
-    y_lim = [0.2, 0.2, 0.25][1:]
+    titles = ['Gaussian Dataset', 'Beta Dataset']
+    y_lim = [0.2, 0.25]
     # Create a 3x2 grid of subplots
     fig, axes = plt.subplots(2, 3, figsize=(12, 3.1)) 
 
@@ -92,12 +92,12 @@ if __name__ == "__main__":
 
     # Example usage: choose which model to load from for each of the datasets
     # For each dataset, be sure to specify the same seed for fourier, linear, and true
-    fourier = ['gaussian/fourier/0.0/18/pmfs_1.npy', 'gmm2/fourier/0.0/10/pmfs_1.npy', 'beta/fourier/0.0/16/pmfs_42.npy'][1:]
-    linear = ['gaussian/linear/0.0/0/pmfs_1.npy', 'gmm2/linear/0.0/0/pmfs_1.npy', 'beta/linear/0.0/0/pmfs_42.npy'][1:]
-    gmm = ['gaussian/gmm/0.0/0/pmfs_1.npy', 'gmm2/gmm/0.0/0/pmfs_1.npy', 'beta/gmm/0.0/0/pmfs_42.npy'][1:]
-    true = ['gaussian/true_1.npy', 'gmm2/true_1.npy','beta/true_42.npy'][1:]
+    fourier = ['gaussian/fourier/0.0/18/pmfs_1.npy', 'beta/fourier/0.0/16/pmfs_42.npy']
+    linear = ['gaussian/linear/0.0/0/pmfs_1.npy', 'beta/linear/0.0/0/pmfs_42.npy']
+    gmm = ['gaussian/gmm/0.0/0/pmfs_1.npy', 'beta/gmm/0.0/0/pmfs_42.npy']
+    true = ['gaussian/true_1.npy', 'beta/true_42.npy']
 
     # Specify which pmf to be visualized for each of the datasets (there are a total 1000 test pmfs)
-    pmf_ixs = [488, 331, 180]  
-    plot_combined_graphs(output_dir, fourier, linear, gmm, true, pmf_ixs, "toy_predicted_vs_true_gmm_beta.png")
+    pmf_ixs = [488, 180]  
+    plot_combined_graphs(output_dir, fourier, linear, gmm, true, pmf_ixs, "toy_predicted_vs_true_gaussian_beta.png")
     print(f"Saved graph to {output_dir}")
