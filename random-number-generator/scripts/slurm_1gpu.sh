@@ -3,13 +3,13 @@
 # A batch script for running a job on Oscar's 3090 condo, using the Slurm scheduler
 # The 3090 condo runs NVIDIA's GeForce RTX 3090 graphics card
 
-#SBATCH -p 3090-gcondo --gres=gpu:1
+#SBATCH -p gpu-he --gres=gpu:1
 #SBATCH --constraint=a6000|l40s|geforce3090
 #SBATCH --exclude=gpu2112,gpu2114,gpu2116,gpu2108,gpu2106
 #SBATCH -N 1 # gives one node, makes sure cpu cores are on same node
 #SBATCH -c 1 # num CPU cores
 #SBATCH --mem=31G
-#SBATCH -t 6:00:00
+#SBATCH -t 1:00:00
 #SBATCH -e output/slurm_logs/%j.err
 #SBATCH -o output/slurm_logs/%j.out
 #SBATCH --mail-user=nate_gillman@brown.edu
