@@ -40,7 +40,7 @@ def plot_histogram_with_line(data, data_true, ax, title, label, label_true, ylim
 
     smoothness = get_smoothness_metric(np.expand_dims(data, axis=0))["L2"]["mean"]
 
-    ax.bar(bin_centers, data, width=0.04, color=color, alpha=0.7, label=f"{label} PMF; Smoothness = {smoothness:.4f}")
+    ax.bar(bin_centers, data, width=0.04, color=color, alpha=0.7, label=f"{label} Smoothness = {smoothness:.4f}")
     if label_true:
         ax.plot(bin_centers, data_true, color='tab:green', linewidth=2, label="True PDF")
     else:
@@ -55,18 +55,18 @@ def plot_histogram_with_line(data, data_true, ax, title, label, label_true, ylim
     ax.set_title(title, fontsize=12)
 
 def plot_combined_graphs(prefix, fourier, linear, gmm, true, idxs, output_fname):
-    fourier = [np.load(prefix + fourier[j])[idxs[j]] for j in range(2)]
-    linear = [np.load(prefix + linear[j])[idxs[j]] for j in range(2)]
-    gmm = [np.load(prefix + gmm[j])[idxs[j]] for j in range(2)]
-    true = [np.load(prefix + true[j])[idxs[j]] for j in range(2)]
+    fourier = [np.load(prefix + fourier[j])[idxs[j]] for j in range(3)]
+    linear = [np.load(prefix + linear[j])[idxs[j]] for j in range(3)]
+    gmm = [np.load(prefix + gmm[j])[idxs[j]] for j in range(3)]
+    true = [np.load(prefix + true[j])[idxs[j]] for j in range(3)]
     
-    titles = ['Gaussian Dataset', 'GMM-2 Dataset', 'Beta Dataset'][1:]
-    y_lim = [0.2, 0.2, 0.25][1:]
+    titles = ['Gaussian Dataset', 'GMM-2 Dataset', 'Beta Dataset']
+    y_lim = [0.2, 0.2, 0.25]
     # Create a 3x2 grid of subplots
-    fig, axes = plt.subplots(2, 3, figsize=(12, 3.1)) 
+    fig, axes = plt.subplots(3, 3, figsize=(12, 5)) 
 
     # Set a suptitle for the figure, use padding to avoid overlap with plots
-    # fig.suptitle('Toy Example: Learned Conditional Distribution vs True Conditional Distribution', fontsize=18, y=0.95)
+    fig.suptitle('Toy Example: Learned Conditional Distribution vs True Conditional Distribution', fontsize=18, y=0.95)
 
     # Plot for each dataset (fourier, linear, true)
     for i in range(len(fourier)):
@@ -92,12 +92,12 @@ if __name__ == "__main__":
 
     # Example usage: choose which model to load from for each of the datasets
     # For each dataset, be sure to specify the same seed for fourier, linear, and true
-    fourier = ['gaussian/fourier/0.0/18/pmfs_1.npy', 'gmm2/fourier/0.0/10/pmfs_1.npy', 'beta/fourier/0.0/16/pmfs_42.npy'][1:]
-    linear = ['gaussian/linear/0.0/0/pmfs_1.npy', 'gmm2/linear/0.0/0/pmfs_1.npy', 'beta/linear/0.0/0/pmfs_42.npy'][1:]
-    gmm = ['gaussian/gmm/0.0/0/pmfs_1.npy', 'gmm2/gmm/0.0/0/pmfs_1.npy', 'beta/gmm/0.0/0/pmfs_42.npy'][1:]
-    true = ['gaussian/true_1.npy', 'gmm2/true_1.npy','beta/true_42.npy'][1:]
+    fourier = ['gaussian/fourier/0.0/18/pmfs_1.npy', 'gmm2/fourier/0.0/10/pmfs_1.npy', 'beta/fourier/0.0/16/pmfs_42.npy']
+    linear = ['gaussian/linear/0.0/0/pmfs_1.npy', 'gmm2/linear/0.0/0/pmfs_1.npy', 'beta/linear/0.0/0/pmfs_42.npy']
+    gmm = ['gaussian/gmm/0.0/0/pmfs_1.npy', 'gmm2/gmm/0.0/0/pmfs_1.npy', 'beta/gmm/0.0/0/pmfs_42.npy']
+    true = ['gaussian/true_1.npy', 'gmm2/true_1.npy','beta/true_42.npy']
 
     # Specify which pmf to be visualized for each of the datasets (there are a total 1000 test pmfs)
     pmf_ixs = [488, 331, 180]  
-    plot_combined_graphs(output_dir, fourier, linear, gmm, true, pmf_ixs, "toy_predicted_vs_true_gmm_beta.png")
+    plot_combined_graphs(output_dir, fourier, linear, gmm, true, pmf_ixs, "toy_predicted_vs_true.png")
     print(f"Saved graph to {output_dir}")
