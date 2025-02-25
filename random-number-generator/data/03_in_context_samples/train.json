@@ -1,0 +1,2306 @@
+{
+  "0": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.50, -0.56, -0.49, ",
+    "response": "-0.40",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "1": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.09, -0.09, 0.35, ",
+    "response": "0.15",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "2": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.34, 0.51, 0.35, ",
+    "response": "0.35",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "3": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.57, 0.36, 0.38, ",
+    "response": "0.49",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "4": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.65, -0.52, -0.64, ",
+    "response": "-0.69",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "5": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.32, -0.08, -0.01, ",
+    "response": "-0.37",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "6": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.33, 0.44, 0.24, ",
+    "response": "0.48",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "7": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.49, 0.52, 0.49, ",
+    "response": "0.74",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "8": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.55, -0.66, -0.47, ",
+    "response": "-0.67",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "9": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.02, -0.50, -0.35, ",
+    "response": "0.02",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "10": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.54, 0.45, 0.40, ",
+    "response": "0.37",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "11": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.40, 0.48, 0.50, ",
+    "response": "0.66",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "12": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.52, -0.73, -0.52, ",
+    "response": "-0.59",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "13": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.19, 0.12, 0.22, ",
+    "response": "0.19",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "14": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.29, 0.37, 0.47, ",
+    "response": "0.58",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "15": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.50, 0.53, 0.44, ",
+    "response": "0.43",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "16": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.47, -0.41, -0.56, ",
+    "response": "-0.45",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "17": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.06, -0.18, 0.06, ",
+    "response": "0.34",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "18": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.41, 0.67, 0.00, ",
+    "response": "0.55",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "19": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.56, 0.52, 0.56, ",
+    "response": "0.35",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "20": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.57, -0.51, -0.40, ",
+    "response": "-0.60",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "21": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.22, -0.15, 0.19, ",
+    "response": "0.05",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "22": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.34, 0.50, 0.44, ",
+    "response": "0.57",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "23": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.48, 0.52, 0.51, ",
+    "response": "0.40",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "24": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.52, -0.52, -0.55, ",
+    "response": "-0.57",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "25": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.37, -0.13, -0.11, ",
+    "response": "-0.22",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "26": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.39, 0.48, 0.72, ",
+    "response": "0.45",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "27": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.58, 0.54, 0.36, ",
+    "response": "0.55",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "28": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.54, -0.30, -0.57, ",
+    "response": "-0.52",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "29": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.04, -0.31, 0.24, ",
+    "response": "0.15",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "30": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.55, 0.27, 0.64, ",
+    "response": "0.20",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "31": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.61, 0.77, 0.45, ",
+    "response": "0.49",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "32": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.54, -0.60, -0.71, ",
+    "response": "-0.54",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "33": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.28, 0.08, -0.25, ",
+    "response": "0.34",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "34": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.29, 0.37, 0.55, ",
+    "response": "0.22",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "35": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.57, 0.68, 0.39, ",
+    "response": "0.57",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "36": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.52, -0.47, -0.67, ",
+    "response": "-0.68",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "37": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.10, 0.04, 0.03, ",
+    "response": "0.05",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "38": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.31, 0.46, 0.47, ",
+    "response": "0.31",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "39": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.74, 0.60, 0.43, ",
+    "response": "0.62",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "40": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.65, -0.47, -0.43, ",
+    "response": "-0.63",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "41": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.20, 0.07, 0.17, ",
+    "response": "0.43",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "42": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.38, 0.30, 0.28, ",
+    "response": "0.29",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "43": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.54, 0.58, 0.58, ",
+    "response": "0.63",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "44": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.55, -0.40, -0.58, ",
+    "response": "-0.28",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "45": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.12, -0.24, -0.29, ",
+    "response": "0.09",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "46": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.38, 0.53, 0.50, ",
+    "response": "0.41",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "47": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.47, 0.40, 0.51, ",
+    "response": "0.64",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "48": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.53, -0.67, -0.53, ",
+    "response": "-0.51",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "49": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.24, 0.01, -0.02, ",
+    "response": "-0.30",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "50": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.48, 0.51, 0.59, ",
+    "response": "0.59",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "51": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.41, 0.46, 0.60, ",
+    "response": "0.60",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "52": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.50, -0.16, -0.49, ",
+    "response": "-0.44",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "53": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.20, 0.13, -0.11, ",
+    "response": "0.15",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "54": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.30, 0.38, 0.34, ",
+    "response": "0.43",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "55": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.78, 0.36, 0.62, ",
+    "response": "0.39",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "56": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.60, -0.44, -0.54, ",
+    "response": "-0.66",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "57": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.20, 0.13, -0.21, ",
+    "response": "0.02",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "58": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.43, 0.32, 0.76, ",
+    "response": "0.52",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "59": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.35, 0.57, 0.48, ",
+    "response": "0.64",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "60": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.63, -0.56, -0.50, ",
+    "response": "-0.46",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "61": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.32, -0.11, -0.14, ",
+    "response": "-0.19",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "62": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.70, 0.48, 0.22, ",
+    "response": "0.57",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "63": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.76, 0.65, 0.40, ",
+    "response": "0.50",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "64": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.42, -0.62, -0.51, ",
+    "response": "-0.47",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "65": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.25, -0.04, -0.81, ",
+    "response": "-0.28",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "66": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.38, 0.22, 0.68, ",
+    "response": "0.19",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "67": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.51, 0.56, 0.69, ",
+    "response": "0.41",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "68": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.43, -0.55, -0.65, ",
+    "response": "-0.50",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "69": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.02, -0.17, -0.01, ",
+    "response": "-0.12",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "70": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.44, 0.53, 0.67, ",
+    "response": "0.22",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "71": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.76, 0.35, 0.53, ",
+    "response": "0.61",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "72": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.52, -0.61, -0.57, ",
+    "response": "-0.60",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "73": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.17, 0.17, 0.06, ",
+    "response": "-0.20",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "74": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.56, 0.47, 0.55, ",
+    "response": "0.52",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "75": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.47, 0.49, 0.62, ",
+    "response": "0.61",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "76": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.55, -0.54, -0.42, ",
+    "response": "-0.61",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "77": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.10, -0.08, -0.08, ",
+    "response": "0.23",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "78": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.55, 0.55, 0.63, ",
+    "response": "0.42",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "79": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.62, 0.52, 0.58, ",
+    "response": "0.54",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "80": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.54, -0.49, -0.63, ",
+    "response": "-0.34",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "81": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.27, -0.32, 0.25, ",
+    "response": "0.16",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "82": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.52, 0.52, 0.42, ",
+    "response": "0.28",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "83": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.56, 0.48, 0.65, ",
+    "response": "0.54",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "84": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.63, -0.58, -0.51, ",
+    "response": "-0.61",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "85": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.23, 0.03, 0.03, ",
+    "response": "-0.15",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "86": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.34, 0.46, 0.19, ",
+    "response": "0.19",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "87": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.48, 0.53, 0.58, ",
+    "response": "0.70",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "88": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.46, -0.57, -0.55, ",
+    "response": "-0.65",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "89": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.03, -0.10, 0.05, ",
+    "response": "-0.23",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "90": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.50, 0.67, 0.40, ",
+    "response": "0.48",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "91": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.62, 0.51, 0.57, ",
+    "response": "0.55",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "92": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.54, -0.63, -0.55, ",
+    "response": "-0.50",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "93": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.32, 0.20, 0.49, ",
+    "response": "-0.21",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "94": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.56, 0.45, 0.77, ",
+    "response": "0.29",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "95": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.47, 0.49, 0.34, ",
+    "response": "0.50",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "96": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.63, -0.53, -0.52, ",
+    "response": "-0.36",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "97": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.20, -0.17, -0.25, ",
+    "response": "0.09",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "98": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.21, 0.71, 0.61, ",
+    "response": "0.34",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "99": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.38, 0.69, 0.54, ",
+    "response": "0.67",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "100": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.71, -0.61, -0.55, ",
+    "response": "-0.55",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "101": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.14, 0.12, -0.29, ",
+    "response": "-0.06",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "102": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.44, 0.50, 0.53, ",
+    "response": "0.24",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "103": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.40, 0.68, 0.58, ",
+    "response": "0.48",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "104": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.39, -0.54, -0.43, ",
+    "response": "-0.54",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "105": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.46, 0.39, -0.09, ",
+    "response": "0.20",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "106": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.52, 0.64, 0.27, ",
+    "response": "0.53",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "107": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.66, 0.37, 0.43, ",
+    "response": "0.35",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "108": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.58, -0.48, -0.40, ",
+    "response": "-0.54",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "109": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.36, -0.36, -0.44, ",
+    "response": "-0.04",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "110": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.48, 0.41, 0.09, ",
+    "response": "0.41",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "111": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.42, 0.62, 0.59, ",
+    "response": "0.46",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "112": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.60, -0.66, -0.56, ",
+    "response": "-0.45",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "113": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.27, 0.09, -0.16, ",
+    "response": "-0.22",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "114": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.40, 0.25, 0.33, ",
+    "response": "0.23",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "115": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.75, 0.55, 0.48, ",
+    "response": "0.57",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "116": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.56, -0.57, -0.49, ",
+    "response": "-0.47",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "117": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.16, -0.17, -0.10, ",
+    "response": "-0.58",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "118": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.18, 0.64, 0.68, ",
+    "response": "0.38",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "119": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.61, 0.58, 0.86, ",
+    "response": "0.66",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "120": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.56, -0.65, -0.71, ",
+    "response": "-0.53",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "121": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.21, -0.37, -0.19, ",
+    "response": "-0.29",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "122": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.69, 0.56, 0.42, ",
+    "response": "0.66",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "123": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.56, 0.46, 0.70, ",
+    "response": "0.60",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "124": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.65, -0.57, -0.64, ",
+    "response": "-0.69",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "125": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.19, 0.43, -0.37, ",
+    "response": "0.11",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "126": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.32, 0.34, 0.33, ",
+    "response": "0.28",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "127": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.55, 0.47, 0.58, ",
+    "response": "0.54",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "128": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.57, -0.64, -0.61, ",
+    "response": "-0.47",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "129": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.09, -0.26, -0.01, ",
+    "response": "0.15",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "130": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.15, 0.51, 0.31, ",
+    "response": "0.51",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "131": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.47, 0.37, 0.39, ",
+    "response": "0.55",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "132": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.52, -0.64, -0.49, ",
+    "response": "-0.72",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "133": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.05, -0.32, -0.19, ",
+    "response": "-0.02",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "134": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.28, 0.36, 0.58, ",
+    "response": "0.33",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "135": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.63, 0.44, 0.60, ",
+    "response": "0.69",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "136": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.80, -0.63, -0.49, ",
+    "response": "-0.57",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "137": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.06, -0.17, -0.01, ",
+    "response": "-0.07",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "138": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.61, 0.46, 0.47, ",
+    "response": "0.35",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "139": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.50, 0.51, 0.59, ",
+    "response": "0.51",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "140": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.52, -0.34, -0.46, ",
+    "response": "-0.58",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "141": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.26, -0.13, -0.52, ",
+    "response": "-0.27",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "142": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.12, 0.36, 0.42, ",
+    "response": "0.69",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "143": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.58, 0.53, 0.63, ",
+    "response": "0.33",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "144": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.53, -0.47, -0.70, ",
+    "response": "-0.44",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "145": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.05, -0.13, 0.12, ",
+    "response": "0.51",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "146": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.45, 0.46, 0.35, ",
+    "response": "0.28",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "147": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.63, 0.46, 0.56, ",
+    "response": "0.50",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "148": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.50, -0.52, -0.45, ",
+    "response": "-0.60",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "149": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.09, -0.26, -0.14, ",
+    "response": "0.06",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "150": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.54, 0.27, 0.56, ",
+    "response": "0.64",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "151": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.59, 0.74, 0.47, ",
+    "response": "0.43",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "152": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.73, -0.40, -0.48, ",
+    "response": "-0.56",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "153": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.04, -0.30, 0.56, ",
+    "response": "0.00",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "154": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.44, 0.54, 0.50, ",
+    "response": "0.46",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "155": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.47, 0.60, 0.74, ",
+    "response": "0.68",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "156": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.39, -0.60, -0.65, ",
+    "response": "-0.56",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "157": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.02, 0.23, -0.44, ",
+    "response": "0.34",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "158": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.39, 0.35, 0.26, ",
+    "response": "0.16",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "159": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.63, 0.56, 0.42, ",
+    "response": "0.42",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "160": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.58, -0.38, -0.58, ",
+    "response": "-0.70",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "161": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.09, -0.10, -0.68, ",
+    "response": "-0.04",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "162": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.38, 0.53, 0.72, ",
+    "response": "0.60",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "163": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.52, 0.44, 0.81, ",
+    "response": "0.56",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "164": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.55, -0.55, -0.53, ",
+    "response": "-0.56",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "165": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.17, -0.16, -0.04, ",
+    "response": "-0.16",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "166": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.31, 0.44, 0.38, ",
+    "response": "0.66",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "167": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.28, 0.66, 0.67, ",
+    "response": "0.34",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "168": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.58, -0.59, -0.69, ",
+    "response": "-0.63",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "169": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.30, 0.39, 0.19, ",
+    "response": "0.28",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "170": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.54, 0.24, 0.34, ",
+    "response": "0.50",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "171": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.43, 0.62, 0.53, ",
+    "response": "0.51",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "172": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.48, -0.51, -0.59, ",
+    "response": "-0.43",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "173": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.29, 0.12, 0.11, ",
+    "response": "-0.10",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "174": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.47, 0.22, 0.57, ",
+    "response": "0.39",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "175": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.50, 0.65, 0.48, ",
+    "response": "0.41",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "176": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.71, -0.49, -0.68, ",
+    "response": "-0.37",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "177": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.53, 0.38, 0.02, ",
+    "response": "-0.05",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "178": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.33, 0.48, 0.41, ",
+    "response": "0.60",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "179": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.56, 0.57, 0.51, ",
+    "response": "0.54",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "180": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.52, -0.72, -0.68, ",
+    "response": "-0.48",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "181": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.01, -0.07, -0.03, ",
+    "response": "0.05",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "182": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.33, 0.30, 0.45, ",
+    "response": "0.26",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "183": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.59, 0.38, 0.65, ",
+    "response": "0.60",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "184": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.52, -0.45, -0.38, ",
+    "response": "-0.45",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "185": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.47, -0.34, -0.18, ",
+    "response": "-0.02",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "186": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.50, 0.30, 0.45, ",
+    "response": "0.30",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "187": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.49, 0.41, 0.46, ",
+    "response": "0.41",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "188": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.65, -0.44, -0.64, ",
+    "response": "-0.29",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "189": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.09, 0.01, -0.24, ",
+    "response": "0.14",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "190": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.33, 0.44, 0.83, ",
+    "response": "0.40",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "191": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.66, 0.48, 0.55, ",
+    "response": "0.73",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "192": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.61, -0.37, -0.48, ",
+    "response": "-0.61",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "193": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.12, 0.20, 0.12, ",
+    "response": "-0.41",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "194": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.30, 0.38, 0.41, ",
+    "response": "0.52",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "195": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.57, 0.42, 0.59, ",
+    "response": "0.61",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "196": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.49, -0.44, -0.47, ",
+    "response": "-0.50",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "197": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.05, -0.43, 0.07, ",
+    "response": "0.02",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "198": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.46, 0.22, 0.25, ",
+    "response": "0.59",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "199": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.55, 0.62, 0.55, ",
+    "response": "0.55",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "200": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.46, -0.60, -0.54, ",
+    "response": "-0.60",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "201": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.13, -0.10, 0.02, ",
+    "response": "-0.14",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "202": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.62, 0.28, 0.39, ",
+    "response": "0.35",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "203": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.69, 0.57, 0.65, ",
+    "response": "0.40",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "204": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.52, -0.46, -0.54, ",
+    "response": "-0.44",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "205": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.15, 0.31, 0.52, ",
+    "response": "-0.12",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "206": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.35, 0.65, 0.67, ",
+    "response": "0.34",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "207": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.51, 0.52, 0.42, ",
+    "response": "0.46",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "208": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.65, -0.63, -0.55, ",
+    "response": "-0.53",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "209": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.34, -0.27, 0.21, ",
+    "response": "-0.08",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "210": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.41, 0.53, 0.24, ",
+    "response": "0.48",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "211": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.57, 0.60, 0.58, ",
+    "response": "0.80",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "212": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.61, -0.60, -0.61, ",
+    "response": "-0.61",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "213": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.18, 0.26, 0.31, ",
+    "response": "-0.17",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "214": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.29, 0.50, 0.33, ",
+    "response": "0.52",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "215": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.57, 0.40, 0.70, ",
+    "response": "0.73",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "216": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.61, -0.59, -0.52, ",
+    "response": "-0.52",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "217": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.13, 0.45, -0.07, ",
+    "response": "-0.22",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "218": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.20, 0.30, 0.41, ",
+    "response": "0.71",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "219": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.50, 0.57, 0.55, ",
+    "response": "0.67",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "220": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.30, -0.60, -0.60, ",
+    "response": "-0.45",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "221": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.13, 0.41, 0.11, ",
+    "response": "-0.12",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "222": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.51, 0.60, 0.55, ",
+    "response": "0.50",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "223": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.66, 0.67, 0.69, ",
+    "response": "0.61",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "224": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.57, -0.54, -0.43, ",
+    "response": "-0.63",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "225": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.06, -0.12, -0.02, ",
+    "response": "0.28",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "226": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.45, 0.43, 0.20, ",
+    "response": "0.54",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "227": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.61, 0.77, 0.52, ",
+    "response": "0.57",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "228": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.53, -0.39, -0.56, ",
+    "response": "-0.52",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "229": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.12, 0.01, -0.14, ",
+    "response": "0.02",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "230": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.59, 0.26, 0.44, ",
+    "response": "0.31",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "231": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.67, 0.40, 0.49, ",
+    "response": "0.59",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "232": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.39, -0.56, -0.61, ",
+    "response": "-0.36",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "233": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.38, -0.56, 0.08, ",
+    "response": "-0.15",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "234": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.26, 0.53, 0.46, ",
+    "response": "0.33",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "235": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.42, 0.64, 0.62, ",
+    "response": "0.54",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "236": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.37, -0.66, -0.70, ",
+    "response": "-0.62",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "237": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.04, 0.03, -0.09, ",
+    "response": "0.05",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "238": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.22, 0.65, 0.41, ",
+    "response": "0.60",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "239": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.58, 0.60, 0.61, ",
+    "response": "0.59",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "240": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.49, -0.42, -0.53, ",
+    "response": "-0.48",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "241": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: -0.05, 0.32, -0.19, ",
+    "response": "0.40",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "242": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.41, 0.19, 0.44, ",
+    "response": "0.31",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "243": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.63, 0.48, 0.51, ",
+    "response": "0.36",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "244": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.60, -0.79, -0.71, ",
+    "response": "-0.47",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "245": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.16, 0.07, -0.26, ",
+    "response": "-0.04",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "246": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.42, 0.23, 0.66, ",
+    "response": "0.56",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "247": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.53, 0.55, 0.57, ",
+    "response": "0.35",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "248": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.57, -0.62, -0.65, ",
+    "response": "-0.58",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "249": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.40, 0.12, -0.17, ",
+    "response": "0.11",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "250": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.64, 0.57, 0.43, ",
+    "response": "0.32",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "251": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.62, 0.59, 0.64, ",
+    "response": "0.61",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  },
+  "252": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.55 and std 0.10: -0.45, -0.60, -0.42, ",
+    "response": "-0.53",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.55,
+      "sigma": 0.1
+    }
+  },
+  "253": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean -0.03 and std 0.24: 0.47, -0.20, 0.39, ",
+    "response": "0.02",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": -0.03,
+      "sigma": 0.24
+    }
+  },
+  "254": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.42 and std 0.16: 0.32, 0.34, 0.37, ",
+    "response": "0.49",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.42,
+      "sigma": 0.16
+    }
+  },
+  "255": {
+    "prompt": "The following is a list of normally distributed random numbers in the interval [-1, 1] with mean 0.55 and std 0.10: 0.60, 0.49, 0.55, ",
+    "response": "0.76",
+    "distribution_info": {
+      "distribution_type": "gaussian",
+      "mu": 0.55,
+      "sigma": 0.1
+    }
+  }
+}

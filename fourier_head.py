@@ -31,6 +31,7 @@ class Fourier_Head(nn.Module):
             const_inverse_softmax=1e-5,
             init_denominator_weight=100, 
             init_denominator_bias=100,
+            dtype=torch.float32,
             device="cuda"
         ):
         """
@@ -69,7 +70,9 @@ class Fourier_Head(nn.Module):
         self.const_inverse_softmax = const_inverse_softmax
         self.init_denominator_weight = init_denominator_weight
         self.init_denominator_bias = init_denominator_bias
+        self.dtype=dtype
         self.device = device
+        self.save_learned_pmfs = None
 
         # Linear layer for extracting autocorrelation parameters
         self.fc_extract_autocorrelation_params = nn.Linear(
@@ -151,8 +154,8 @@ class Fourier_Head(nn.Module):
 
         # Combine the separate real and imaginary parts to obtain a single complex tensor
         autocorrelation_params = torch.complex(
-            (autocorrelation_params_all[..., 0:self.num_frequencies+1]).to(torch.float32),
-            (autocorrelation_params_all[..., self.num_frequencies+1:2*(self.num_frequencies+1)]).to(torch.float32)
+            (autocorrelation_params_all[..., 0:self.num_frequencies+1]).to(self.dtype),
+            (autocorrelation_params_all[..., self.num_frequencies+1:2*(self.num_frequencies+1)]).to(self.dtype)
         ) # (batch_size, num_frequencies+1)
 
         # Compute autocorrelation
@@ -231,6 +234,11 @@ class Fourier_Head(nn.Module):
 
         # In case there are multiple batch dimensions, this un-flattens them
         categorical_distributions = categorical_distributions.view(shape_output)
+
+        if self.save_learned_pmfs:
+            self.save_learned_pmfs["save_pmfs_function"](
+                self.bin_centerpoints, categorical_distributions, self.save_learned_pmfs
+            )
 
         # Apply inverse softmax transformation
         inverse_softmax_logits = torch.log(categorical_distributions+self.const_inverse_softmax) # (batch_size, dim_output)

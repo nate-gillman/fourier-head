@@ -67,9 +67,11 @@ Look inside the corresponding subdirectory for the code to recreate the results 
 
 2. [Toy example (audio classification)](/toy_example_audio/README.md)
 
-3. [Large scale example (imitation learning)](/imitation-learning/README.md)
+3. [Toy example (random number generator)](/random-number-generator/README.md)
 
-4. [Large scale example (probabilistic time series forecasting)](/time-series-forecasting/README.md)
+4. [Large scale example (imitation learning)](/imitation-learning/README.md)
+
+5. [Large scale example (probabilistic time series forecasting)](/time-series-forecasting/README.md)
 
 ## Acknowledgments
 
