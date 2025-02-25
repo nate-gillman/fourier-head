@@ -60,7 +60,7 @@ Accordingly, our implementation of the Fourier head outputs the <em>inverse soft
 
 ## Recreating results from paper
 
-Our paper contains four sets of experiments with the Fourier head.
+Our paper contains five sets of experiments with the Fourier head.
 Look inside the corresponding subdirectory for the code to recreate the results and figures from that section of the paper.
 
 1. [Toy example (synthetic data)](/toy-example-synthetic/README.md)
