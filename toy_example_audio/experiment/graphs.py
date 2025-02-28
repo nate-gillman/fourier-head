@@ -55,7 +55,7 @@ def plot_histogram_with_line(data: np.ndarray, data_true: np.ndarray, ax: plt.Ax
     ax.tick_params(axis='x', labelrotation=0)
     ax.set_xticklabels(bin_names, fontsize=7)
     ax.grid(True, linewidth=0.3)
-    ax.legend(loc="upper left", fontsize=7)
+    ax.legend(loc="upper left", fontsize=10)
     ax.set_title(title, fontsize=14)
 
 def load_eval_pair(label_ids_path: Path, logits_path: Path) -> Dict[str, np.ndarray]:
@@ -152,10 +152,10 @@ def create_graph() -> None:
     sample_id = 499
     
     # set axis titles
-    axes[0].set_ylabel("Mass")
+    axes[0].set_ylabel("Mass", fontsize=12)
 
-    axes[1].set_xlabel("BPM")
-    axes[0].set_xlabel("BPM")
+    axes[1].set_xlabel("BPM", fontsize=12)
+    axes[0].set_xlabel("BPM", fontsize=12)
 
     # plot histograms
     bins = fourier_info['bins']

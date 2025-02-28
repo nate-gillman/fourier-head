@@ -45,7 +45,7 @@ class DistributionPlotter:
         width = 0.1
 
         ax.bar(bin_centers, data.predicted_distribution, width, 
-               color=data.color, alpha=0.7,
+               color=data.color, alpha=0.6,
                label=f"Predicted PMF\nTVD = {data.tvd:.4f}")
         
         ax.scatter(bin_centers, data.true_distribution, 
