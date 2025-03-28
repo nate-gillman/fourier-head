@@ -35,7 +35,6 @@ for path in sys.path:
     if path.endswith("/toy-example-synthetic/scripts"):
         sys.path.append(path.replace("/toy-example-synthetic/scripts", "/"))
 
-from fourier_head import Fourier_Head
 from generate_datasets import *
 
 # Define the MLP model with a hidden layer and a linear/fourier head
